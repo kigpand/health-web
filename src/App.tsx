@@ -1,5 +1,8 @@
+import "utils/axiosSetting";
+import { ErrorBoundary } from "react-error-boundary";
+
 function App() {
-  return <></>;
+  return <ErrorBoundary fallback={<div>error</div>}></ErrorBoundary>;
 }
 
 export default App;
