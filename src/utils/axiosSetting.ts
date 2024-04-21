@@ -1,7 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 
-axios.defaults.withCredentials = true;
+const axiosInstance = axios.create({
+  withCredentials: true,
+  baseURL: "localhost:3000",
+  timeout: 3000,
+});
 
-axios.interceptors.response.use((response: AxiosResponse) => {
+axiosInstance.interceptors.response.use((response: AxiosResponse) => {
   return response;
 });
+
+export default axiosInstance;
