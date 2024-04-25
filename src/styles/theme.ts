@@ -6,8 +6,14 @@ const fontSize = {
   lg: "1.5rem",
 };
 
+const colors = {
+  primary: "#00ff6a",
+  secondary: "#00b600",
+};
+
 const theme = {
   fontSize,
+  colors,
 };
 
 export default theme;
