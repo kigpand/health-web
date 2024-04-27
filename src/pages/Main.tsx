@@ -1,10 +1,12 @@
-import MainHeader from "@components/main/MainHeader";
 import styled from "styled-components";
+import MainHeader from "@components/main/MainHeader";
+import MainBody from "@components/main/MainBody";
 
 const Main = () => {
   return (
     <MainWrapper>
       <MainHeader />
+      <MainBody />
     </MainWrapper>
   );
 };
