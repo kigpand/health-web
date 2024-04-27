@@ -6,8 +6,11 @@ export default function MainHeader() {
 
 const HeaderWrapper = styled.header`
   width: 100%;
-  align-items: center;
+  display: flex;
+  justify-content: center;
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  background-color: white;
+  color: ${({ theme }) => theme.colors.secondary};
+  padding: 24px 0px;
 `;
