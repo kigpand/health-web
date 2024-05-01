@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import MainHeader from "@components/main/MainHeader";
 import MainBody from "@components/main/MainBody";
+import MainFooter from "@components/main/MainFooter";
 
 const Main = () => {
   return (
     <MainWrapper>
       <MainHeader />
       <MainBody />
+      <MainFooter />
     </MainWrapper>
   );
 };
