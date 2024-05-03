@@ -5,6 +5,8 @@ import theme from "./styles/theme";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AddRoutine from "./pages/AddRoutine";
+import { PATH } from "./enum/path";
 
 const queryClient = new QueryClient();
 
@@ -15,8 +17,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/login" element={<Login />} />
+              <Route path={PATH.home} element={<Main />} />
+              <Route path={PATH.login} element={<Login />} />
+              <Route path={PATH.addRoutine} element={<AddRoutine />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
