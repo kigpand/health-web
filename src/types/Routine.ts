@@ -10,5 +10,10 @@ export type RoutineDataType = {
   kg: number;
   set: number;
   title: string;
-  _id: string;
+};
+
+export type AddRoutineType = {
+  title: string;
+  category: string;
+  routine: RoutineDataType[];
 };
