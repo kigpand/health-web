@@ -15,6 +15,7 @@ export default function MainBody() {
           width="100%"
           title="카테고리"
           values={category.map((item) => item.category)}
+          handleChangeSelect={(select) => console.log(select)}
         />
       )}
       {routine?.map((routine) => {
