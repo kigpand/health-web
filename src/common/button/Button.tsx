@@ -15,6 +15,13 @@ export default function Button(props: Props) {
       </PrimaryButton>
     );
   }
+  if (props.type === "secondary") {
+    return (
+      <SecondaryButton $width={props.width} onClick={props.handleClick}>
+        {props.text}
+      </SecondaryButton>
+    );
+  }
   return <ButtonWrapper $width={props.width}>{props.text}</ButtonWrapper>;
 }
 
@@ -35,5 +42,10 @@ const ButtonWrapper = styled.button<ButtonProps>`
 
 const PrimaryButton = styled(ButtonWrapper)`
   background-color: #00d1b8;
+  color: white;
+`;
+
+const SecondaryButton = styled(ButtonWrapper)`
+  background-color: #d10026;
   color: white;
 `;
