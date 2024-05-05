@@ -1,13 +1,11 @@
-import { ChangeEvent } from "react";
+import { InputProps } from "@/types/Input";
 import styled from "styled-components";
 
-type Props = {
-  width: string;
-  placeholder: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-export default function Input({ width, placeholder, handleChange }: Props) {
+export default function Input({
+  width,
+  placeholder,
+  handleChange,
+}: InputProps) {
   return (
     <InputWrapper
       placeholder={placeholder}
@@ -19,9 +17,9 @@ export default function Input({ width, placeholder, handleChange }: Props) {
 
 const InputWrapper = styled.input<{ $width: string }>`
   outline: none;
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 4px;
   background-color: white;
-  height: 40px;
+  height: 35px;
   width: ${(props) => props.$width};
 `;
