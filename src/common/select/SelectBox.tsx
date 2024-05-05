@@ -1,19 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
 import SelectBoxItem from "./SelectBoxItem";
+import { SelectBoxProps } from "@/types/SelectType";
 
-type Props = {
-  width: string;
-  title: string;
-  values: string[];
-};
-
-export default function SelectBox({ width, title, values }: Props) {
+export default function SelectBox({
+  width,
+  title,
+  values,
+  handleChangeSelect,
+}: SelectBoxProps) {
   const [placeholder, setPlaceholder] = useState<string>(title);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   function handleSelectItem(value: string) {
     setPlaceholder(value);
+    handleChangeSelect(value);
     setIsOpen(false);
   }
 
@@ -54,15 +55,16 @@ type ContainerProps = {
 
 const Container = styled.div<ContainerProps>`
   width: 100%;
-  height: 40px;
+  height: 35px;
   background-color: white;
-  border-radius: 8px;
-  border-bottom-left-radius: ${(props) => (props.$isOpen ? "0px" : "8px")};
-  border-bottom-right-radius: ${(props) => (props.$isOpen ? "0px" : "8px")};
+  border-radius: 4px;
+  border-bottom-left-radius: ${(props) => (props.$isOpen ? "0px" : "4px")};
+  border-bottom-right-radius: ${(props) => (props.$isOpen ? "0px" : "4px")};
+  border: 1px solid gray;
   display: flex;
   align-items: center;
   padding-left: 4px;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: gray;
 `;
 
 const ItemWrapper = styled.ul`
