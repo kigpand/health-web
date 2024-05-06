@@ -6,7 +6,11 @@ export async function getRoutine() {
   return result.data;
 }
 
-export async function addRoutine(props: AddRoutineType) {
-  const result = await axiosInstance.post("/addRoutine", props);
+type AddRoutineProps = {
+  id: number;
+} & AddRoutineType;
+
+export async function addRoutineAPI(props: AddRoutineProps) {
+  const result = await axiosInstance.post("/routine/addRoutine", { ...props });
   return result.data;
 }

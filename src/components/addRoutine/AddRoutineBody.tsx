@@ -8,23 +8,32 @@ import AddExerciseModal from "@components/modal/AddExerciseModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import AddRoutineBodyListItem from "./AddRoutineBodyListItem";
+import { useAddRoutine, useRoutine } from "@/hook/quires/routine";
+import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
 
 export default function AddRoutineBody() {
   const nav = useNavigate();
+  const { routine } = useRoutine();
   const { category } = useCategory();
   const [title, setTitle] = useState<string>("");
   const [categoryChange, setCategoryChange] = useState<string>("");
   const [addExer, setAddExer] = useState<boolean>(false);
   const [exercise, setExercise] = useState<RoutineDataType[]>([]);
+  const { addRoutine, addRoutineSuccess } = useAddRoutine();
 
   function handleAddExercise(title: string, kg: number, set: number) {
     setExercise([...exercise, { title, kg, set }]);
   }
 
   function handleAddRoutine() {
-    console.log(title);
-    console.log(categoryChange);
-    console.log(exercise);
+    if (!routine) return;
+    addRoutine({
+      id: routine[routine?.length - 1].id + 1,
+      title,
+      category: categoryChange,
+      routine: exercise,
+    });
   }
 
   return (
@@ -42,6 +51,16 @@ export default function AddRoutineBody() {
         values={category?.map((item) => item.category) ?? []}
         handleChangeSelect={(select) => setCategoryChange(select)}
       />
+      {exercise.length > 0 && (
+        <AddExerciseList>
+          <label>등록한 운동</label>
+          <ul>
+            {exercise.map((item) => {
+              return <AddRoutineBodyListItem key={item.title} {...item} />;
+            })}
+          </ul>
+        </AddExerciseList>
+      )}
       <AddExerciseButton onClick={() => setAddExer(true)}>
         운동 추가 +
       </AddExerciseButton>
@@ -65,6 +84,7 @@ export default function AddRoutineBody() {
           handleCloseModal={() => setAddExer(false)}
         />
       )}
+      {addRoutineSuccess && <AddRoutineSuccessModal />}
     </BodyWrapper>
   );
 }
@@ -75,6 +95,24 @@ const BodyWrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: 18px;
+`;
+
+const AddExerciseList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  label {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  ul {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 const AddExerciseButton = styled.button`
