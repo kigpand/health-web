@@ -6,6 +6,11 @@ export async function getRoutine() {
   return result.data;
 }
 
+export async function getRoutineDetail(id: string) {
+  const result = await axiosInstance.get(`/routine/${id}`);
+  return result.data;
+}
+
 type AddRoutineProps = {
   id: number;
 } & AddRoutineType;
