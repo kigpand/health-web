@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddRoutine from "./pages/AddRoutine";
 import { PATH } from "./enum/path";
+import RoutineDetail from "./pages/RoutineDetail";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ function App() {
               <Route path={PATH.home} element={<Main />} />
               <Route path={PATH.login} element={<Login />} />
               <Route path={PATH.addRoutine} element={<AddRoutine />} />
+              <Route path={PATH.routineDetail} element={<RoutineDetail />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
