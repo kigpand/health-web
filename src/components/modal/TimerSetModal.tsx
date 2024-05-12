@@ -1,17 +1,21 @@
 import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
+import { PATH } from "@/enum/path";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
+  id: string;
   handleCloseModal: () => void;
 };
 
-export default function TimerSetModal({ handleCloseModal }: Props) {
+export default function TimerSetModal({ id, handleCloseModal }: Props) {
+  const nav = useNavigate();
   const [timer, setTimer] = useState<number>(0);
 
   function handleStart() {
-    console.log(timer);
+    nav(`${PATH.routinePlay}?id=${id}&timer=${timer}`);
   }
 
   return (

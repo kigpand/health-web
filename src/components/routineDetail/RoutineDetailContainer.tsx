@@ -8,21 +8,23 @@ import styled from "styled-components";
 
 export default function RoutineDetailContainer({ id }: { id: string }) {
   const { routineDetail } = useRoutineDetail(id);
-  const [isTimer, setIsTimer] = useState<boolean>(true);
+  const [isTimer, setIsTimer] = useState<boolean>(false);
   const nav = useNavigate();
 
   return (
     <PageWrapper>
       <HeaderWrapper>{routineDetail?.title}</HeaderWrapper>
       <UlContainer>
-        <StartButton>start!!</StartButton>
+        <StartButton onClick={() => setIsTimer(true)}>start!!</StartButton>
         <label>루틴 리스트</label>
         {routineDetail?.routine.map((routine) => {
           return <ListWrapper key={routine.title}>{routine.title}</ListWrapper>;
         })}
       </UlContainer>
       <FooterWrapper onClick={() => nav(PATH.home)}>이전으로</FooterWrapper>
-      {isTimer && <TimerSetModal handleCloseModal={() => setIsTimer(false)} />}
+      {isTimer && (
+        <TimerSetModal id={id} handleCloseModal={() => setIsTimer(false)} />
+      )}
     </PageWrapper>
   );
 }
@@ -61,6 +63,7 @@ const StartButton = styled.div`
   border-radius: 8px;
   padding: 10px;
   animation: anim 0.5s infinite alternate;
+  cursor: pointer;
 
   @keyframes anim {
     0% {
