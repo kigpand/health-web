@@ -1,11 +1,14 @@
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
 import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import TimerSetModal from "@components/modal/TimerSetModal";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function RoutineDetailContainer({ id }: { id: string }) {
   const { routineDetail } = useRoutineDetail(id);
+  const [isTimer, setIsTimer] = useState<boolean>(true);
   const nav = useNavigate();
 
   return (
@@ -19,6 +22,7 @@ export default function RoutineDetailContainer({ id }: { id: string }) {
         })}
       </UlContainer>
       <FooterWrapper onClick={() => nav(PATH.home)}>이전으로</FooterWrapper>
+      {isTimer && <TimerSetModal handleCloseModal={() => setIsTimer(false)} />}
     </PageWrapper>
   );
 }
