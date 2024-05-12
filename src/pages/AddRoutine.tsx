@@ -1,17 +1,12 @@
+import { PageWrapper } from "@/styles/PageStyle";
 import AddRoutineBody from "@components/addRoutine/AddRoutineBody";
 import AddRoutineHeader from "@components/addRoutine/AddRoutineHeader";
-import styled from "styled-components";
 
 export default function AddRoutine() {
   return (
-    <AddRoutineWrapper>
+    <PageWrapper>
       <AddRoutineHeader />
       <AddRoutineBody />
-    </AddRoutineWrapper>
+    </PageWrapper>
   );
 }
-
-const AddRoutineWrapper = styled.section`
-  width: 100vw;
-  height: 100vh;
-`;

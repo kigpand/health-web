@@ -1,4 +1,6 @@
+import { PATH } from "@/enum/path";
 import { RoutineListType } from "@/types/Routine";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
@@ -6,7 +8,13 @@ type Props = {
 };
 
 export default function MainBodyItem({ item }: Props) {
-  return <ItemWrapper>{item.title}</ItemWrapper>;
+  const nav = useNavigate();
+
+  function handleMoveToDetail() {
+    nav(`${PATH.routineDetail}?id=${item.id}`);
+  }
+
+  return <ItemWrapper onClick={handleMoveToDetail}>{item.title}</ItemWrapper>;
 }
 
 const ItemWrapper = styled.li`

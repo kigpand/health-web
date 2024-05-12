@@ -1,22 +1,16 @@
-import styled from "styled-components";
 import MainHeader from "@components/main/MainHeader";
 import MainBody from "@components/main/MainBody";
 import MainFooter from "@components/main/MainFooter";
+import { PageWrapper } from "@/styles/PageStyle";
 
 const Main = () => {
   return (
-    <MainWrapper>
+    <PageWrapper>
       <MainHeader />
       <MainBody />
       <MainFooter />
-    </MainWrapper>
+    </PageWrapper>
   );
 };
 
 export default Main;
-
-const MainWrapper = styled.section`
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.primary};
-`;
