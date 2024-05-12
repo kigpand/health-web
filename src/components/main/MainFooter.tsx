@@ -19,9 +19,8 @@ export default function MainFooter() {
 }
 
 const FooterWrapper = styled.footer`
-  position: fixed;
-  bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 `;

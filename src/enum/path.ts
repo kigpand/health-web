@@ -4,4 +4,5 @@ export enum PATH {
   join = "/join",
   addRoutine = "/addRoutine",
   routineDetail = "/routineDetail",
+  error = "/error",
 }

@@ -26,9 +26,11 @@ export default function MainBody() {
 }
 
 const BodyWrapper = styled.ul`
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   padding: 24px 16px;
+  overflow: auto;
 `;

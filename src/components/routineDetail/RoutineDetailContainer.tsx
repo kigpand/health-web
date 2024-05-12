@@ -8,14 +8,13 @@ export default function RoutineDetailContainer({ id }: { id: string }) {
   const { routineDetail } = useRoutineDetail(id);
   const nav = useNavigate();
 
-  if (!routineDetail) return <div onClick={() => nav(PATH.home)}>이전으로</div>;
-
   return (
     <PageWrapper>
       <HeaderWrapper>{routineDetail?.title}</HeaderWrapper>
       <UlContainer>
         <StartButton>start!!</StartButton>
-        {routineDetail.routine.map((routine) => {
+        <label>루틴 리스트</label>
+        {routineDetail?.routine.map((routine) => {
           return <ListWrapper key={routine.title}>{routine.title}</ListWrapper>;
         })}
       </UlContainer>
@@ -32,6 +31,12 @@ const UlContainer = styled.ul`
   justify-content: center;
   gap: 16px;
   position: relative;
+
+  label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 `;
 
 const ListWrapper = styled.li`
@@ -47,9 +52,21 @@ const StartButton = styled.div`
   top: 10px;
   right: 10px;
   background-color: skyblue;
+  color: white;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 10px;
+  animation: anim 0.5s infinite alternate;
+
+  @keyframes anim {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const FooterWrapper = styled.footer`
