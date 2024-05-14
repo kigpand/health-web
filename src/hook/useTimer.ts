@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useInterval } from "./useInterval";
 
 type Props = {
@@ -15,11 +15,9 @@ export function useTimer({ timer }: Props) {
     time !== 0 ? 1000 : null
   );
 
-  useEffect(() => {
-    if (time === 0) {
-      //   setIsNextButton(true);
-    }
-  }, [time]);
+  const resetTimer = useCallback(() => {
+    setTime(timer);
+  }, []);
 
-  return { time };
+  return { time, resetTimer };
 }
