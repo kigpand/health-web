@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type Props = {
-  type: "primary" | "secondary" | "black";
+  type: "primary" | "secondary" | "black" | "skyblue";
   width: string;
   text: string;
   handleClick: () => void;
@@ -27,6 +27,13 @@ export default function Button(props: Props) {
       <BlackButton $width={props.width} onClick={props.handleClick}>
         {props.text}
       </BlackButton>
+    );
+  }
+  if (props.type === "skyblue") {
+    return (
+      <SkyBlueButton $width={props.width} onClick={props.handleClick}>
+        {props.text}
+      </SkyBlueButton>
     );
   }
   return <ButtonWrapper $width={props.width}>{props.text}</ButtonWrapper>;
@@ -59,5 +66,10 @@ const SecondaryButton = styled(ButtonWrapper)`
 
 const BlackButton = styled(ButtonWrapper)`
   background-color: #000000;
+  color: white;
+`;
+
+const SkyBlueButton = styled(ButtonWrapper)`
+  background-color: #5dd1ff;
   color: white;
 `;

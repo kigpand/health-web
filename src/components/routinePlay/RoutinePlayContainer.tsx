@@ -2,8 +2,11 @@ import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
 import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { RoutineDataType } from "@/types/Routine";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import RoutinePlayList from "./RoutinePlayList";
 
 type Props = {
   id: string;
@@ -12,31 +15,43 @@ type Props = {
 
 export default function RoutinePlayContainer({ id, timer }: Props) {
   const nav = useNavigate();
+  const [isStart, setIsStart] = useState<boolean>(false);
   const { routineDetail } = useRoutineDetail(id);
+  const [currentRoutine, setCurrentRoutine] = useState<RoutineDataType>();
+
+  useEffect(() => {
+    if (routineDetail) {
+      setCurrentRoutine(routineDetail.routine[0]);
+    }
+  }, [routineDetail]);
 
   return (
     <PageWrapper>
-      <HeaderWrapper>Play!</HeaderWrapper>
-      <ContainerWrapper>
-        <Title>
-          선택한 루틴은
-          <span style={{ color: "red" }}> {routineDetail?.title}</span>입니다.
-        </Title>
-        <ButtonWrapper>
-          <Button
-            width="100%"
-            type="primary"
-            text="시작!"
-            handleClick={() => console.log("111")}
-          />
-          <Button
-            width="100%"
-            type="black"
-            text="뒤로가기"
-            handleClick={() => nav(PATH.home)}
-          />
-        </ButtonWrapper>
-      </ContainerWrapper>
+      <HeaderWrapper>{isStart ? routineDetail?.title : "Play!"}</HeaderWrapper>
+      {isStart && currentRoutine ? (
+        <RoutinePlayList currentRoutine={currentRoutine} timer={timer} />
+      ) : (
+        <ContainerWrapper>
+          <Title>
+            선택한 루틴은
+            <span style={{ color: "red" }}> {routineDetail?.title}</span>입니다.
+          </Title>
+          <ButtonWrapper>
+            <Button
+              width="100%"
+              type="primary"
+              text="시작!"
+              handleClick={() => setIsStart(true)}
+            />
+            <Button
+              width="100%"
+              type="black"
+              text="뒤로가기"
+              handleClick={() => nav(PATH.home)}
+            />
+          </ButtonWrapper>
+        </ContainerWrapper>
+      )}
     </PageWrapper>
   );
 }
@@ -47,7 +62,7 @@ const ContainerWrapper = styled.article`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 60px;
 `;
 
 const Title = styled.div`
