@@ -49,10 +49,7 @@ export default function RoutinePlayList({ currentRoutine, timer }: Props) {
         />
       </ButtonWrapper>
       {isTimer && (
-        <PlayTimerModal
-          timer={timer}
-          handleCloseModal={() => setIsTimer(false)}
-        />
+        <PlayTimerModal timer={timer} handleCloseModal={handleNextSet} />
       )}
     </PlayListWrapper>
   );
