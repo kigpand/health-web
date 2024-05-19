@@ -26,11 +26,14 @@ export default function AddRoutineSuccessModal() {
 
 const SuccessModal = styled.article`
   width: 300px;
-  height: 250px;
+  height: 200px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 20px;
   font-weight: bold;
+  gap: 80px;
+  border-radius: 12px;
 `;
