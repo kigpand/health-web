@@ -2,8 +2,7 @@ import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
 import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
-import { RoutineDataType } from "@/types/Routine";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoutinePlayList from "./RoutinePlayList";
@@ -17,19 +16,22 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
   const nav = useNavigate();
   const [isStart, setIsStart] = useState<boolean>(false);
   const { routineDetail } = useRoutineDetail(id);
-  const [currentRoutine, setCurrentRoutine] = useState<RoutineDataType>();
+  const [currentRoutine, setCurrentRoutine] = useState<number>(0);
 
-  useEffect(() => {
-    if (routineDetail) {
-      setCurrentRoutine(routineDetail.routine[0]);
-    }
-  }, [routineDetail]);
+  function handleNextRoutine() {
+    setCurrentRoutine(currentRoutine + 1);
+  }
 
   return (
     <PageWrapper>
       <HeaderWrapper>{isStart ? routineDetail?.title : "Play!"}</HeaderWrapper>
-      {isStart && currentRoutine ? (
-        <RoutinePlayList currentRoutine={currentRoutine} timer={timer} />
+      {isStart && routineDetail ? (
+        <RoutinePlayList
+          currentRoutine={currentRoutine}
+          routineDetail={routineDetail}
+          timer={timer}
+          handleNextRoutine={handleNextRoutine}
+        />
       ) : (
         <ContainerWrapper>
           <Title>
