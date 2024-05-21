@@ -18,3 +18,10 @@ export const HeaderWrapper = styled.header`
   color: ${({ theme }) => theme.colors.secondary};
   padding: 24px 0px;
 `;
+
+export const FooterWrapper = styled.footer`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+`;

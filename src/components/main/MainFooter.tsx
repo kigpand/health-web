@@ -1,7 +1,7 @@
 import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
+import { FooterWrapper } from "@/styles/PageStyle";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 export default function MainFooter() {
   const nav = useNavigate();
@@ -17,10 +17,3 @@ export default function MainFooter() {
     </FooterWrapper>
   );
 }
-
-const FooterWrapper = styled.footer`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-`;
