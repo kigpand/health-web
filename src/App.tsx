@@ -28,6 +28,7 @@ function App() {
               <Route path={PATH.routinePlay} element={<RoutinePlay />} />
               <Route path={PATH.routineFinish} element={<RoutineFinish />} />
               <Route path={PATH.error} element={<Error />} />
+              <Route path="*" element={<Main />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
