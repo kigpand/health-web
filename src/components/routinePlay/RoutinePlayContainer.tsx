@@ -1,7 +1,7 @@
 import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
-import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -20,6 +20,11 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
 
   function handleNextRoutine() {
     setCurrentRoutine(currentRoutine + 1);
+  }
+
+  function handleCloseExercise() {
+    setCurrentRoutine(0);
+    nav(PATH.home);
   }
 
   return (
@@ -54,6 +59,7 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
           </ButtonWrapper>
         </ContainerWrapper>
       )}
+      <Footer onClick={handleCloseExercise}>운동 종료</Footer>
     </PageWrapper>
   );
 }
@@ -78,4 +84,12 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   gap: 8px;
   width: 150px;
+`;
+
+const Footer = styled(FooterWrapper)`
+  background-color: white;
+  padding: 20px 0px;
+  color: ${({ theme }) => theme.colors.secondary};
+  font-weight: bold;
+  font-size: 18px;
 `;

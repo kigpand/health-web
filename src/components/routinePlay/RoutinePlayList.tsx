@@ -47,7 +47,9 @@ export default function RoutinePlayList({
       <Count>
         {count === routineDetail.routine[currentRoutine].set
           ? "완료하였습니다. 다음 루틴을 진행해주세요!"
-          : `현재 ${count}회 진행했습니다.`}
+          : `현재 ${count}세트 진행했습니다.`}
+        <br />총 {routineDetail.routine[currentRoutine].set - count}세트
+        남았습니다.
       </Count>
       <ButtonWrapper>
         {routineDetail.routine[currentRoutine].set !== count && (
@@ -112,7 +114,13 @@ const Item = styled.div`
   }
 `;
 
-const Count = styled.div``;
+const Count = styled.div`
+  text-align: center;
+  line-height: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+`;
 
 const ButtonWrapper = styled.div`
   width: 150px;
