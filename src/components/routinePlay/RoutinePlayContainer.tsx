@@ -24,7 +24,7 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
 
   function handleCloseExercise() {
     setCurrentRoutine(0);
-    nav(PATH.home);
+    nav(PATH.routineMain);
   }
 
   return (
@@ -54,7 +54,7 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
               width="100%"
               type="black"
               text="뒤로가기"
-              handleClick={() => nav(PATH.home)}
+              handleClick={() => nav(PATH.routineMain)}
             />
           </ButtonWrapper>
         </ContainerWrapper>

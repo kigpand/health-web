@@ -3,6 +3,7 @@ export enum PATH {
   login = "/login",
   join = "/join",
   addRoutine = "/addRoutine",
+  routineMain = "/routineMain",
   routineDetail = "/routineDetail",
   routinePlay = "/routinePlay",
   routineFinish = "/routineFinish",

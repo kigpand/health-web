@@ -15,11 +15,11 @@ export default function AddRoutineSuccessModal() {
             width="100px"
             text="확인"
             type="primary"
-            handleClick={() => nav(PATH.home)}
+            handleClick={() => nav(PATH.routineMain)}
           />
         </SuccessModal>
       }
-      handleCloseModal={() => nav(PATH.home)}
+      handleCloseModal={() => nav(PATH.routineMain)}
     />
   );
 }
