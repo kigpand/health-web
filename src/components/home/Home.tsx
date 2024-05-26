@@ -11,7 +11,7 @@ export default function Home() {
       <ExerciseButton onClick={() => nav(PATH.routineMain)}>
         운동하기
       </ExerciseButton>
-      <CheckButton>운동조회</CheckButton>
+      <CheckButton onClick={() => nav(PATH.checkRoutine)}>운동조회</CheckButton>
     </HomeWrapper>
   );
 }

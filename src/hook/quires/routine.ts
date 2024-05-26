@@ -28,7 +28,7 @@ export function useRoutineDetail(id: string) {
 }
 
 export function useRoutineCount(count: number) {
-  const { data: routineCount } = useQuery<RoutineListType>({
+  const { data: routineCount } = useQuery<RoutineListType[]>({
     queryKey: ["routineCount", count],
     queryFn: () => getRoutineCount(count),
   });

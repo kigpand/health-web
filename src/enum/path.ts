@@ -7,5 +7,6 @@ export enum PATH {
   routineDetail = "/routineDetail",
   routinePlay = "/routinePlay",
   routineFinish = "/routineFinish",
+  checkRoutine = "/checkRoutine",
   error = "/error",
 }
