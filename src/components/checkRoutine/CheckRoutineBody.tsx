@@ -1,5 +1,5 @@
-import SelectBox from "@/common/select/SelectBox";
 import { RoutineListType } from "@/types/Routine";
+import SelectBox from "@/common/select/SelectBox";
 import styled from "styled-components";
 
 type Props = {

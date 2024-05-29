@@ -1,4 +1,3 @@
-import SelectBox from "@/common/select/SelectBox";
 import { useRoutineCount } from "@/hook/quires/routine";
 import { PageWrapper } from "@/styles/PageStyle";
 import CheckRoutineBody from "@components/checkRoutine/CheckRoutineBody";
@@ -21,7 +20,7 @@ export default function CheckRoutine() {
           handleChangeSelect={(value) => setCount(value)}
         />
       )}
-      <CheckRoutineFooter />
+      {routineCount && <CheckRoutineFooter routineCount={routineCount} />}
     </CheckRoutineWrapper>
   );
 }

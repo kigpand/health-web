@@ -1,10 +1,24 @@
 import { FooterWrapper } from "@/styles/PageStyle";
+import { RoutineListType } from "@/types/Routine";
+import CheckRoutineModal from "@components/modal/CheckRoutineModal";
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function CheckRoutineFooter() {
+type Props = {
+  routineCount: RoutineListType[];
+};
+
+export default function CheckRoutineFooter({ routineCount }: Props) {
+  const [isCheckRoutine, setIsCheckRoutine] = useState<boolean>(false);
   return (
     <CheckFooter>
-      <button>분석하기</button>
+      <button onClick={() => setIsCheckRoutine(true)}>분석하기</button>
+      {isCheckRoutine && (
+        <CheckRoutineModal
+          routineCount={routineCount}
+          handleCloseModal={() => setIsCheckRoutine(false)}
+        />
+      )}
     </CheckFooter>
   );
 }
