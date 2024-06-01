@@ -21,7 +21,9 @@ export default function RoutineDetailContainer({ id }: { id: string }) {
           return <ListWrapper key={routine.title}>{routine.title}</ListWrapper>;
         })}
       </UlContainer>
-      <FooterWrapper onClick={() => nav(PATH.home)}>이전으로</FooterWrapper>
+      <FooterWrapper onClick={() => nav(PATH.routineMain)}>
+        이전으로
+      </FooterWrapper>
       {isTimer && (
         <TimerSetModal id={id} handleCloseModal={() => setIsTimer(false)} />
       )}

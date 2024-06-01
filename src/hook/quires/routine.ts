@@ -1,4 +1,9 @@
-import { addRoutineAPI, getRoutine, getRoutineDetail } from "@/service/routine";
+import {
+  addRoutineAPI,
+  getRoutine,
+  getRoutineCount,
+  getRoutineDetail,
+} from "@/service/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -20,6 +25,15 @@ export function useRoutineDetail(id: string) {
   });
 
   return { routineDetail };
+}
+
+export function useRoutineCount(count: number) {
+  const { data: routineCount } = useQuery<RoutineListType[]>({
+    queryKey: ["routineCount", count],
+    queryFn: () => getRoutineCount(count),
+  });
+
+  return { routineCount };
 }
 
 export function useAddRoutine() {

@@ -9,7 +9,9 @@ export default function RoutineFinish() {
     <PageWrapper>
       <HeaderWrapper>운동 끝!</HeaderWrapper>
       <RoutineFinishWrapper>
-        <FinishButton onClick={() => nav(PATH.home)}>처음으로</FinishButton>
+        <FinishButton onClick={() => nav(PATH.routineMain)}>
+          처음으로
+        </FinishButton>
       </RoutineFinishWrapper>
       <Footer>고생하셨습니다!</Footer>
     </PageWrapper>

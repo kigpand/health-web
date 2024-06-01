@@ -3,11 +3,12 @@ import { HeaderWrapper } from "@/styles/PageStyle";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function MainHeader() {
+export default function CheckRoutineHeader() {
   const nav = useNavigate();
+
   return (
     <HeaderWrapper>
-      <span>오늘의 운동은?</span>
+      <span>최근 루틴 조회</span>
       <HomeButton onClick={() => nav(PATH.home)}>홈</HomeButton>
     </HeaderWrapper>
   );

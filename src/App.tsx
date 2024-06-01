@@ -11,6 +11,8 @@ import RoutineDetail from "./pages/RoutineDetail";
 import Error from "./pages/Error";
 import RoutinePlay from "./pages/RoutinePlay";
 import RoutineFinish from "./pages/RoutineFinish";
+import Home from "@components/home/Home";
+import CheckRoutine from "./pages/CheckRoutine";
 
 const queryClient = new QueryClient();
 
@@ -21,12 +23,14 @@ function App() {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Routes>
-              <Route path={PATH.home} element={<Main />} />
+              <Route path={PATH.home} element={<Home />} />
               <Route path={PATH.login} element={<Login />} />
               <Route path={PATH.addRoutine} element={<AddRoutine />} />
+              <Route path={PATH.routineMain} element={<Main />} />
               <Route path={PATH.routineDetail} element={<RoutineDetail />} />
               <Route path={PATH.routinePlay} element={<RoutinePlay />} />
               <Route path={PATH.routineFinish} element={<RoutineFinish />} />
+              <Route path={PATH.checkRoutine} element={<CheckRoutine />} />
               <Route path={PATH.error} element={<Error />} />
               <Route path="*" element={<Main />} />
             </Routes>

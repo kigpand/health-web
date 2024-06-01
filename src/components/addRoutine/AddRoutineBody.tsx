@@ -75,7 +75,7 @@ export default function AddRoutineBody() {
           width="100px"
           text="취소"
           type="secondary"
-          handleClick={() => nav(PATH.home)}
+          handleClick={() => nav(PATH.routineMain)}
         />
       </FooterWrapper>
       {addExer && (
