@@ -5,17 +5,18 @@ import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
+  count: number;
   routineCount: RoutineListType[];
 };
 
-export default function CheckRoutineFooter({ routineCount }: Props) {
+export default function CheckRoutineFooter(props: Props) {
   const [isCheckRoutine, setIsCheckRoutine] = useState<boolean>(false);
   return (
     <CheckFooter>
       <button onClick={() => setIsCheckRoutine(true)}>분석하기</button>
       {isCheckRoutine && (
         <CheckRoutineModal
-          routineCount={routineCount}
+          {...props}
           handleCloseModal={() => setIsCheckRoutine(false)}
         />
       )}

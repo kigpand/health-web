@@ -20,7 +20,9 @@ export default function CheckRoutine() {
           handleChangeSelect={(value) => setCount(value)}
         />
       )}
-      {routineCount && <CheckRoutineFooter routineCount={routineCount} />}
+      {routineCount && (
+        <CheckRoutineFooter count={count} routineCount={routineCount} />
+      )}
     </CheckRoutineWrapper>
   );
 }
