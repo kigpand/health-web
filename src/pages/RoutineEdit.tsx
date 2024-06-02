@@ -1,16 +1,14 @@
 import { useRoutine } from "@/hook/quires/routine";
-import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { PageWrapper } from "@/styles/PageStyle";
 import RoutineEditContainer from "@components/routineEdit/RoutineEditContainer";
-import styled from "styled-components";
+import RoutineEditHeader from "@components/routineEdit/RoutineEditHeader";
 
 export default function RoutineEdit() {
   const { routine } = useRoutine();
   return (
     <PageWrapper>
-      <EditHeader>루틴 편집</EditHeader>
+      <RoutineEditHeader />
       {routine && <RoutineEditContainer routine={routine} />}
     </PageWrapper>
   );
 }
-
-const EditHeader = styled(HeaderWrapper)``;

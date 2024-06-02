@@ -48,13 +48,15 @@ const RoutineListWrapper = styled.ul`
 
 const RoutineList = styled.li`
   display: flex;
+  align-items: center;
   gap: 5px;
   padding: 10px 0px;
 `;
 
 const Title = styled.div`
   font-weight: bold;
-  padding: 8px;
+  padding: 12px;
+  border-radius: 8px;
   background-color: white;
   flex-grow: 1;
 `;
