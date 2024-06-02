@@ -1,11 +1,14 @@
+import { PATH } from "@/enum/path";
 import {
   addRoutineAPI,
+  deleteRoutineAPI,
   getRoutine,
   getRoutineCount,
   getRoutineDetail,
 } from "@/service/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 export function useRoutine() {
   const { data: routine, isSuccess: routineSuccess } = useQuery<
@@ -49,4 +52,21 @@ export function useAddRoutine() {
   });
 
   return { addRoutine, addRoutineSuccess };
+}
+
+export function useRoutineDelete() {
+  const nav = useNavigate();
+  const queryClient = useQueryClient();
+  const { mutate: deleteRoutine } = useMutation({
+    mutationKey: ["deleteRoutine"],
+    mutationFn: deleteRoutineAPI,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["routine"],
+      });
+      nav(PATH.routineEdit);
+    },
+  });
+
+  return { deleteRoutine };
 }

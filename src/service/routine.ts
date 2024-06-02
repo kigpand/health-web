@@ -24,3 +24,11 @@ export async function addRoutineAPI(props: AddRoutineProps) {
   const result = await axiosInstance.post("/routine/addRoutine", { ...props });
   return result.data;
 }
+
+export async function deleteRoutineAPI(id: number) {
+  const result = await axiosInstance.delete("/routine/delete", {
+    data: { id },
+  });
+
+  return result.data;
+}

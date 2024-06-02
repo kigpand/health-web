@@ -1,5 +1,6 @@
 import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
+import { useRoutineDelete } from "@/hook/quires/routine";
 import { RoutineListType } from "@/types/Routine";
 import styled from "styled-components";
 
@@ -12,6 +13,13 @@ export default function RoutineDeleteModal({
   routine,
   handleCloseModal,
 }: Props) {
+  const { deleteRoutine } = useRoutineDelete();
+
+  function handleDeleteButton(id: number) {
+    deleteRoutine(id);
+    handleCloseModal();
+  }
+
   return (
     <ModalPortal
       component={
@@ -22,7 +30,7 @@ export default function RoutineDeleteModal({
               width="100%"
               type="primary"
               text="예"
-              handleClick={() => console.log("111")}
+              handleClick={() => handleDeleteButton(routine.id)}
             />
             <Button
               width="100%"
