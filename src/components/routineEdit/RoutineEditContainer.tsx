@@ -1,5 +1,6 @@
 import { RoutineListType } from "@/types/Routine";
 import RoutineDeleteModal from "@components/modal/RoutineDeleteModal";
+import RoutineEditModal from "@components/modal/RoutineEditModal";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export default function RoutineEditContainer({ routine }: Props) {
+  const [editRoutine, setEditRoutine] = useState<RoutineListType | null>(null);
   const [deleteRoutine, setDeleteRoutine] = useState<RoutineListType | null>(
     null
   );
@@ -29,6 +31,12 @@ export default function RoutineEditContainer({ routine }: Props) {
         <RoutineDeleteModal
           routine={deleteRoutine}
           handleCloseModal={() => setDeleteRoutine(null)}
+        />
+      )}
+      {editRoutine && (
+        <RoutineEditModal
+          routine={editRoutine}
+          handleCloseModal={() => setEditRoutine(null)}
         />
       )}
     </ContainerWrapper>
