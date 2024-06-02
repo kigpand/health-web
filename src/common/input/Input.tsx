@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export default function Input({
   width,
+  value,
   placeholder,
   handleChange,
 }: InputProps) {
@@ -10,6 +11,7 @@ export default function Input({
     <InputWrapper
       placeholder={placeholder}
       onChange={handleChange}
+      value={value ?? undefined}
       $width={width}
     />
   );
