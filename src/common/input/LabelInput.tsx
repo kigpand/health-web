@@ -9,7 +9,7 @@ type Props = {
 export default function LabelInput({
   label,
   width,
-  value,
+  defaultValue,
   placeholder,
   handleChange,
 }: Props) {
@@ -18,7 +18,7 @@ export default function LabelInput({
       <label>{label}</label>
       <Input
         width="100%"
-        value={value ?? undefined}
+        defaultValue={defaultValue ?? undefined}
         placeholder={placeholder}
         handleChange={handleChange}
       />
