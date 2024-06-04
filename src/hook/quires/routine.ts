@@ -5,6 +5,7 @@ import {
   getRoutine,
   getRoutineCount,
   getRoutineDetail,
+  updateRoutineAPI,
 } from "@/service/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -69,4 +70,19 @@ export function useRoutineDelete() {
   });
 
   return { deleteRoutine };
+}
+
+export function useRoutineUpdate() {
+  const queryClient = useQueryClient();
+  const { mutate: updateRoutine } = useMutation({
+    mutationKey: ["updateRoutine"],
+    mutationFn: updateRoutineAPI,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["routine"],
+      });
+    },
+  });
+
+  return { updateRoutine };
 }

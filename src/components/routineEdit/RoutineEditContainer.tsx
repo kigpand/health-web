@@ -22,7 +22,7 @@ export default function RoutineEditContainer({ routine }: Props) {
             <RoutineList key={item._id}>
               <Title>{item.title}</Title>
               <Delete onClick={() => setDeleteRoutine(item)}>삭제</Delete>
-              <Edit>편집</Edit>
+              <Edit onClick={() => setEditRoutine(item)}>편집</Edit>
             </RoutineList>
           );
         })}
