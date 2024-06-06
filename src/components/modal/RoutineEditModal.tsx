@@ -1,9 +1,11 @@
 import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
-import { RoutineListType } from "@/types/Routine";
+import { RoutineDataType, RoutineListType } from "@/types/Routine";
+import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
 import { useState } from "react";
 import styled from "styled-components";
+import RoutineEditModalAdd from "./RoutineEditModalAdd";
 
 type Props = {
   routine: RoutineListType;
@@ -12,6 +14,41 @@ type Props = {
 
 export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
   const [editRoutine, setEditRoutine] = useState<RoutineListType>(routine);
+  const [addModal, setAddModal] = useState<boolean>(false);
+
+  function deleteRoutineItem(routineData: RoutineDataType) {
+    const routine = editRoutine.routine.filter(
+      (item) => item.title !== routineData.title
+    );
+    setEditRoutine({ ...editRoutine, routine: routine });
+  }
+
+  function addRoutineItem(routineData: RoutineDataType) {
+    if (
+      routineData.title === "" ||
+      routineData.kg === 0 ||
+      routineData.set === 0
+    )
+      return;
+    setEditRoutine({
+      ...editRoutine,
+      routine: [...editRoutine.routine, routineData],
+    });
+    setAddModal(false);
+  }
+
+  if (addModal)
+    return (
+      <ModalPortal
+        component={
+          <RoutineEditModalAdd
+            addRoutineItem={addRoutineItem}
+            handleClose={() => setAddModal(false)}
+          />
+        }
+        handleCloseModal={() => setAddModal(false)}
+      />
+    );
 
   return (
     <ModalPortal
@@ -26,6 +63,11 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
             handleChange={(e) =>
               setEditRoutine({ ...editRoutine, title: e.target.value })
             }
+          />
+          <RoutineEditModalList
+            routine={editRoutine.routine}
+            handleAddRoutine={() => setAddModal(true)}
+            deleteRoutineItem={deleteRoutineItem}
           />
           <ButtonWrapper>
             <Button
@@ -55,6 +97,7 @@ const ModalContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-height: 700px;
 `;
 
 const Title = styled.header`
