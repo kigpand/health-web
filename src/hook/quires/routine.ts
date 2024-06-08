@@ -74,7 +74,7 @@ export function useRoutineDelete() {
 
 export function useRoutineUpdate() {
   const queryClient = useQueryClient();
-  const { mutate: updateRoutine } = useMutation({
+  const { mutate: updateRoutine, isSuccess: updateSuccess } = useMutation({
     mutationKey: ["updateRoutine"],
     mutationFn: updateRoutineAPI,
     onSuccess: () => {
@@ -84,5 +84,5 @@ export function useRoutineUpdate() {
     },
   });
 
-  return { updateRoutine };
+  return { updateRoutine, updateSuccess };
 }

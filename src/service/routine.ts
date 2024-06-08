@@ -35,7 +35,7 @@ export async function deleteRoutineAPI(id: number) {
 
 export async function updateRoutineAPI(props: UpdateRoutineType) {
   const result = await axiosInstance.put("/routine/updateRoutine", {
-    data: props,
+    ...props,
   });
 
   return result.data;

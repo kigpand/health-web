@@ -3,10 +3,11 @@ import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType, RoutineListType } from "@/types/Routine";
 import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
+import { useRoutineUpdate } from "@/hook/quires/routine";
 
 type Props = {
   routine: RoutineListType;
@@ -18,6 +19,13 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
   const [addModal, setAddModal] = useState<boolean>(false);
   const [updateRoutineModal, setUpdateRoutineModal] =
     useState<RoutineDataType | null>(null);
+  const { updateRoutine } = useRoutineUpdate();
+
+  function handleEditButton() {
+    if (editRoutine.routine.length === 0) return;
+    updateRoutine(editRoutine);
+    handleCloseModal();
+  }
 
   function deleteRoutineItem(routineData: RoutineDataType) {
     const routine = editRoutine.routine.filter(
@@ -116,7 +124,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
               width="100%"
               type="skyblue"
               text="등록"
-              handleClick={() => console.log("1")}
+              handleClick={handleEditButton}
             />
             <Button
               width="100%"
