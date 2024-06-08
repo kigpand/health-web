@@ -1,4 +1,4 @@
-import { AddRoutineType } from "@/types/Routine";
+import { AddRoutineType, UpdateRoutineType } from "@/types/Routine";
 import axiosInstance from "@/utils/axiosSetting";
 
 export async function getRoutine() {
@@ -22,5 +22,21 @@ type AddRoutineProps = {
 
 export async function addRoutineAPI(props: AddRoutineProps) {
   const result = await axiosInstance.post("/routine/addRoutine", { ...props });
+  return result.data;
+}
+
+export async function deleteRoutineAPI(id: number) {
+  const result = await axiosInstance.delete("/routine/delete", {
+    data: { id },
+  });
+
+  return result.data;
+}
+
+export async function updateRoutineAPI(props: UpdateRoutineType) {
+  const result = await axiosInstance.put("/routine/updateRoutine", {
+    ...props,
+  });
+
   return result.data;
 }

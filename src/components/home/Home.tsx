@@ -8,10 +8,9 @@ export default function Home() {
 
   return (
     <HomeWrapper>
-      <ExerciseButton onClick={() => nav(PATH.routineMain)}>
-        운동하기
-      </ExerciseButton>
-      <CheckButton onClick={() => nav(PATH.checkRoutine)}>운동조회</CheckButton>
+      <Button onClick={() => nav(PATH.routineMain)}>운동하기</Button>
+      <Button onClick={() => nav(PATH.checkRoutine)}>최근 루틴 조회</Button>
+      <Button onClick={() => nav(PATH.routineEdit)}>루틴 편집</Button>
     </HomeWrapper>
   );
 }
@@ -32,7 +31,3 @@ const Button = styled.button`
   outline: none;
   border-radius: 16px;
 `;
-
-const ExerciseButton = styled(Button)``;
-
-const CheckButton = styled(Button)``;

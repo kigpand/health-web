@@ -17,3 +17,10 @@ export type AddRoutineType = {
   category: string;
   routine: RoutineDataType[];
 };
+
+export type UpdateRoutineType = {
+  id: number;
+  title: string;
+  category: string;
+  routine: RoutineDataType[];
+};
