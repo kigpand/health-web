@@ -6,6 +6,7 @@ import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
 import { useState } from "react";
 import styled from "styled-components";
 import RoutineEditModalAdd from "./RoutineEditModalAdd";
+import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
 
 type Props = {
   routine: RoutineListType;
@@ -15,6 +16,8 @@ type Props = {
 export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
   const [editRoutine, setEditRoutine] = useState<RoutineListType>(routine);
   const [addModal, setAddModal] = useState<boolean>(false);
+  const [updateRoutineModal, setUpdateRoutineModal] =
+    useState<RoutineDataType | null>(null);
 
   function deleteRoutineItem(routineData: RoutineDataType) {
     const routine = editRoutine.routine.filter(
@@ -28,8 +31,9 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
       routineData.title === "" ||
       routineData.kg === 0 ||
       routineData.set === 0
-    )
+    ) {
       return;
+    }
     setEditRoutine({
       ...editRoutine,
       routine: [...editRoutine.routine, routineData],
@@ -37,7 +41,26 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     setAddModal(false);
   }
 
-  if (addModal)
+  function updateRoutineItem(title: string, routineData: RoutineDataType) {
+    if (
+      routineData.title === "" ||
+      routineData.kg === 0 ||
+      routineData.set === 0
+    ) {
+      return;
+    }
+    const updateRoutine = editRoutine.routine.map((item) => {
+      if (item.title === title) return routineData;
+      return item;
+    });
+    setEditRoutine({
+      ...editRoutine,
+      routine: updateRoutine,
+    });
+    setUpdateRoutineModal(null);
+  }
+
+  if (addModal) {
     return (
       <ModalPortal
         component={
@@ -49,6 +72,22 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
         handleCloseModal={() => setAddModal(false)}
       />
     );
+  }
+
+  if (updateRoutineModal) {
+    return (
+      <ModalPortal
+        component={
+          <RoutineEditModalUpdate
+            updateRoutineItem={updateRoutineItem}
+            routineData={updateRoutineModal}
+            handleClose={() => setUpdateRoutineModal(null)}
+          />
+        }
+        handleCloseModal={() => setUpdateRoutineModal(null)}
+      />
+    );
+  }
 
   return (
     <ModalPortal
@@ -67,6 +106,9 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
           <RoutineEditModalList
             routine={editRoutine.routine}
             handleAddRoutine={() => setAddModal(true)}
+            handleUpdateRoutine={(routineData: RoutineDataType) =>
+              setUpdateRoutineModal(routineData)
+            }
             deleteRoutineItem={deleteRoutineItem}
           />
           <ButtonWrapper>
@@ -101,7 +143,7 @@ const ModalContainer = styled.article`
 `;
 
 const Title = styled.header`
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
 `;

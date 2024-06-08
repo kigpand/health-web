@@ -73,6 +73,7 @@ const Title = styled.header`
 `;
 
 const ButtonWrapper = styled.div`
+  margin-top: 20px;
   display: flex;
   gap: 4px;
 `;

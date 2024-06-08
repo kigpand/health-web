@@ -4,12 +4,14 @@ import styled from "styled-components";
 type Props = {
   routine: RoutineDataType[];
   handleAddRoutine: () => void;
+  handleUpdateRoutine: (routineData: RoutineDataType) => void;
   deleteRoutineItem: (item: RoutineDataType) => void;
 };
 
 export default function RoutineEditModalList({
   routine,
   handleAddRoutine,
+  handleUpdateRoutine,
   deleteRoutineItem,
 }: Props) {
   return (
@@ -24,7 +26,7 @@ export default function RoutineEditModalList({
             <span>{item.title}</span>
             <ButtonWrapper>
               <div onClick={() => deleteRoutineItem(item)}>x</div>
-              <div>o</div>
+              <div onClick={() => handleUpdateRoutine(item)}>o</div>
             </ButtonWrapper>
           </ListStyled>
         );
@@ -38,20 +40,20 @@ const ListWrapper = styled.ul`
   border-top: 1px solid lightgray;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 `;
 
 const Title = styled.header`
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin: 10px 0px 20px 0;
   display: flex;
   justify-content: space-between;
 `;
 
 const ListStyled = styled.li`
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
+  margin-bottom: 15px;
   justify-content: space-between;
 `;
 
