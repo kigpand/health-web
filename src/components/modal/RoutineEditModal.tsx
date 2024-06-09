@@ -3,7 +3,7 @@ import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType, RoutineListType } from "@/types/Routine";
 import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";

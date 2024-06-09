@@ -1,15 +1,13 @@
-import { useTimer } from "@/hook/useTimer";
 import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import styled from "styled-components";
 
 type Props = {
-  timer: number;
+  time: number;
   handleCloseModal: () => void;
 };
 
-export default function PlayTimerModal({ timer, handleCloseModal }: Props) {
-  const { time } = useTimer({ timer });
+export default function PlayTimerModal({ time, handleCloseModal }: Props) {
   return (
     <ModalPortal
       component={
