@@ -1,15 +1,21 @@
-import { useCategory } from "@/hook/quires/category";
+import { useCategory, useDeleteCategory } from "@/hook/quires/category";
 import styled from "styled-components";
 
 export default function CategoryList() {
   const { category } = useCategory();
+  const { deleteCategoryMutate } = useDeleteCategory();
+
   return (
     <ListWrapper>
       {category?.map((item) => {
         return (
           <ListStyled key={item._id}>
             <ListTitle>{item.category}</ListTitle>
-            <DeleteButton>삭제</DeleteButton>
+            <DeleteButton
+              onClick={() => deleteCategoryMutate({ category: item._id })}
+            >
+              삭제
+            </DeleteButton>
           </ListStyled>
         );
       })}
