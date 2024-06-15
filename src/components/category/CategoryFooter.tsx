@@ -4,7 +4,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function CategoryFooter() {
-  const [isAddCategory, setIsAddCategory] = useState<boolean>(true);
+  const [isAddCategory, setIsAddCategory] = useState<boolean>(false);
   return (
     <Footer>
       <ButtonWrapper onClick={() => setIsAddCategory(true)}>
