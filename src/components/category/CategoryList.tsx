@@ -18,6 +18,7 @@ export default function CategoryList() {
 }
 
 const ListWrapper = styled.ul`
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
