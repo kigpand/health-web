@@ -1,5 +1,6 @@
 import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
+import { useWorkerTimer } from "@/hook/useWorkerTimer";
 import { RoutineListType } from "@/types/Routine";
 import PlayTimerModal from "@components/modal/PlayTimerModal";
 import { useState } from "react";
@@ -19,13 +20,13 @@ export default function RoutinePlayList({
   timer,
   handleNextRoutine,
 }: Props) {
-  const [isTimer, setIsTimer] = useState<boolean>(false);
+  const { time, onTimer, handleTimer } = useWorkerTimer(timer);
   const [count, setCount] = useState<number>(0);
   const nav = useNavigate();
 
   function handleNextSet() {
     setCount(count + 1);
-    setIsTimer(false);
+    handleTimer(false);
   }
 
   function onNextButton() {
@@ -57,7 +58,7 @@ export default function RoutinePlayList({
             width="100%"
             type="primary"
             text="완료했습니다"
-            handleClick={() => setIsTimer(true)}
+            handleClick={() => handleTimer(true)}
           />
         )}
         {routineDetail.routine[currentRoutine].set === count &&
@@ -81,8 +82,8 @@ export default function RoutinePlayList({
             />
           )}
       </ButtonWrapper>
-      {isTimer && (
-        <PlayTimerModal timer={timer} handleCloseModal={handleNextSet} />
+      {onTimer && (
+        <PlayTimerModal time={time} handleCloseModal={handleNextSet} />
       )}
     </PlayListWrapper>
   );

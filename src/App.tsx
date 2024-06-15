@@ -14,6 +14,7 @@ import RoutineFinish from "./pages/RoutineFinish";
 import Home from "@components/home/Home";
 import CheckRoutine from "./pages/CheckRoutine";
 import RoutineEdit from "./pages/RoutineEdit";
+import Category from "@/pages/Category";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function App() {
               <Route path={PATH.routineFinish} element={<RoutineFinish />} />
               <Route path={PATH.checkRoutine} element={<CheckRoutine />} />
               <Route path={PATH.routineEdit} element={<RoutineEdit />} />
+              <Route path={PATH.category} element={<Category />} />
               <Route path={PATH.error} element={<Error />} />
               <Route path="*" element={<Main />} />
             </Routes>
