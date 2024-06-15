@@ -11,6 +11,7 @@ export default function Home() {
       <Button onClick={() => nav(PATH.routineMain)}>운동하기</Button>
       <Button onClick={() => nav(PATH.checkRoutine)}>최근 루틴 조회</Button>
       <Button onClick={() => nav(PATH.routineEdit)}>루틴 편집</Button>
+      <Button onClick={() => nav(PATH.category)}>카테고리 편집</Button>
     </HomeWrapper>
   );
 }
