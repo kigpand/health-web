@@ -40,3 +40,18 @@ export async function updateRoutineAPI(props: UpdateRoutineType) {
 
   return result.data;
 }
+
+type CategoryProps = {
+  category: string;
+};
+
+export async function deleteRoutineByCategory({ category }: CategoryProps) {
+  const result = await axiosInstance.delete(
+    "/routine/deleteRoutineByCategory",
+    {
+      data: { category },
+    }
+  );
+
+  return result.data;
+}

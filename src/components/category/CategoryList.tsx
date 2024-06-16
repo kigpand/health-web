@@ -1,9 +1,16 @@
-import { useCategory, useDeleteCategory } from "@/hook/quires/category";
+import { useCategory } from "@/hook/quires/category";
+import { CategoryType } from "@/types/CategoryType";
+import DeleteCategoryModal from "@components/modal/DeleteCategoryModal";
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function CategoryList() {
+  const [deleteItem, setDeleteItem] = useState<CategoryType | null>(null);
   const { category } = useCategory();
-  const { deleteCategoryMutate } = useDeleteCategory();
+
+  function handleDeleteButton(category: CategoryType) {
+    setDeleteItem(category);
+  }
 
   return (
     <ListWrapper>
@@ -11,14 +18,18 @@ export default function CategoryList() {
         return (
           <ListStyled key={item._id}>
             <ListTitle>{item.category}</ListTitle>
-            <DeleteButton
-              onClick={() => deleteCategoryMutate({ category: item._id })}
-            >
+            <DeleteButton onClick={() => handleDeleteButton(item)}>
               삭제
             </DeleteButton>
           </ListStyled>
         );
       })}
+      {deleteItem && (
+        <DeleteCategoryModal
+          category={deleteItem}
+          handleCloseModal={() => setDeleteItem(null)}
+        />
+      )}
     </ListWrapper>
   );
 }
