@@ -2,6 +2,7 @@ import { PATH } from "@/enum/path";
 import {
   addRoutineAPI,
   deleteRoutineAPI,
+  deleteRoutineByCategory,
   getRoutine,
   getRoutineCount,
   getRoutineDetail,
@@ -70,6 +71,24 @@ export function useRoutineDelete() {
   });
 
   return { deleteRoutine };
+}
+
+export function useRoutineDeleteByCategory() {
+  const queryClient = useQueryClient();
+  const {
+    mutate: deleteRoutineByCategoryMutate,
+    isSuccess: deleteRoutineByCategorySuccess,
+  } = useMutation({
+    mutationKey: ["deleteRoutineByCategory"],
+    mutationFn: deleteRoutineByCategory,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["routine"],
+      });
+    },
+  });
+
+  return { deleteRoutineByCategoryMutate, deleteRoutineByCategorySuccess };
 }
 
 export function useRoutineUpdate() {
