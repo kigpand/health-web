@@ -1,8 +1,8 @@
+import HomeButtonHeader from "@/common/layout/HomeButtonHeader";
 import { useRoutineCount } from "@/hook/quires/routine";
 import { PageWrapper } from "@/styles/PageStyle";
 import CheckRoutineBody from "@components/checkRoutine/CheckRoutineBody";
 import CheckRoutineFooter from "@components/checkRoutine/CheckRoutineFooter";
-import CheckRoutineHeader from "@components/checkRoutine/CheckRoutineHeader";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -12,7 +12,7 @@ export default function CheckRoutine() {
 
   return (
     <CheckRoutineWrapper>
-      <CheckRoutineHeader />
+      <HomeButtonHeader title="최근 루틴 조회" />
       {routineCount && (
         <CheckRoutineBody
           count={count}
