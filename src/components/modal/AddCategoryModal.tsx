@@ -29,6 +29,7 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
         <ModalContainer>
           <Title>추가할 카테고리를 입력해주세요</Title>
           <Input
+            type="text"
             width="100%"
             placeholder="카테고리..."
             handleChange={(e) => setCategory(e.target.value)}

@@ -25,6 +25,7 @@ export default function RoutineEditModalUpdate({
     <UpdateModal>
       <Title>루틴을 수정하세요</Title>
       <LabelInput
+        type="text"
         label="루틴 명"
         width="100%"
         placeholder="루틴 명"
@@ -32,6 +33,7 @@ export default function RoutineEditModalUpdate({
         handleChange={(e) => setRoutine({ ...routine, title: e.target.value })}
       />
       <LabelInput
+        type="number"
         label="세트"
         width="100%"
         placeholder="세트"
@@ -41,6 +43,7 @@ export default function RoutineEditModalUpdate({
         }
       />
       <LabelInput
+        type="number"
         label="무게"
         width="100%"
         placeholder="무게"

@@ -39,6 +39,7 @@ export default function AddRoutineBody() {
   return (
     <BodyWrapper>
       <LabelInput
+        type="text"
         label="루틴 제목"
         width="100%"
         placeholder="...제목"
