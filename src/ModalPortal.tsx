@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 type Props = {
   component: React.ReactNode;
-  handleCloseModal: () => void;
+  handleCloseModal?: () => void;
 };
 
 export default function ModalPortal({ component, handleCloseModal }: Props) {

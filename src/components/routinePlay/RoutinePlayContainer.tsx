@@ -2,7 +2,7 @@ import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
 import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoutinePlayList from "./RoutinePlayList";
@@ -18,9 +18,9 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
   const { routineDetail } = useRoutineDetail(id);
   const [currentRoutine, setCurrentRoutine] = useState<number>(0);
 
-  function handleNextRoutine() {
+  const handleNextRoutine = useCallback(() => {
     setCurrentRoutine(currentRoutine + 1);
-  }
+  }, []);
 
   function handleCloseExercise() {
     setCurrentRoutine(0);
