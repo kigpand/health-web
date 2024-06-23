@@ -21,6 +21,7 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
 
   function handleAddCategory() {
     addCategoryMutate({ category });
+    handleCloseModal();
   }
 
   return (

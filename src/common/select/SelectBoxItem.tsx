@@ -19,12 +19,15 @@ const BoxItemWrapper = styled.li`
   display: flex;
   align-items: center;
   padding-left: 4px;
-  color: ${({ theme }) => theme.colors.secondary};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-bottom: 1px solid gray;
   background-color: white;
   cursor: pointer;
 
   &:hover {
     background-color: lightgray;
+  }
+
+  &:last-of-type {
+    border: none;
   }
 `;
