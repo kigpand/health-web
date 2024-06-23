@@ -101,7 +101,7 @@ const BodyWrapper = styled.main`
 const AddExerciseList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 
   label {
     font-size: 12px;
