@@ -74,7 +74,10 @@ const ItemWrapper = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   overflow: hidden;
+  border: 1px solid gray;
 `;

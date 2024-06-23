@@ -26,7 +26,6 @@ export default function PlayTimerModal({ time, handleCloseModal }: Props) {
           )}
         </TimeModalWrapper>
       }
-      handleCloseModal={handleCloseModal}
     />
   );
 }

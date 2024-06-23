@@ -18,4 +18,5 @@ export default function AddRoutineBodyListItem({
 const BodyListItemWrapper = styled.li`
   display: flex;
   gap: 20px;
+  padding: 4px 0px;
 `;

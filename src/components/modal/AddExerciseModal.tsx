@@ -28,18 +28,21 @@ export default function AddExerciseModal({
         <ExerciseModalWrapper>
           <header>운동 추가</header>
           <LabelInput
+            type="text"
             label="제목"
             width="100%"
             placeholder="제목"
             handleChange={(e) => setTitle(e.target.value)}
           />
           <LabelInput
+            type="number"
             label="무게"
             width="100%"
             placeholder="무게"
             handleChange={(e) => setKg(Number(e.target.value))}
           />
           <LabelInput
+            type="number"
             label="세트"
             width="100%"
             placeholder="세트"

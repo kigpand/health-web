@@ -1,21 +1,22 @@
 import { PATH } from "@/enum/path";
 import { HeaderWrapper } from "@/styles/PageStyle";
+import { FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function CheckRoutineHeader() {
+export default function HomeButtonHeader({ title }: { title: string }) {
   const nav = useNavigate();
 
   return (
     <HeaderWrapper>
-      <span>최근 루틴 조회</span>
-      <HomeButton onClick={() => nav(PATH.home)}>홈</HomeButton>
+      <span>{title}</span>
+      <HomeButton onClick={() => nav(PATH.home)} />
     </HeaderWrapper>
   );
 }
 
-const HomeButton = styled.div`
+const HomeButton = styled(FaHome)`
   position: absolute;
   right: 10px;
-  font-size: 12px;
+  font-size: 20px;
 `;

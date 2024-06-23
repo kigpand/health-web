@@ -9,6 +9,7 @@ type Props = {
 export default function LabelInput({
   label,
   width,
+  type,
   defaultValue,
   placeholder,
   handleChange,
@@ -17,6 +18,7 @@ export default function LabelInput({
     <LabelInputWrapper $width={width}>
       <label>{label}</label>
       <Input
+        type={type}
         width="100%"
         defaultValue={defaultValue ?? undefined}
         placeholder={placeholder}

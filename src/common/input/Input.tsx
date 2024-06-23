@@ -5,10 +5,12 @@ export default function Input({
   width,
   defaultValue,
   placeholder,
+  type,
   handleChange,
 }: InputProps) {
   return (
     <InputWrapper
+      type={type}
       placeholder={placeholder}
       onChange={handleChange}
       defaultValue={defaultValue ?? undefined}
