@@ -1,24 +1,29 @@
-import { useRoutine } from "@/hook/quires/routine";
+import { useRoutineByCategory } from "@/hook/quires/routine";
 import styled from "styled-components";
 import MainBodyItem from "./MainBodyItem";
-import { useCategory } from "@/hook/quires/category";
 import SelectBox from "@/common/select/SelectBox";
+import { useState } from "react";
+import { CategoryType } from "@/types/CategoryType";
 
-export default function MainBody() {
-  const { routine } = useRoutine();
-  const { category } = useCategory();
+type Props = {
+  category: CategoryType[];
+};
+
+export default function MainBody({ category }: Props) {
+  const [selectCategory, setSelectCategory] = useState<string>(
+    category[0].category
+  );
+  const { routineByCategory } = useRoutineByCategory(selectCategory);
 
   return (
     <BodyWrapper>
-      {category && (
-        <SelectBox
-          width="100%"
-          title="카테고리"
-          values={category.map((item) => item.category)}
-          handleChangeSelect={(select) => console.log(select)}
-        />
-      )}
-      {routine?.map((routine) => {
+      <SelectBox
+        width="100%"
+        title={category[0].category}
+        values={category.map((item) => item.category)}
+        handleChangeSelect={(select) => setSelectCategory(select)}
+      />
+      {routineByCategory?.map((routine) => {
         return <MainBodyItem key={routine._id} item={routine} />;
       })}
     </BodyWrapper>

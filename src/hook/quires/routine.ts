@@ -4,6 +4,7 @@ import {
   deleteRoutineAPI,
   deleteRoutineByCategory,
   getRoutine,
+  getRoutineByCategory,
   getRoutineCount,
   getRoutineDetail,
   updateRoutineAPI,
@@ -21,6 +22,15 @@ export function useRoutine() {
   });
 
   return { routine, routineSuccess };
+}
+
+export function useRoutineByCategory(category: string) {
+  const { data: routineByCategory } = useQuery<RoutineListType[]>({
+    queryKey: ["routineByCategory", category],
+    queryFn: () => getRoutineByCategory(category),
+  });
+
+  return { routineByCategory };
 }
 
 export function useRoutineDetail(id: string) {
