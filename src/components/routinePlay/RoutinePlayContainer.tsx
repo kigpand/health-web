@@ -20,7 +20,7 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
 
   const handleNextRoutine = useCallback(() => {
     setCurrentRoutine(currentRoutine + 1);
-  }, []);
+  }, [currentRoutine]);
 
   function handleCloseExercise() {
     setCurrentRoutine(0);
