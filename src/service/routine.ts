@@ -16,6 +16,11 @@ export async function getRoutineCount(count: number) {
   return result.data;
 }
 
+export async function getRoutineByCategory(category: string) {
+  const result = await axiosInstance.get(`routine/category/${category}`);
+  return result.data;
+}
+
 type AddRoutineProps = {
   id: number;
 } & AddRoutineType;
