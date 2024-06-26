@@ -1,6 +1,5 @@
 import HomeButtonHeader from "@/common/layout/HomeButtonHeader";
 import { useRecord } from "@/hook/quires/record";
-import { useRoutineCount } from "@/hook/quires/routine";
 import { PageWrapper } from "@/styles/PageStyle";
 import CheckRoutineBody from "@components/checkRoutine/CheckRoutineBody";
 import CheckRoutineFooter from "@components/checkRoutine/CheckRoutineFooter";

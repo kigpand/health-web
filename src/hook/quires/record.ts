@@ -1,10 +1,10 @@
 import { addRecordAPI, getRecord } from "@/service/record";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-export function useRecord(num: number) {
+export function useRecord(count: number) {
   const { data: record, isSuccess: recordSuccess } = useQuery({
-    queryKey: ["record"],
-    queryFn: () => getRecord(num),
+    queryKey: ["record", count],
+    queryFn: () => getRecord(count),
   });
 
   return { record, recordSuccess };

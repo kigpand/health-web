@@ -1,7 +1,7 @@
 import axiosInstance from "@/utils/axiosSetting";
 
 export async function getRecord(number: number) {
-  const result = await axiosInstance.get("/record");
+  const result = await axiosInstance.get(`/record/count/${number}`);
 
   return result.data;
 }
