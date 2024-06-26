@@ -27,7 +27,7 @@ export default function CheckRoutineBody({
       <BodyHeader>최근 {count}일간 루틴</BodyHeader>
       <ListWrapper>
         {record?.map((item) => {
-          return <ListStyled key={item.id}>{item.title}</ListStyled>;
+          return <ListStyled key={item._id}>{item.title}</ListStyled>;
         })}
       </ListWrapper>
     </CheckBodyStyled>
