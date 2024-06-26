@@ -1,12 +1,12 @@
 import { FooterWrapper } from "@/styles/PageStyle";
-import { RoutineListType } from "@/types/Routine";
+import { RecordType } from "@/types/RecordType";
 import CheckRoutineModal from "@components/modal/CheckRoutineModal";
 import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
   count: number;
-  routineCount: RoutineListType[];
+  record: RecordType[];
 };
 
 export default function CheckRoutineFooter(props: Props) {

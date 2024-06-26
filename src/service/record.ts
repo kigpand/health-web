@@ -1,5 +1,11 @@
 import axiosInstance from "@/utils/axiosSetting";
 
+export async function getRecord(number: number) {
+  const result = await axiosInstance.get("/record");
+
+  return result.data;
+}
+
 type AddProps = {
   id: number;
   category: string;
