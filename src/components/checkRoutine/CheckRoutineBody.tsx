@@ -1,16 +1,16 @@
-import { RoutineListType } from "@/types/Routine";
 import SelectBox from "@/common/select/SelectBox";
 import styled from "styled-components";
+import { RecordType } from "@/types/RecordType";
 
 type Props = {
   count: number;
-  routineCount: RoutineListType[];
+  record: RecordType[];
   handleChangeSelect: (value: number) => void;
 };
 
 export default function CheckRoutineBody({
   count,
-  routineCount,
+  record,
   handleChangeSelect,
 }: Props) {
   return (
@@ -26,7 +26,7 @@ export default function CheckRoutineBody({
       </SelectWrapper>
       <BodyHeader>최근 {count}일간 루틴</BodyHeader>
       <ListWrapper>
-        {routineCount?.map((item) => {
+        {record?.map((item) => {
           return <ListStyled key={item._id}>{item.title}</ListStyled>;
         })}
       </ListWrapper>

@@ -1,5 +1,6 @@
 import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
+import { useAddRecord } from "@/hook/quires/record";
 import { useWorkerTimer } from "@/hook/useWorkerTimer";
 import { RoutineListType } from "@/types/Routine";
 import PlayTimerModal from "@components/modal/PlayTimerModal";
@@ -25,6 +26,7 @@ export default function RoutinePlayListButton({
 }: Props) {
   const nav = useNavigate();
   const { time, onTimer, handleTimer } = useWorkerTimer(timer);
+  const { addRecord } = useAddRecord();
 
   function handleNextSet() {
     handleCount(count + 1);
@@ -34,6 +36,15 @@ export default function RoutinePlayListButton({
   function onNextButton() {
     handleCount(0);
     handleNextRoutine();
+  }
+
+  function handleFinisihButton() {
+    addRecord({
+      id: routineDetail.id,
+      title: routineDetail.title,
+      category: routineDetail.category,
+    });
+    nav(PATH.routineFinish);
   }
 
   return (
@@ -63,7 +74,7 @@ export default function RoutinePlayListButton({
             width="100%"
             type="secondary"
             text="운동 끝!"
-            handleClick={() => nav(PATH.routineFinish)}
+            handleClick={handleFinisihButton}
           />
         )}
       {onTimer && (

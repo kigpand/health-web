@@ -1,11 +1,11 @@
 import ModalPortal from "@/ModalPortal";
-import { RoutineListType } from "@/types/Routine";
+import { RecordType } from "@/types/RecordType";
 import { useMemo } from "react";
 import styled from "styled-components";
 
 type Props = {
   count: number;
-  routineCount: RoutineListType[];
+  record: RecordType[];
   handleCloseModal: () => void;
 };
 
@@ -16,15 +16,12 @@ type RoutineCountProps = {
 
 export default function CheckRoutineModal({
   count,
-  routineCount,
+  record,
   handleCloseModal,
 }: Props) {
   const routine = useMemo(() => {
-    // ------ 이부분 나중에 삭제 -------
-    const filtering = routineCount.filter((item) => item.category);
-    // -----------------------------
     const result: RoutineCountProps[] = [];
-    for (const filterItem of filtering) {
+    for (const filterItem of record) {
       const find = result.find((item) => item.category === filterItem.category);
       if (find) {
         find.count += 1;
@@ -33,7 +30,8 @@ export default function CheckRoutineModal({
       }
     }
     return result;
-  }, [routineCount]);
+  }, [record]);
+
   return (
     <ModalPortal
       component={
