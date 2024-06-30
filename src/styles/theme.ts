@@ -7,8 +7,8 @@ const fontSize = {
 };
 
 const colors = {
-  primary: "#00ff6a",
-  secondary: "#00b600",
+  primary: "#a7e6ff",
+  secondary: "#23c1ff",
 };
 
 const theme = {
