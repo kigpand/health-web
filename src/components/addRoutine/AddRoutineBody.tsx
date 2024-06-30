@@ -1,24 +1,20 @@
-import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import LabelSelectBox from "@/common/select/LabelSelectBox";
-import { PATH } from "@/enum/path";
 import { useCategory } from "@/hook/quires/category";
 import { RoutineDataType } from "@/types/Routine";
-import AddExerciseModal from "@components/modal/AddExerciseModal";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import AddRoutineBodyListItem from "./AddRoutineBodyListItem";
 import { useAddRoutine, useRoutine } from "@/hook/quires/routine";
 import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
+import AddRoutineBodyFooter from "./AddRoutineBodyFooter";
+import AddRoutineBodyAddButton from "./AddRoutineBodyAddButton";
+import AddRoutineBodyList from "./AddRoutineBodyList";
 
 export default function AddRoutineBody() {
-  const nav = useNavigate();
   const { routine } = useRoutine();
   const { category } = useCategory();
   const [title, setTitle] = useState<string>("");
   const [categoryChange, setCategoryChange] = useState<string>("");
-  const [addExer, setAddExer] = useState<boolean>(false);
   const [exercise, setExercise] = useState<RoutineDataType[]>([]);
   const { addRoutine, addRoutineSuccess } = useAddRoutine();
 
@@ -52,39 +48,9 @@ export default function AddRoutineBody() {
         values={category?.map((item) => item.category) ?? []}
         handleChangeSelect={(select) => setCategoryChange(select)}
       />
-      {exercise.length > 0 && (
-        <AddExerciseList>
-          <label>등록한 운동</label>
-          <ul>
-            {exercise.map((item) => {
-              return <AddRoutineBodyListItem key={item.title} {...item} />;
-            })}
-          </ul>
-        </AddExerciseList>
-      )}
-      <AddExerciseButton onClick={() => setAddExer(true)}>
-        운동 추가 +
-      </AddExerciseButton>
-      <FooterWrapper>
-        <Button
-          width="100px"
-          text="등록"
-          type="primary"
-          handleClick={handleAddRoutine}
-        />
-        <Button
-          width="100px"
-          text="취소"
-          type="secondary"
-          handleClick={() => nav(PATH.routineMain)}
-        />
-      </FooterWrapper>
-      {addExer && (
-        <AddExerciseModal
-          handleAddExercise={handleAddExercise}
-          handleCloseModal={() => setAddExer(false)}
-        />
-      )}
+      {exercise.length > 0 && <AddRoutineBodyList exercise={exercise} />}
+      <AddRoutineBodyAddButton handleAddExercise={handleAddExercise} />
+      <AddRoutineBodyFooter handleAddRoutine={handleAddRoutine} />
       {addRoutineSuccess && <AddRoutineSuccessModal />}
     </BodyWrapper>
   );
@@ -96,35 +62,4 @@ const BodyWrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: 18px;
-`;
-
-const AddExerciseList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  label {
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  ul {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-`;
-
-const AddExerciseButton = styled.button`
-  border: 1px solid black;
-  outline: none;
-  background-color: white;
-  height: 35px;
-`;
-
-const FooterWrapper = styled.footer`
-  display: flex;
-  justify-content: center;
-  gap: 12px;
 `;
