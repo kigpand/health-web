@@ -11,7 +11,7 @@ import RoutineDetail from "./pages/RoutineDetail";
 import Error from "./pages/Error";
 import RoutinePlay from "./pages/RoutinePlay";
 import RoutineFinish from "./pages/RoutineFinish";
-import Home from "@components/home/Home";
+import Home from "@/pages/Home";
 import CheckRoutine from "./pages/CheckRoutine";
 import RoutineEdit from "./pages/RoutineEdit";
 import Category from "@/pages/Category";

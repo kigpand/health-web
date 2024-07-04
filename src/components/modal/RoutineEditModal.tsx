@@ -34,29 +34,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     setEditRoutine({ ...editRoutine, routine: routine });
   }
 
-  function addRoutineItem(routineData: RoutineDataType) {
-    if (
-      routineData.title === "" ||
-      routineData.kg === 0 ||
-      routineData.set === 0
-    ) {
-      return;
-    }
-    setEditRoutine({
-      ...editRoutine,
-      routine: [...editRoutine.routine, routineData],
-    });
-    setAddModal(false);
-  }
-
   function updateRoutineItem(title: string, routineData: RoutineDataType) {
-    if (
-      routineData.title === "" ||
-      routineData.kg === 0 ||
-      routineData.set === 0
-    ) {
-      return;
-    }
     const updateRoutine = editRoutine.routine.map((item) => {
       if (item.title === title) return routineData;
       return item;
@@ -65,34 +43,30 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
       ...editRoutine,
       routine: updateRoutine,
     });
-    setUpdateRoutineModal(null);
+  }
+
+  function handleEditRoutine(routineData: RoutineDataType) {
+    setEditRoutine({
+      ...editRoutine,
+      routine: [...editRoutine.routine, routineData],
+    });
   }
 
   if (addModal) {
     return (
-      <ModalPortal
-        component={
-          <RoutineEditModalAdd
-            addRoutineItem={addRoutineItem}
-            handleClose={() => setAddModal(false)}
-          />
-        }
-        handleCloseModal={() => setAddModal(false)}
+      <RoutineEditModalAdd
+        handleEditRoutine={handleEditRoutine}
+        handleClose={() => setAddModal(false)}
       />
     );
   }
 
   if (updateRoutineModal) {
     return (
-      <ModalPortal
-        component={
-          <RoutineEditModalUpdate
-            updateRoutineItem={updateRoutineItem}
-            routineData={updateRoutineModal}
-            handleClose={() => setUpdateRoutineModal(null)}
-          />
-        }
-        handleCloseModal={() => setUpdateRoutineModal(null)}
+      <RoutineEditModalUpdate
+        routineData={updateRoutineModal}
+        updateRoutineItem={updateRoutineItem}
+        handleClose={() => setUpdateRoutineModal(null)}
       />
     );
   }
