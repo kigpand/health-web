@@ -21,7 +21,8 @@ export default function RoutinePlayList({
   return (
     <PlayListWrapper>
       <Title>
-        이번 운동은 {routineDetail.routine[currentRoutine].title}입니다.
+        이번 운동은
+        <br /> {routineDetail.routine[currentRoutine].title}입니다.
       </Title>
       <Item>
         <label>무게:</label> {routineDetail.routine[currentRoutine].kg}kg
@@ -58,9 +59,11 @@ const PlayListWrapper = styled.article`
 `;
 
 const Title = styled.div`
-  font-size: 30px;
+  text-align: center;
+  font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
+  line-height: 35px;
 `;
 
 const Item = styled.div`
@@ -80,12 +83,4 @@ const Count = styled.div`
   margin-top: 20px;
   font-size: 14px;
   font-weight: bold;
-`;
-
-const ButtonWrapper = styled.div`
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 30px;
 `;

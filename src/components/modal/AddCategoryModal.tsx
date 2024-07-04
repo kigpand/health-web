@@ -2,7 +2,7 @@ import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import Input from "@/common/input/Input";
 import { useAddCategory } from "@/hook/quires/category";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -11,13 +11,7 @@ type Props = {
 
 export default function AddCategoryModal({ handleCloseModal }: Props) {
   const [category, setCategory] = useState<string>("");
-  const { addCategoryMutate, addCategorySuccess } = useAddCategory();
-
-  useEffect(() => {
-    if (addCategorySuccess) {
-      console.log("success");
-    }
-  }, [addCategorySuccess]);
+  const { addCategoryMutate } = useAddCategory();
 
   function handleAddCategory() {
     addCategoryMutate({ category });

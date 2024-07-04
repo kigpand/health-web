@@ -1,3 +1,4 @@
+import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType } from "@/types/Routine";
@@ -5,57 +6,74 @@ import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
-  addRoutineItem: (routineData: RoutineDataType) => void;
+  handleEditRoutine: (routineData: RoutineDataType) => void;
   handleClose: () => void;
 };
 
 export default function RoutineEditModalAdd({
-  addRoutineItem,
+  handleEditRoutine,
   handleClose,
 }: Props) {
   const [title, setTitle] = useState<string>("");
   const [set, setSet] = useState<number>(0);
   const [kg, setKg] = useState<number>(0);
 
+  function addRoutineItem(routineData: RoutineDataType) {
+    if (
+      routineData.title === "" ||
+      routineData.kg === 0 ||
+      routineData.set === 0
+    ) {
+      return;
+    }
+    handleEditRoutine(routineData);
+    handleClose();
+  }
+
   return (
-    <AddModal>
-      <Title>루틴 추가</Title>
-      <LabelInput
-        type="text"
-        label="루틴 명"
-        width="100%"
-        placeholder="루틴 명"
-        handleChange={(e) => setTitle(e.target.value)}
-      />
-      <LabelInput
-        type="number"
-        label="무게"
-        width="100%"
-        placeholder="무게"
-        handleChange={(e) => setKg(Number(e.target.value))}
-      />
-      <LabelInput
-        type="number"
-        label="세트"
-        width="100%"
-        placeholder="세트"
-        handleChange={(e) => setSet(Number(e.target.value))}
-      />
-      <ButtonWrapper>
-        <Button
-          text="등록"
-          type="skyblue"
-          handleClick={() => addRoutineItem({ title, set, kg })}
-          width="100%"
-        />
-        <Button
-          text="취소"
-          type="secondary"
-          handleClick={handleClose}
-          width="100%"
-        />
-      </ButtonWrapper>
-    </AddModal>
+    <ModalPortal
+      component={
+        <AddModal>
+          <Title>루틴 추가</Title>
+          <LabelInput
+            type="text"
+            label="루틴 명"
+            width="100%"
+            placeholder="루틴 명"
+            handleChange={(e) => setTitle(e.target.value)}
+          />
+          <LabelInput
+            type="number"
+            label="무게"
+            width="100%"
+            placeholder="무게"
+            handleChange={(e) => setKg(Number(e.target.value))}
+          />
+          <LabelInput
+            type="number"
+            label="세트"
+            width="100%"
+            placeholder="세트"
+            handleChange={(e) => setSet(Number(e.target.value))}
+          />
+          <ButtonWrapper>
+            <Button
+              text="등록"
+              type="skyblue"
+              handleClick={() => addRoutineItem({ title, set, kg })}
+              width="100%"
+            />
+            <Button
+              text="취소"
+              type="secondary"
+              handleClick={handleClose}
+              width="100%"
+            />
+          </ButtonWrapper>
+        </AddModal>
+      }
+      handleCloseModal={handleClose}
+    />
   );
 }
 

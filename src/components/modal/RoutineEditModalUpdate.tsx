@@ -1,3 +1,4 @@
+import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType } from "@/types/Routine";
@@ -18,55 +19,70 @@ export default function RoutineEditModalUpdate({
   const [routine, setRoutine] = useState<RoutineDataType>(routineData);
 
   function handleUpdateRoutineItem() {
+    if (
+      routineData.title === "" ||
+      routineData.kg === 0 ||
+      routineData.set === 0
+    ) {
+      return;
+    }
     updateRoutineItem(routineData.title, routine);
+    handleClose();
   }
 
   return (
-    <UpdateModal>
-      <Title>루틴을 수정하세요</Title>
-      <LabelInput
-        type="text"
-        label="루틴 명"
-        width="100%"
-        placeholder="루틴 명"
-        defaultValue={routine.title}
-        handleChange={(e) => setRoutine({ ...routine, title: e.target.value })}
-      />
-      <LabelInput
-        type="number"
-        label="세트"
-        width="100%"
-        placeholder="세트"
-        defaultValue={routine.set}
-        handleChange={(e) =>
-          setRoutine({ ...routine, set: Number(e.target.value) })
-        }
-      />
-      <LabelInput
-        type="number"
-        label="무게"
-        width="100%"
-        placeholder="무게"
-        defaultValue={routine.kg}
-        handleChange={(e) =>
-          setRoutine({ ...routine, kg: Number(e.target.value) })
-        }
-      />
-      <ButtonWrapper>
-        <Button
-          type="primary"
-          text="등록"
-          width="100%"
-          handleClick={handleUpdateRoutineItem}
-        />
-        <Button
-          type="secondary"
-          text="취소"
-          width="100%"
-          handleClick={handleClose}
-        />
-      </ButtonWrapper>
-    </UpdateModal>
+    <ModalPortal
+      component={
+        <UpdateModal>
+          <Title>루틴을 수정하세요</Title>
+          <LabelInput
+            type="text"
+            label="루틴 명"
+            width="100%"
+            placeholder="루틴 명"
+            defaultValue={routine.title}
+            handleChange={(e) =>
+              setRoutine({ ...routine, title: e.target.value })
+            }
+          />
+          <LabelInput
+            type="number"
+            label="세트"
+            width="100%"
+            placeholder="세트"
+            defaultValue={routine.set}
+            handleChange={(e) =>
+              setRoutine({ ...routine, set: Number(e.target.value) })
+            }
+          />
+          <LabelInput
+            type="number"
+            label="무게"
+            width="100%"
+            placeholder="무게"
+            defaultValue={routine.kg}
+            handleChange={(e) =>
+              setRoutine({ ...routine, kg: Number(e.target.value) })
+            }
+          />
+          <ButtonWrapper>
+            <Button
+              type="primary"
+              text="등록"
+              width="100%"
+              handleClick={handleUpdateRoutineItem}
+            />
+            <Button
+              type="secondary"
+              text="취소"
+              width="100%"
+              handleClick={handleClose}
+            />
+          </ButtonWrapper>
+        </UpdateModal>
+      }
+      handleCloseModal={handleClose}
+    />
   );
 }
 

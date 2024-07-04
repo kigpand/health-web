@@ -22,6 +22,7 @@ const ItemWrapper = styled.li`
   padding: 16px 0;
   background-color: white;
   border-radius: 16px;
-  color: ${({ theme }) => theme.colors.primary};
+  color: black;
+  font-weight: bold;
   text-align: center;
 `;

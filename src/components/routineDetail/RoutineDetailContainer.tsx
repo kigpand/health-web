@@ -12,24 +12,30 @@ export default function RoutineDetailContainer({ id }: { id: string }) {
   const nav = useNavigate();
 
   return (
-    <PageWrapper>
+    <Container>
       <HeaderWrapper>{routineDetail?.title}</HeaderWrapper>
       <UlContainer>
-        <StartButton onClick={() => setIsTimer(true)}>start!!</StartButton>
         <label>루틴 리스트</label>
         {routineDetail?.routine.map((routine) => {
           return <ListWrapper key={routine.title}>{routine.title}</ListWrapper>;
         })}
       </UlContainer>
+      <StartButton onClick={() => setIsTimer(true)}>start!!</StartButton>
       <FooterWrapper onClick={() => nav(PATH.routineMain)}>
         이전으로
       </FooterWrapper>
       {isTimer && (
         <TimerSetModal id={id} handleCloseModal={() => setIsTimer(false)} />
       )}
-    </PageWrapper>
+    </Container>
   );
 }
+
+const Container = styled(PageWrapper)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const UlContainer = styled.ul`
   flex-grow: 1;
@@ -38,6 +44,7 @@ const UlContainer = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 16px;
+  width: 100%;
   position: relative;
 
   label {
@@ -56,31 +63,22 @@ const ListWrapper = styled.li`
 `;
 
 const StartButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: skyblue;
+  background-color: #00b7ff;
   color: white;
   font-weight: bold;
   border-radius: 8px;
   padding: 10px;
-  animation: anim 0.5s infinite alternate;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 10px;
   cursor: pointer;
-
-  @keyframes anim {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
 `;
 
 const FooterWrapper = styled.footer`
-  width: 100%;
-  padding: 18px 0;
+  width: 90%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
   background-color: white;
   display: flex;
   align-items: center;

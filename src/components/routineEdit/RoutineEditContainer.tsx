@@ -77,7 +77,7 @@ const Delete = styled.div`
 `;
 
 const Edit = styled.div`
-  background-color: #79d9ff;
+  background-color: #00b7ff;
   color: white;
   padding: 8px 12px;
   border-radius: 8px;

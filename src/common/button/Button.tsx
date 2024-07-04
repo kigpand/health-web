@@ -55,12 +55,12 @@ const ButtonWrapper = styled.button<ButtonProps>`
 `;
 
 const PrimaryButton = styled(ButtonWrapper)`
-  background-color: #00d1b8;
+  background-color: #4287ff;
   color: white;
 `;
 
 const SecondaryButton = styled(ButtonWrapper)`
-  background-color: #d10026;
+  background-color: #ff3459;
   color: white;
 `;
 
