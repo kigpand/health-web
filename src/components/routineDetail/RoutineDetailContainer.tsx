@@ -14,12 +14,14 @@ export default function RoutineDetailContainer({ id }: { id: string }) {
   return (
     <Container>
       <HeaderWrapper>{routineDetail?.title}</HeaderWrapper>
-      <UlContainer>
+      <RoutineDetailWrapper>
         <label>루틴 리스트</label>
-        {routineDetail?.routine.map((routine) => {
-          return <ListWrapper key={routine.title}>{routine.title}</ListWrapper>;
-        })}
-      </UlContainer>
+        <ListWrapper>
+          {routineDetail?.routine.map((routine) => {
+            return <ListStyled key={routine.title}>{routine.title}</ListStyled>;
+          })}
+        </ListWrapper>
+      </RoutineDetailWrapper>
       <StartButton onClick={() => setIsTimer(true)}>start!!</StartButton>
       <FooterWrapper onClick={() => nav(PATH.routineMain)}>
         이전으로
@@ -37,24 +39,32 @@ const Container = styled(PageWrapper)`
   align-items: center;
 `;
 
-const UlContainer = styled.ul`
+const RoutineDetailWrapper = styled.article`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
   width: 100%;
-  position: relative;
 
   label {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 50px 0 20px 0;
   }
 `;
 
-const ListWrapper = styled.li`
+const ListWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+`;
+
+const ListStyled = styled.li`
   width: 90%;
   background-color: white;
   padding: 18px 5px;
