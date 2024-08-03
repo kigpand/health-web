@@ -1,20 +1,31 @@
 import ModalPortal from "@/ModalPortal";
 import Button from "@/common/button/Button";
 import Input from "@/common/input/Input";
+import { useRoutineUpdate } from "@/hook/quires/routine";
+import { RoutineListType } from "@/types/Routine";
 import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
+  currentRoutine: number;
+  routineDetail: RoutineListType;
   handleCloseModal: () => void;
 };
 
 export default function RoutinePlayListWeightUpdateModal({
+  currentRoutine,
+  routineDetail,
   handleCloseModal,
 }: Props) {
   const [kg, setKg] = useState<number>(0);
+  const { updateRoutine } = useRoutineUpdate();
 
   function handleUpdateWeightButton() {
-    console.log(kg);
+    const newRoutine = routineDetail.routine[currentRoutine];
+    newRoutine.kg = kg;
+    routineDetail.routine[currentRoutine] = newRoutine;
+    updateRoutine(routineDetail);
+    handleCloseModal();
   }
 
   return (

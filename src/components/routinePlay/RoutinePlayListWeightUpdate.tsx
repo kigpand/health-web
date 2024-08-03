@@ -21,6 +21,8 @@ export default function RoutinePlayListWeightUpdate({
       </span>
       {openModal && (
         <RoutinePlayListWeightUpdateModal
+          currentRoutine={currentRoutine}
+          routineDetail={routineDetail}
           handleCloseModal={() => setOpenModal(false)}
         />
       )}
