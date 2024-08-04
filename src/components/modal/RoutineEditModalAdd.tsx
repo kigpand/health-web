@@ -1,9 +1,8 @@
-import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
 import styled from "styled-components";
+import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
   handleEditRoutine: (routineData: RoutineDataType) => void;
@@ -31,9 +30,9 @@ export default function RoutineEditModalAdd({
   }
 
   return (
-    <ModalPortal
+    <TwoButtonModal
       component={
-        <AddModal>
+        <EditAddWrapper>
           <Title>루틴 추가</Title>
           <LabelInput
             type="text"
@@ -56,45 +55,25 @@ export default function RoutineEditModalAdd({
             placeholder="세트"
             handleChange={(e) => setSet(Number(e.target.value))}
           />
-          <ButtonWrapper>
-            <Button
-              text="등록"
-              type="skyblue"
-              handleClick={() => addRoutineItem({ title, set, kg })}
-              width="100%"
-            />
-            <Button
-              text="취소"
-              type="secondary"
-              handleClick={handleClose}
-              width="100%"
-            />
-          </ButtonWrapper>
-        </AddModal>
+        </EditAddWrapper>
       }
+      primaryText="등록"
+      primaryEvent={() => addRoutineItem({ title, set, kg })}
+      secondaryText="취소"
+      secondaryEvent={handleClose}
       handleCloseModal={handleClose}
     />
   );
 }
 
-const AddModal = styled.article`
-  background-color: white;
-  border-radius: 12px;
-  padding: 18px;
+const EditAddWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 300px;
+  gap: 16px;
 `;
 
 const Title = styled.header`
   font-size: 16px;
   margin-bottom: 10px;
   font-weight: bold;
-`;
-
-const ButtonWrapper = styled.div`
-  margin-top: 20px;
-  display: flex;
-  gap: 4px;
 `;

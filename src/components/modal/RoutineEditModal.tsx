@@ -1,5 +1,3 @@
-import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType, RoutineListType } from "@/types/Routine";
 import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
@@ -8,6 +6,7 @@ import styled from "styled-components";
 import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
 import { useRoutineUpdate } from "@/hook/quires/routine";
+import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
   routine: RoutineListType;
@@ -72,9 +71,9 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
   }
 
   return (
-    <ModalPortal
+    <TwoButtonModal
       component={
-        <ModalContainer>
+        <>
           <Title>루틴 편집하기</Title>
           <LabelInput
             type="text"
@@ -94,45 +93,19 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
             }
             deleteRoutineItem={deleteRoutineItem}
           />
-          <ButtonWrapper>
-            <Button
-              width="100%"
-              type="skyblue"
-              text="등록"
-              handleClick={handleEditButton}
-            />
-            <Button
-              width="100%"
-              type="secondary"
-              text="취소"
-              handleClick={handleCloseModal}
-            />
-          </ButtonWrapper>
-        </ModalContainer>
+        </>
       }
+      primaryText="등록"
+      primaryEvent={handleEditButton}
+      secondaryText="취소"
+      secondaryEvent={handleCloseModal}
       handleCloseModal={handleCloseModal}
     />
   );
 }
 
-const ModalContainer = styled.article`
-  background-color: white;
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 700px;
-`;
-
 const Title = styled.header`
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
-`;
-
-const ButtonWrapper = styled.footer`
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
 `;

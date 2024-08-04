@@ -1,8 +1,7 @@
-import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
 import LabelInput from "@/common/input/LabelInput";
 import { useState } from "react";
 import styled from "styled-components";
+import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
   handleAddExercise: (title: string, kg: number, set: number) => void;
@@ -23,7 +22,7 @@ export default function AddExerciseModal({
   }
 
   return (
-    <ModalPortal
+    <TwoButtonModal
       component={
         <ExerciseModalWrapper>
           <header>운동 추가</header>
@@ -48,32 +47,18 @@ export default function AddExerciseModal({
             placeholder="세트"
             handleChange={(e) => setSet(Number(e.target.value))}
           />
-          <footer>
-            <Button
-              width="100px"
-              text="등록"
-              type="primary"
-              handleClick={() => handleAddButton(title, kg, set)}
-            />
-            <Button
-              width="100px"
-              text="취소"
-              type="secondary"
-              handleClick={handleCloseModal}
-            />
-          </footer>
         </ExerciseModalWrapper>
       }
+      primaryText="등록"
+      primaryEvent={() => handleAddButton(title, kg, set)}
+      secondaryText="취소"
+      secondaryEvent={handleCloseModal}
       handleCloseModal={handleCloseModal}
     />
   );
 }
 
-const ExerciseModalWrapper = styled.article`
-  width: 300px;
-  padding: 24px;
-  background-color: white;
-  border-radius: 8px;
+const ExerciseModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -81,12 +66,5 @@ const ExerciseModalWrapper = styled.article`
   header {
     font-size: 18px;
     font-weight: bold;
-  }
-
-  footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
   }
 `;
