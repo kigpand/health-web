@@ -1,5 +1,6 @@
 import ModalPortal from "@/ModalPortal";
 import { RecordType } from "@/types/RecordType";
+import { Button } from "ji-design-system";
 import { useMemo } from "react";
 import styled from "styled-components";
 
@@ -45,7 +46,13 @@ export default function CheckRoutineModal({
               </ModalBody>
             );
           })}
-          <Button onClick={handleCloseModal}>확인</Button>
+          <Button
+            style={{ marginTop: "20px" }}
+            size="MD"
+            func="primary"
+            label="확인"
+            onClick={handleCloseModal}
+          />
         </RoutineModal>
       }
       handleCloseModal={handleCloseModal}
@@ -71,15 +78,4 @@ const ModalBody = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`;
-
-const Button = styled.button`
-  margin-top: 20px;
-  padding: 8px;
-  font-size: 12px;
-  background-color: skyblue;
-  border-radius: 8px;
-  color: white;
-  border: none;
-  outline: none;
 `;

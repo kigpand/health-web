@@ -1,5 +1,5 @@
 import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
+import { Button } from "ji-design-system";
 import React from "react";
 import styled from "styled-components";
 
@@ -20,16 +20,18 @@ export default function TwoButtonModal(props: Props) {
           {props.component}
           <ButtonWrapper>
             <Button
-              width="100%"
-              text={props.primaryText}
-              type="primary"
-              handleClick={props.primaryEvent}
+              style={{ width: "100% " }}
+              label={props.primaryText}
+              func="primary"
+              size="MD"
+              onClick={props.primaryEvent}
             />
             <Button
-              width="100%"
-              text={props.secondaryText}
-              type="secondary"
-              handleClick={props.secondaryEvent}
+              style={{ width: "100% " }}
+              label={props.secondaryText}
+              func="secondary"
+              size="MD"
+              onClick={props.secondaryEvent}
             />
           </ButtonWrapper>
         </ModalContainer>

@@ -1,6 +1,6 @@
-import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { FooterWrapper } from "@/styles/PageStyle";
+import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
 
 export default function MainFooter() {
@@ -9,10 +9,11 @@ export default function MainFooter() {
   return (
     <FooterWrapper>
       <Button
-        type="primary"
-        width="90%"
-        text="루틴 추가"
-        handleClick={() => nav(PATH.addRoutine)}
+        style={{ width: "90%" }}
+        func="secondary"
+        label="루틴 추가"
+        size="LG"
+        onClick={() => nav(PATH.addRoutine)}
       />
     </FooterWrapper>
   );

@@ -1,6 +1,7 @@
 import { FooterWrapper } from "@/styles/PageStyle";
 import { RecordType } from "@/types/RecordType";
 import CheckRoutineModal from "@components/modal/CheckRoutineModal";
+import { Button } from "ji-design-system";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -13,7 +14,13 @@ export default function CheckRoutineFooter(props: Props) {
   const [isCheckRoutine, setIsCheckRoutine] = useState<boolean>(false);
   return (
     <CheckFooter>
-      <button onClick={() => setIsCheckRoutine(true)}>분석하기</button>
+      <Button
+        style={{ padding: "10px 20px" }}
+        label="분석하기"
+        func="primary"
+        size="MD"
+        onClick={() => setIsCheckRoutine(true)}
+      />
       {isCheckRoutine && (
         <CheckRoutineModal
           {...props}
@@ -26,13 +33,4 @@ export default function CheckRoutineFooter(props: Props) {
 
 const CheckFooter = styled(FooterWrapper)`
   padding: 16px;
-
-  button {
-    background-color: #2cc3ff;
-    padding: 14px;
-    border: none;
-    outline: none;
-    color: white;
-    border-radius: 12px;
-  }
 `;

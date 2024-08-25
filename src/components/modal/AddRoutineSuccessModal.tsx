@@ -1,6 +1,6 @@
 import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
+import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,10 +12,11 @@ export default function AddRoutineSuccessModal() {
         <SuccessModal>
           <div>루틴 등록이 완료되었습니다.</div>
           <Button
-            width="100px"
-            text="확인"
-            type="primary"
-            handleClick={() => nav(PATH.routineMain)}
+            style={{ width: "100px " }}
+            label="확인"
+            func="primary"
+            size="MD"
+            onClick={() => nav(PATH.routineMain)}
           />
         </SuccessModal>
       }
