@@ -1,7 +1,7 @@
-import LabelInput from "@/common/input/LabelInput";
 import { useState } from "react";
 import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
+import { LabelInput } from "ji-design-system";
 
 type Props = {
   handleAddExercise: (title: string, kg: number, set: number) => void;
@@ -31,21 +31,21 @@ export default function AddExerciseModal({
             label="제목"
             width="100%"
             placeholder="제목"
-            handleChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <LabelInput
             type="number"
             label="무게"
             width="100%"
             placeholder="무게"
-            handleChange={(e) => setKg(Number(e.target.value))}
+            onChange={(e) => setKg(Number(e.target.value))}
           />
           <LabelInput
             type="number"
             label="세트"
             width="100%"
             placeholder="세트"
-            handleChange={(e) => setSet(Number(e.target.value))}
+            onChange={(e) => setSet(Number(e.target.value))}
           />
         </ExerciseModalWrapper>
       }

@@ -1,9 +1,9 @@
 import { useRoutineUpdate } from "@/hook/quires/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useState } from "react";
-import Input from "@/common/input/Input";
 import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
+import { Input } from "ji-design-system";
 
 type Props = {
   currentRoutine: number;
@@ -36,7 +36,7 @@ export default function RoutinePlayListWeightUpdateModal({
             type="number"
             width="100%"
             placeholder="무게"
-            handleChange={(e) => setKg(Number(e.target.value))}
+            onChange={(e) => setKg(Number(e.target.value))}
           />
         </RoutinePlayWeightWrapper>
       }

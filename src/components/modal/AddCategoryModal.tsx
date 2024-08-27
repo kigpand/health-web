@@ -1,7 +1,6 @@
 import ModalPortal from "@/ModalPortal";
-import Input from "@/common/input/Input";
 import { useAddCategory } from "@/hook/quires/category";
-import { Button } from "ji-design-system";
+import { Button, Input } from "ji-design-system";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -27,7 +26,7 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
             type="text"
             width="100%"
             placeholder="카테고리..."
-            handleChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => setCategory(e.target.value)}
           />
           <Button
             style={{ width: "100%" }}

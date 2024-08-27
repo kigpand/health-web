@@ -1,8 +1,8 @@
-import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
 import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
+import { LabelInput } from "ji-design-system";
 
 type Props = {
   handleEditRoutine: (routineData: RoutineDataType) => void;
@@ -39,21 +39,21 @@ export default function RoutineEditModalAdd({
             label="루틴 명"
             width="100%"
             placeholder="루틴 명"
-            handleChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <LabelInput
             type="number"
             label="무게"
             width="100%"
             placeholder="무게"
-            handleChange={(e) => setKg(Number(e.target.value))}
+            onChange={(e) => setKg(Number(e.target.value))}
           />
           <LabelInput
             type="number"
             label="세트"
             width="100%"
             placeholder="세트"
-            handleChange={(e) => setSet(Number(e.target.value))}
+            onChange={(e) => setSet(Number(e.target.value))}
           />
         </EditAddWrapper>
       }

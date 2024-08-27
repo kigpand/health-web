@@ -1,4 +1,3 @@
-import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType, RoutineListType } from "@/types/Routine";
 import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
 import { useState } from "react";
@@ -7,6 +6,7 @@ import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
 import { useRoutineUpdate } from "@/hook/quires/routine";
 import TwoButtonModal from "./TwoButtonModal";
+import { LabelInput } from "ji-design-system";
 
 type Props = {
   routine: RoutineListType;
@@ -81,7 +81,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
             placeholder="운동 명"
             defaultValue={routine.title}
             label="운동 명"
-            handleChange={(e) =>
+            onChange={(e) =>
               setEditRoutine({ ...editRoutine, title: e.target.value })
             }
           />
