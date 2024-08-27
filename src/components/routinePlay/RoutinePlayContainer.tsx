@@ -1,4 +1,3 @@
-import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
 import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
@@ -6,6 +5,7 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoutinePlayList from "./RoutinePlayList";
+import { Button } from "ji-design-system";
 
 type Props = {
   id: string;
@@ -45,16 +45,18 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
           </Title>
           <ButtonWrapper>
             <Button
-              width="100%"
-              type="primary"
-              text="시작!"
-              handleClick={() => setIsStart(true)}
+              style={{ width: "100%" }}
+              func="primary"
+              label="시작!"
+              size="MD"
+              onClick={() => setIsStart(true)}
             />
             <Button
-              width="100%"
-              type="black"
-              text="뒤로가기"
-              handleClick={() => nav(PATH.routineMain)}
+              style={{ width: "100%" }}
+              func="secondary"
+              label="뒤로가기"
+              size="MD"
+              onClick={() => nav(PATH.routineMain)}
             />
           </ButtonWrapper>
         </ContainerWrapper>

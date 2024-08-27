@@ -2,6 +2,7 @@ import { RoutineListType } from "@/types/Routine";
 import { useState } from "react";
 import styled from "styled-components";
 import RoutinePlayListButton from "./RoutinePlayListButtons";
+import RoutinePlayListWeightUpdate from "./RoutinePlayListWeightUpdate";
 
 type Props = {
   currentRoutine: number;
@@ -24,9 +25,10 @@ export default function RoutinePlayList({
         이번 운동은
         <br /> {routineDetail.routine[currentRoutine].title}입니다.
       </Title>
-      <Item>
-        <label>무게:</label> {routineDetail.routine[currentRoutine].kg}kg
-      </Item>
+      <RoutinePlayListWeightUpdate
+        currentRoutine={currentRoutine}
+        routineDetail={routineDetail}
+      />
       <Item>
         <label>세트:</label> {routineDetail.routine[currentRoutine].set}set
       </Item>

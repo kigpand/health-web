@@ -1,5 +1,5 @@
-import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
+import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,16 +13,16 @@ export default function AddRoutineBodyFooter({ handleAddRoutine }: Props) {
   return (
     <FooterWrapper>
       <Button
-        width="100px"
-        text="등록"
-        type="primary"
-        handleClick={handleAddRoutine}
+        label="등록"
+        func="primary"
+        size="MD"
+        onClick={handleAddRoutine}
       />
       <Button
-        width="100px"
-        text="취소"
-        type="secondary"
-        handleClick={() => nav(PATH.routineMain)}
+        label="취소"
+        func="secondary"
+        size="MD"
+        onClick={() => nav(PATH.routineMain)}
       />
     </FooterWrapper>
   );

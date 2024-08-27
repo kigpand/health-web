@@ -1,9 +1,8 @@
-import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
-import LabelInput from "@/common/input/LabelInput";
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
 import styled from "styled-components";
+import TwoButtonModal from "./TwoButtonModal";
+import { LabelInput } from "ji-design-system";
 
 type Props = {
   routineData: RoutineDataType;
@@ -31,9 +30,9 @@ export default function RoutineEditModalUpdate({
   }
 
   return (
-    <ModalPortal
+    <TwoButtonModal
       component={
-        <UpdateModal>
+        <EditUpdateWrapper>
           <Title>루틴을 수정하세요</Title>
           <LabelInput
             type="text"
@@ -41,9 +40,7 @@ export default function RoutineEditModalUpdate({
             width="100%"
             placeholder="루틴 명"
             defaultValue={routine.title}
-            handleChange={(e) =>
-              setRoutine({ ...routine, title: e.target.value })
-            }
+            onChange={(e) => setRoutine({ ...routine, title: e.target.value })}
           />
           <LabelInput
             type="number"
@@ -51,7 +48,7 @@ export default function RoutineEditModalUpdate({
             width="100%"
             placeholder="세트"
             defaultValue={routine.set}
-            handleChange={(e) =>
+            onChange={(e) =>
               setRoutine({ ...routine, set: Number(e.target.value) })
             }
           />
@@ -61,48 +58,29 @@ export default function RoutineEditModalUpdate({
             width="100%"
             placeholder="무게"
             defaultValue={routine.kg}
-            handleChange={(e) =>
+            onChange={(e) =>
               setRoutine({ ...routine, kg: Number(e.target.value) })
             }
           />
-          <ButtonWrapper>
-            <Button
-              type="primary"
-              text="등록"
-              width="100%"
-              handleClick={handleUpdateRoutineItem}
-            />
-            <Button
-              type="secondary"
-              text="취소"
-              width="100%"
-              handleClick={handleClose}
-            />
-          </ButtonWrapper>
-        </UpdateModal>
+        </EditUpdateWrapper>
       }
+      primaryText="등록"
+      primaryEvent={handleUpdateRoutineItem}
+      secondaryText="취소"
+      secondaryEvent={handleClose}
       handleCloseModal={handleClose}
     />
   );
 }
 
-const UpdateModal = styled.article`
-  background-color: white;
-  border-radius: 12px;
-  padding: 18px;
+const EditUpdateWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 300px;
+  gap: 16px;
 `;
 
 const Title = styled.header`
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-`;
-
-const ButtonWrapper = styled.footer`
-  display: flex;
-  gap: 8px;
 `;

@@ -1,6 +1,6 @@
-import SelectBox from "@/common/select/SelectBox";
 import styled from "styled-components";
 import { RecordType } from "@/types/RecordType";
+import { Select } from "ji-design-system";
 
 type Props = {
   count: number;
@@ -17,9 +17,8 @@ export default function CheckRoutineBody({
     <CheckBodyStyled>
       <SelectWrapper>
         <label>조회할 루틴 일정을 설정해주세요.</label>
-        <SelectBox
-          width="100%"
-          title="3"
+        <Select
+          placeholder="3"
           values={["3", "5", "7", "10"]}
           handleChangeSelect={(value) => handleChangeSelect(Number(value))}
         />

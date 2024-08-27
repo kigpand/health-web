@@ -1,5 +1,3 @@
-import LabelInput from "@/common/input/LabelInput";
-import LabelSelectBox from "@/common/select/LabelSelectBox";
 import { useCategory } from "@/hook/quires/category";
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
@@ -9,6 +7,7 @@ import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
 import AddRoutineBodyFooter from "./AddRoutineBodyFooter";
 import AddRoutineBodyAddButton from "./AddRoutineBodyAddButton";
 import AddRoutineBodyList from "./AddRoutineBodyList";
+import { LabelInput, LabelSelect } from "ji-design-system";
 
 export default function AddRoutineBody() {
   const { routine } = useRoutine();
@@ -39,12 +38,11 @@ export default function AddRoutineBody() {
         label="루틴 제목"
         width="100%"
         placeholder="...제목"
-        handleChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
       />
-      <LabelSelectBox
+      <LabelSelect
         label="카테고리"
-        title="카테고리"
-        width="100%"
+        placeholder="카테고리"
         values={category?.map((item) => item.category) ?? []}
         handleChangeSelect={(select) => setCategoryChange(select)}
       />

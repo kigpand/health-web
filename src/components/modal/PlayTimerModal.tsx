@@ -1,5 +1,5 @@
 import ModalPortal from "@/ModalPortal";
-import Button from "@/common/button/Button";
+import { Button } from "ji-design-system";
 import styled from "styled-components";
 
 type Props = {
@@ -18,10 +18,11 @@ export default function PlayTimerModal({ time, handleCloseModal }: Props) {
           </TimeStyled>
           {time === 0 && (
             <Button
-              width="100px"
-              type="primary"
-              text="다음 운동!"
-              handleClick={handleCloseModal}
+              style={{ fontSize: "14px" }}
+              size="MD"
+              func="primary"
+              label="다음 운동!"
+              onClick={handleCloseModal}
             />
           )}
         </TimeModalWrapper>

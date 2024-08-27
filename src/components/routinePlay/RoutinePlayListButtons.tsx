@@ -1,9 +1,9 @@
-import Button from "@/common/button/Button";
 import { PATH } from "@/enum/path";
 import { useAddRecord } from "@/hook/quires/record";
 import { useWorkerTimer } from "@/hook/useWorkerTimer";
 import { RoutineListType } from "@/types/Routine";
 import PlayTimerModal from "@components/modal/PlayTimerModal";
+import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -51,30 +51,30 @@ export default function RoutinePlayListButton({
     <ButtonWrapper>
       {routineDetail.routine[currentRoutine].set !== count && (
         <Button
-          width="100%"
-          type="primary"
-          text="완료했습니다"
-          handleClick={() => handleTimer(true)}
+          size="LG"
+          func="primary"
+          label="완료했습니다"
+          onClick={() => handleTimer(true)}
         />
       )}
       {routineDetail.routine[currentRoutine].set === count &&
         routineDetail.routine[routineDetail.routine.length - 1] !==
           routineDetail.routine[currentRoutine] && (
           <Button
-            width="100%"
-            type="skyblue"
-            text="다음 루틴"
-            handleClick={onNextButton}
+            size="LG"
+            func="tertiary"
+            label="다음 루틴"
+            onClick={onNextButton}
           />
         )}
       {routineDetail.routine[currentRoutine].set === count &&
         routineDetail.routine[routineDetail.routine.length - 1] ===
           routineDetail.routine[currentRoutine] && (
           <Button
-            width="100%"
-            type="secondary"
-            text="운동 끝!"
-            handleClick={handleFinisihButton}
+            size="LG"
+            func="secondary"
+            label="운동 끝!"
+            onClick={handleFinisihButton}
           />
         )}
       {onTimer && (
