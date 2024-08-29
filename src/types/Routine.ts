@@ -10,6 +10,7 @@ export type RoutineDataType = {
   kg: number;
   set: number;
   title: string;
+  link?: string;
 };
 
 export type AddRoutineType = {
