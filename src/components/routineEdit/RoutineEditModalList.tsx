@@ -38,7 +38,8 @@ export default function RoutineEditModalList({
 }
 
 const ListWrapper = styled.ul`
-  padding: 10px 0px;
+  margin-top: 10px;
+  padding: 5px 0px;
   border-top: 1px solid lightgray;
   display: flex;
   flex-direction: column;
