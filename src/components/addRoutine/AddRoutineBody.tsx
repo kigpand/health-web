@@ -17,8 +17,13 @@ export default function AddRoutineBody() {
   const [exercise, setExercise] = useState<RoutineDataType[]>([]);
   const { addRoutine, addRoutineSuccess } = useAddRoutine();
 
-  function handleAddExercise(title: string, kg: number, set: number) {
-    setExercise([...exercise, { title, kg, set }]);
+  function handleAddExercise(
+    title: string,
+    kg: number,
+    set: number,
+    link: string
+  ) {
+    setExercise([...exercise, { title, kg, set, link }]);
   }
 
   function handleAddRoutine() {

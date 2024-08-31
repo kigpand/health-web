@@ -16,6 +16,7 @@ export default function RoutineEditModalAdd({
   const [title, setTitle] = useState<string>("");
   const [set, setSet] = useState<number>(0);
   const [kg, setKg] = useState<number>(0);
+  const [link, setLink] = useState<string>("");
 
   function addRoutineItem(routineData: RoutineDataType) {
     if (
@@ -55,10 +56,17 @@ export default function RoutineEditModalAdd({
             placeholder="세트"
             onChange={(e) => setSet(Number(e.target.value))}
           />
+          <LabelInput
+            type="text"
+            label="링크"
+            width="100%"
+            placeholder="링크"
+            onChange={(e) => setLink(e.target.value)}
+          />
         </EditAddWrapper>
       }
       primaryText="등록"
-      primaryEvent={() => addRoutineItem({ title, set, kg })}
+      primaryEvent={() => addRoutineItem({ title, set, kg, link })}
       secondaryText="취소"
       secondaryEvent={handleClose}
       handleCloseModal={handleClose}

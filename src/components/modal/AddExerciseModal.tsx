@@ -4,7 +4,12 @@ import TwoButtonModal from "./TwoButtonModal";
 import { LabelInput } from "ji-design-system";
 
 type Props = {
-  handleAddExercise: (title: string, kg: number, set: number) => void;
+  handleAddExercise: (
+    title: string,
+    kg: number,
+    set: number,
+    link: string
+  ) => void;
   handleCloseModal: () => void;
 };
 
@@ -15,9 +20,15 @@ export default function AddExerciseModal({
   const [title, setTitle] = useState<string>("");
   const [kg, setKg] = useState<number>(0);
   const [set, setSet] = useState<number>(0);
+  const [link, setLink] = useState<string>("");
 
-  function handleAddButton(title: string, kg: number, set: number) {
-    handleAddExercise(title, kg, set);
+  function handleAddButton(
+    title: string,
+    kg: number,
+    set: number,
+    link: string
+  ) {
+    handleAddExercise(title, kg, set, link);
     handleCloseModal();
   }
 
@@ -47,10 +58,17 @@ export default function AddExerciseModal({
             placeholder="세트"
             onChange={(e) => setSet(Number(e.target.value))}
           />
+          <LabelInput
+            type="text"
+            label="링크"
+            width="100%"
+            placeholder="링크"
+            onChange={(e) => setLink(e.target.value)}
+          />
         </ExerciseModalWrapper>
       }
       primaryText="등록"
-      primaryEvent={() => handleAddButton(title, kg, set)}
+      primaryEvent={() => handleAddButton(title, kg, set, link)}
       secondaryText="취소"
       secondaryEvent={handleCloseModal}
       handleCloseModal={handleCloseModal}

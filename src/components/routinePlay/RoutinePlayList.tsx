@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import RoutinePlayListButton from "./RoutinePlayListButtons";
 import RoutinePlayListWeightUpdate from "./RoutinePlayListWeightUpdate";
+import RoutinePlayListLink from "./RoutinePlayListLink";
 
 type Props = {
   currentRoutine: number;
@@ -39,6 +40,9 @@ export default function RoutinePlayList({
         <br />총 {routineDetail.routine[currentRoutine].set - count}세트
         남았습니다.
       </Count>
+      <RoutinePlayListLink
+        currentRoutine={routineDetail.routine[currentRoutine]}
+      />
       <RoutinePlayListButton
         count={count}
         timer={timer}
@@ -69,7 +73,6 @@ const Title = styled.div`
 `;
 
 const Item = styled.div`
-  width: 100px;
   display: flex;
   gap: 8px;
   font-size: 20px;
