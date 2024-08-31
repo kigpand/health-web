@@ -3,7 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
-  handleAddExercise: (title: string, kg: number, set: number) => void;
+  handleAddExercise: (
+    title: string,
+    kg: number,
+    set: number,
+    link: string
+  ) => void;
 };
 
 export default function AddRoutineBodyAddButton({ handleAddExercise }: Props) {
