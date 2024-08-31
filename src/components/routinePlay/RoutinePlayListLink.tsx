@@ -8,11 +8,11 @@ type Props = {
 
 export default function RoutinePlayListLink({ currentRoutine }: Props) {
   return currentRoutine.link ? (
-    "링크"
-  ) : null ? (
     <LinkStyled>
-      <Label>참조 영상: </Label>
-      <Link>{currentRoutine.link}</Link>
+      <Label>참조 영상</Label>
+      <Link href={currentRoutine.link} target="_blank">
+        {currentRoutine.link}
+      </Link>
     </LinkStyled>
   ) : (
     <RoutinePlayListLinkNone />
@@ -20,8 +20,10 @@ export default function RoutinePlayListLink({ currentRoutine }: Props) {
 }
 
 const LinkStyled = styled.div`
-  margin: 10px 0px;
+  margin: 20px 0px 10px 0px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
 `;
 
@@ -29,4 +31,8 @@ const Label = styled.header`
   font-weight: bold;
 `;
 
-const Link = styled.a``;
+const Link = styled.a`
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline;
+`;

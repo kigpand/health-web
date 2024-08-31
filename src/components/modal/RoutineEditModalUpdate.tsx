@@ -62,6 +62,14 @@ export default function RoutineEditModalUpdate({
               setRoutine({ ...routine, kg: Number(e.target.value) })
             }
           />
+          <LabelInput
+            type="text"
+            label="링크"
+            width="100%"
+            placeholder="링크"
+            defaultValue={routine.link ?? ""}
+            onChange={(e) => setRoutine({ ...routine, link: e.target.value })}
+          />
         </EditUpdateWrapper>
       }
       primaryText="등록"

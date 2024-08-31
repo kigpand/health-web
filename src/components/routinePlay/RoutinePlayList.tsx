@@ -73,7 +73,6 @@ const Title = styled.div`
 `;
 
 const Item = styled.div`
-  width: 100px;
   display: flex;
   gap: 8px;
   font-size: 20px;

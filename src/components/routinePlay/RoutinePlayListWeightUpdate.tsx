@@ -31,7 +31,6 @@ export default function RoutinePlayListWeightUpdate({
 }
 
 const WeightUpdateWrapper = styled.div`
-  width: 100px;
   display: flex;
   gap: 8px;
   font-size: 20px;
