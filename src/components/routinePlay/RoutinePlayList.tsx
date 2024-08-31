@@ -41,7 +41,7 @@ export default function RoutinePlayList({
         남았습니다.
       </Count>
       <RoutinePlayListLink
-        link={routineDetail.routine[currentRoutine].link ? "링크" : null}
+        currentRoutine={routineDetail.routine[currentRoutine]}
       />
       <RoutinePlayListButton
         count={count}
