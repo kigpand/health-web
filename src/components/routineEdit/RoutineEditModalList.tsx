@@ -1,5 +1,7 @@
 import { RoutineDataType } from "@/types/Routine";
 import styled from "styled-components";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { MdAutoFixHigh } from "react-icons/md";
 
 type Props = {
   routine: RoutineDataType[];
@@ -25,8 +27,8 @@ export default function RoutineEditModalList({
           <ListStyled key={i}>
             <span>{item.title}</span>
             <ButtonWrapper>
-              <div onClick={() => deleteRoutineItem(item)}>x</div>
-              <div onClick={() => handleUpdateRoutine(item)}>o</div>
+              <RiDeleteBin5Fill onClick={() => deleteRoutineItem(item)} />
+              <MdAutoFixHigh onClick={() => handleUpdateRoutine(item)} />
             </ButtonWrapper>
           </ListStyled>
         );
