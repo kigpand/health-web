@@ -1,5 +1,6 @@
 import ModalPortal from "@/ModalPortal";
 import { useAddCategory } from "@/hook/quires/category";
+import { getDuplCategory } from "@/service/category";
 import { Button, Input } from "ji-design-system";
 import { useState } from "react";
 import styled from "styled-components";
@@ -12,10 +13,15 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
   const [category, setCategory] = useState<string>("");
   const { addCategoryMutate } = useAddCategory();
 
-  function handleAddCategory() {
+  async function handleAddCategory() {
     if (category === "") return;
-    addCategoryMutate({ category });
-    handleCloseModal();
+    const dupl = await getDuplCategory(category);
+    if (dupl.category === "empty") {
+      addCategoryMutate({ category });
+      handleCloseModal();
+    } else {
+      alert("카테고리가 중복되었습니다.");
+    }
   }
 
   return (

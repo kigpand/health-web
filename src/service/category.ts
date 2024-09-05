@@ -5,6 +5,11 @@ export async function getCategory() {
   return result.data;
 }
 
+export async function getDuplCategory(category: string) {
+  const result = await axiosInstance.get(`/category/${category}`);
+  return result.data;
+}
+
 type CategoryProps = {
   category: string;
 };
