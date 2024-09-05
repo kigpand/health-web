@@ -28,6 +28,7 @@ export default function AddRoutineBody() {
 
   function handleAddRoutine() {
     if (!routine) return;
+    if (title === "" || categoryChange === "") return;
     addRoutine({
       id: routine[routine?.length - 1].id + 1,
       title,

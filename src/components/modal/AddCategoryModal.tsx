@@ -13,6 +13,7 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
   const { addCategoryMutate } = useAddCategory();
 
   function handleAddCategory() {
+    if (category === "") return;
     addCategoryMutate({ category });
     handleCloseModal();
   }
