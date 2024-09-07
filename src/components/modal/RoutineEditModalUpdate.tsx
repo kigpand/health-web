@@ -18,11 +18,7 @@ export default function RoutineEditModalUpdate({
   const [routine, setRoutine] = useState<RoutineDataType>(routineData);
 
   function handleUpdateRoutineItem() {
-    if (
-      routineData.title === "" ||
-      routineData.kg === 0 ||
-      routineData.set === 0
-    ) {
+    if (routine.title === "" || routine.kg === 0 || routine.set === 0) {
       return;
     }
     updateRoutineItem(routineData.title, routine);

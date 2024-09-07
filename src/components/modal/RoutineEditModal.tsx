@@ -22,6 +22,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
 
   function handleEditButton() {
     if (editRoutine.routine.length === 0) return;
+    if (editRoutine.title === "") return;
     updateRoutine(editRoutine);
     handleCloseModal();
   }

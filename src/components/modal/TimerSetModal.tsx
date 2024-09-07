@@ -14,6 +14,7 @@ export default function TimerSetModal({ id, handleCloseModal }: Props) {
   const [timer, setTimer] = useState<number>(0);
 
   function handleStart() {
+    if (timer <= 0) return alert("타이머는 0초 이상 설정해주세요");
     nav(`${PATH.routinePlay}?id=${id}&timer=${timer}`);
   }
 
