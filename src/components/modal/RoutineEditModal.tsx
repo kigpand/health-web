@@ -96,7 +96,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
           />
         </>
       }
-      primaryText="등록11"
+      primaryText="등록"
       primaryEvent={handleEditButton}
       secondaryText="취소"
       secondaryEvent={handleCloseModal}
