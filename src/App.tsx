@@ -21,6 +21,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <ErrorBoundary fallback={<Error />}>
+      fdsfds
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
