@@ -11,7 +11,6 @@ LETTER=$(echo "$DEFAULT_COMMIT_MSG" | sed -n -E 's/^[-]([A-Za-z]{1,2}).*/\1/p')
 
 # 앞글자에 맞춰 형식 TYPE 지정
 case "$LETTER" in
-    # root
     "f" ) TYPE="feat:" ;;
     "fi" ) TYPE="fix:" ;;
     "d" ) TYPE="docs:" ;;
