@@ -75,7 +75,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     <TwoButtonModal
       component={
         <>
-          <Title>루틴 편집하기</Title>
+          <Title>루틴 편집하기ss</Title>
           <LabelInput
             type="text"
             width="250px"
