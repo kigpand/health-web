@@ -1,22 +1,31 @@
 import { RoutineDataType } from "@/types/Routine";
+import BodyListItemDetail from "@components/modal/BodyListItemDetail";
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function AddRoutineBodyListItem({
-  title,
-  kg,
-  set,
-}: RoutineDataType) {
+export default function AddRoutineBodyListItem(props: RoutineDataType) {
+  const [isDetail, setIsDetail] = useState<boolean>(false);
+
   return (
-    <BodyListItemWrapper>
-      <span>{title}</span>
-      <span>{kg}kg</span>
-      <span>{set}세트</span>
-    </BodyListItemWrapper>
+    <>
+      {isDetail && (
+        <BodyListItemDetail
+          {...props}
+          handleCloseModal={() => setIsDetail(false)}
+        />
+      )}
+      <BodyListItemWrapper onClick={() => setIsDetail(true)}>
+        {props.title}
+      </BodyListItemWrapper>
+    </>
   );
 }
 
 const BodyListItemWrapper = styled.li`
-  display: flex;
-  gap: 20px;
-  padding: 4px 0px;
+  padding: 12px 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  cursor: pointer;
 `;
