@@ -78,7 +78,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
           <Title>루틴 편집하기ss</Title>
           <LabelInput
             type="text"
-            width="250px"
+            $width="250px"
             placeholder="운동 명"
             defaultValue={routine.title}
             label="운동 명"

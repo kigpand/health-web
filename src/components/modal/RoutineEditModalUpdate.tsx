@@ -33,7 +33,7 @@ export default function RoutineEditModalUpdate({
           <LabelInput
             type="text"
             label="루틴 명"
-            width="100%"
+            $width="100%"
             placeholder="루틴 명"
             defaultValue={routine.title}
             onChange={(e) => setRoutine({ ...routine, title: e.target.value })}
@@ -41,7 +41,7 @@ export default function RoutineEditModalUpdate({
           <LabelInput
             type="number"
             label="세트"
-            width="100%"
+            $width="100%"
             placeholder="세트"
             defaultValue={routine.set}
             onChange={(e) =>
@@ -51,7 +51,7 @@ export default function RoutineEditModalUpdate({
           <LabelInput
             type="number"
             label="무게"
-            width="100%"
+            $width="100%"
             placeholder="무게"
             defaultValue={routine.kg}
             onChange={(e) =>
@@ -61,7 +61,7 @@ export default function RoutineEditModalUpdate({
           <LabelInput
             type="text"
             label="링크"
-            width="100%"
+            $width="100%"
             placeholder="링크"
             defaultValue={routine.link ?? ""}
             onChange={(e) => setRoutine({ ...routine, link: e.target.value })}

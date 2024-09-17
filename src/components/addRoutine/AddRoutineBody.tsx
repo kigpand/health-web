@@ -42,7 +42,7 @@ export default function AddRoutineBody() {
       <LabelInput
         type="text"
         label="루틴 제목"
-        width="100%"
+        $width="100%"
         placeholder="...제목"
         onChange={(e) => setTitle(e.target.value)}
       />

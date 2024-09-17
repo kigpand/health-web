@@ -38,28 +38,28 @@ export default function RoutineEditModalAdd({
           <LabelInput
             type="text"
             label="루틴 명"
-            width="100%"
+            $width="100%"
             placeholder="루틴 명"
             onChange={(e) => setTitle(e.target.value)}
           />
           <LabelInput
             type="number"
             label="무게"
-            width="100%"
+            $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />
           <LabelInput
             type="number"
             label="세트"
-            width="100%"
+            $width="100%"
             placeholder="세트"
             onChange={(e) => setSet(Number(e.target.value))}
           />
           <LabelInput
             type="text"
             label="링크"
-            width="100%"
+            $width="100%"
             placeholder="링크"
             onChange={(e) => setLink(e.target.value)}
           />
