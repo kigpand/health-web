@@ -21,6 +21,8 @@ export default function AddExerciseModal({
   const [kg, setKg] = useState<number>(0);
   const [set, setSet] = useState<number>(0);
   const [link, setLink] = useState<string>("");
+  const [errTitle, setErrTitle] = useState<string>("");
+  const [errSet, setErrSet] = useState<string>("");
 
   function handleAddButton(
     title: string,
@@ -28,8 +30,20 @@ export default function AddExerciseModal({
     set: number,
     link: string
   ) {
+    if (title === "") return setErrTitle("제목을 입력해주세요.");
+    if (set === 0) return setErrSet("횟수를 입력해주세요");
     handleAddExercise(title, kg, set, link);
     handleCloseModal();
+  }
+
+  function handleChangeTitle(e: React.ChangeEvent<HTMLInputElement>) {
+    if (errTitle !== "") setErrTitle("");
+    setTitle(e.target.value);
+  }
+
+  function handleChangeSet(e: React.ChangeEvent<HTMLInputElement>) {
+    if (errSet !== "") setErrSet("");
+    setSet(Number(e.target.value));
   }
 
   return (
@@ -42,7 +56,8 @@ export default function AddExerciseModal({
             label="제목"
             $width="100%"
             placeholder="제목"
-            onChange={(e) => setTitle(e.target.value)}
+            errortext={errTitle}
+            onChange={handleChangeTitle}
           />
           <LabelInput
             type="number"
@@ -56,7 +71,8 @@ export default function AddExerciseModal({
             label="세트"
             $width="100%"
             placeholder="세트"
-            onChange={(e) => setSet(Number(e.target.value))}
+            errortext={errSet}
+            onChange={handleChangeSet}
           />
           <LabelInput
             type="text"
