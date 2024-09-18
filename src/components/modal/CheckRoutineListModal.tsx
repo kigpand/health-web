@@ -72,5 +72,6 @@ const DetailItem = styled.div`
 
   span:first-of-type {
     width: 80px;
+    font-weight: bold;
   }
 `;

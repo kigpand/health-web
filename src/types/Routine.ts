@@ -2,7 +2,7 @@ export type RoutineListType = {
   id: number;
   title: string;
   category: string;
-  date: any;
+  date: string;
   routine: RoutineDataType[];
   _id: string;
 };

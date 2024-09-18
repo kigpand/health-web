@@ -75,13 +75,14 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     <TwoButtonModal
       component={
         <>
-          <Title>루틴 편집하기ss</Title>
+          <Title>루틴 편집하기</Title>
           <LabelInput
             type="text"
             $width="250px"
             placeholder="운동 명"
             defaultValue={routine.title}
             label="운동 명"
+            errortext={editRoutine.title === "" ? "운동 명을 적어주세요" : ""}
             onChange={(e) =>
               setEditRoutine({ ...editRoutine, title: e.target.value })
             }
