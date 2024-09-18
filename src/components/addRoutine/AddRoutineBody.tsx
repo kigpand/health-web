@@ -1,6 +1,6 @@
 import { useCategory } from "@/hook/quires/category";
 import { RoutineDataType } from "@/types/Routine";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import { useAddRoutine, useRoutine } from "@/hook/quires/routine";
 import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
@@ -14,8 +14,20 @@ export default function AddRoutineBody() {
   const { category } = useCategory();
   const [title, setTitle] = useState<string>("");
   const [categoryChange, setCategoryChange] = useState<string>("");
+  const [errTitle, setErrTitle] = useState<string>("");
+  const [errCategory, setErrCategory] = useState<string>("");
   const [exercise, setExercise] = useState<RoutineDataType[]>([]);
   const { addRoutine, addRoutineSuccess } = useAddRoutine();
+
+  function handleChangeTitle(e: ChangeEvent<HTMLInputElement>) {
+    if (errTitle !== "") setErrTitle("");
+    setTitle(e.target.value);
+  }
+
+  function handleChangeCategory(text: string) {
+    if (errCategory !== "") setErrCategory("");
+    setCategoryChange(text);
+  }
 
   function handleAddExercise(
     title: string,
@@ -28,7 +40,8 @@ export default function AddRoutineBody() {
 
   function handleAddRoutine() {
     if (!routine) return;
-    if (title === "" || categoryChange === "") return;
+    if (title === "") return setErrTitle("제목을 입력해주세요");
+    if (categoryChange === "") return setErrCategory("카테고리를 선택해주세요");
     addRoutine({
       id: routine[routine?.length - 1].id + 1,
       title,
@@ -44,14 +57,18 @@ export default function AddRoutineBody() {
         label="루틴 제목"
         $width="100%"
         placeholder="...제목"
-        onChange={(e) => setTitle(e.target.value)}
+        errortext={errTitle}
+        onChange={handleChangeTitle}
       />
-      <LabelSelect
-        label="카테고리"
-        placeholder="카테고리"
-        values={category?.map((item) => item.category) ?? []}
-        handleChangeSelect={(select) => setCategoryChange(select)}
-      />
+      <SelectWrapper>
+        <LabelSelect
+          label="카테고리"
+          placeholder="카테고리"
+          values={category?.map((item) => item.category) ?? []}
+          handleChangeSelect={handleChangeCategory}
+        />
+        {errCategory && <ErrText>{errCategory}</ErrText>}
+      </SelectWrapper>
       {exercise.length > 0 && <AddRoutineBodyList exercise={exercise} />}
       <AddRoutineBodyAddButton handleAddExercise={handleAddExercise} />
       <AddRoutineBodyFooter handleAddRoutine={handleAddRoutine} />
@@ -65,5 +82,16 @@ const BodyWrapper = styled.main`
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
+`;
+
+const SelectWrapper = styled.div`
+  position: relative;
+`;
+
+const ErrText = styled.div`
+  margin-top: 4px;
+  position: absolute;
+  font-size: 10px;
+  color: red;
 `;

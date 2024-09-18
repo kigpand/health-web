@@ -16,7 +16,7 @@ dependencies:
     version: 1.7.7
   ji-design-system:
     specifier: ^6.9.1
-    version: 6.9.1(@types/node@22.5.5)
+    version: 6.9.2(@types/node@22.5.5)
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -1225,7 +1225,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001660
-      electron-to-chromium: 1.5.24
+      electron-to-chromium: 1.5.25
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
     dev: true
@@ -1444,8 +1444,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /electron-to-chromium@1.5.24:
-    resolution: {integrity: sha512-0x0wLCmpdKFCi9ulhvYZebgcPmHTkFVUfU2wzDykadkslKwT4oAmDTHEKLnlrDsMGZe4B+ksn8quZfZjYsBetA==}
+  /electron-to-chromium@1.5.25:
+    resolution: {integrity: sha512-kMb204zvK3PsSlgvvwzI3wBIcAw15tRkYk+NQdsjdDtcQWTp2RABbMQ9rUBy8KNEOM+/E6ep+XC3AykiWZld4g==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -1914,8 +1914,8 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /ji-design-system@6.9.1(@types/node@22.5.5):
-    resolution: {integrity: sha512-PTvwZO9LrKUf/Ne8I1r33HPwpNvm8z+6RkrjrCgzQREL1mI/bJoBdbdyaSeAlO09KPgsnei0JnesMB3wdZGG4w==}
+  /ji-design-system@6.9.2(@types/node@22.5.5):
+    resolution: {integrity: sha512-vWgFe7liAZJKUj0oOQaL+c6LmeWpCGG5DZYqQo6RjlMlDs97YzX2PR9gRFOdRfHr0YQ80R2UpWSzqQYbKJQLgQ==}
     dependencies:
       '@types/styled-components': 5.1.34
       react: 18.3.1
