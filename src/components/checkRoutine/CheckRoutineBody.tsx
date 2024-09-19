@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { RecordType } from "@/types/RecordType";
 import { Select } from "ji-design-system";
+import CheckRoutineBodyList from "./CheckRoutineBodyList";
 
 type Props = {
   count: number;
@@ -26,7 +27,7 @@ export default function CheckRoutineBody({
       <BodyHeader>최근 {count}일간 루틴</BodyHeader>
       <ListWrapper>
         {record?.map((item) => {
-          return <ListStyled key={item._id}>{item.title}</ListStyled>;
+          return <CheckRoutineBodyList key={item._id} record={item} />;
         })}
       </ListWrapper>
     </CheckBodyStyled>
@@ -62,15 +63,4 @@ const ListWrapper = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const ListStyled = styled.li`
-  width: 100%;
-  padding: 16px 0px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
 `;

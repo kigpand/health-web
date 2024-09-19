@@ -34,7 +34,7 @@ export default function RoutinePlayListWeightUpdateModal({
           <Title>변경할 무게를 입력하세요.</Title>
           <Input
             type="number"
-            width="100%"
+            $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />

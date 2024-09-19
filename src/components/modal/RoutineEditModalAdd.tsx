@@ -19,11 +19,7 @@ export default function RoutineEditModalAdd({
   const [link, setLink] = useState<string>("");
 
   function addRoutineItem(routineData: RoutineDataType) {
-    if (
-      routineData.title === "" ||
-      routineData.kg === 0 ||
-      routineData.set === 0
-    ) {
+    if (routineData.title === "" || routineData.set === 0) {
       return;
     }
     handleEditRoutine(routineData);
@@ -38,28 +34,30 @@ export default function RoutineEditModalAdd({
           <LabelInput
             type="text"
             label="루틴 명"
-            width="100%"
+            $width="100%"
             placeholder="루틴 명"
+            errortext={title === "" ? "루틴 명을 적어주세요" : ""}
             onChange={(e) => setTitle(e.target.value)}
           />
           <LabelInput
             type="number"
             label="무게"
-            width="100%"
+            $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />
           <LabelInput
             type="number"
             label="세트"
-            width="100%"
+            $width="100%"
             placeholder="세트"
+            errortext={set === 0 ? "세트 수는 0회 이상 이어야 합니다." : ""}
             onChange={(e) => setSet(Number(e.target.value))}
           />
           <LabelInput
             type="text"
             label="링크"
-            width="100%"
+            $width="100%"
             placeholder="링크"
             onChange={(e) => setLink(e.target.value)}
           />
@@ -77,7 +75,7 @@ export default function RoutineEditModalAdd({
 const EditAddWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 `;
 
 const Title = styled.header`
