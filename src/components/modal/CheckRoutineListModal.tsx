@@ -1,5 +1,4 @@
 import ModalPortal from "@/ModalPortal";
-import { useRoutineDetail } from "@/hook/quires/routine";
 import { RecordType } from "@/types/RecordType";
 import styled from "styled-components";
 
@@ -12,8 +11,6 @@ export default function CheckRoutineListModal({
   record,
   handleCloseModal,
 }: Props) {
-  const { routineDetail } = useRoutineDetail(String(record.id));
-
   function getRoutineDate(date: string | undefined) {
     if (date) {
       const convert = new Date(date);
@@ -35,15 +32,15 @@ export default function CheckRoutineListModal({
         <RoutineListModal>
           <DetailItem>
             <span>제목:</span>
-            <span>{routineDetail?.title}</span>
+            <span>{record.title}</span>
           </DetailItem>
           <DetailItem>
             <span>날짜:</span>
-            <span>{getRoutineDate(routineDetail?.date)}</span>
+            <span>{getRoutineDate(record.date)}</span>
           </DetailItem>
           <DetailItem>
             <span>카테고리:</span>
-            <span>{routineDetail?.category}</span>
+            <span>{record.category}</span>
           </DetailItem>
         </RoutineListModal>
       }

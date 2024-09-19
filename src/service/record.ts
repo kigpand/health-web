@@ -21,3 +21,9 @@ export async function addRecordAPI({ id, title, category }: AddProps) {
 
   return result.data;
 }
+
+export async function deleteRecordAll() {
+  const result = await axiosInstance.delete("/record/deleteAll");
+
+  return result.data;
+}
