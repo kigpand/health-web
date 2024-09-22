@@ -10,11 +10,15 @@ import {
   updateRoutineAPI,
 } from "@/service/routine";
 import { RoutineListType } from "@/types/Routine";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 export function useRoutine() {
-  const { data: routine, isSuccess: routineSuccess } = useQuery<
+  const { data: routine, isSuccess: routineSuccess } = useSuspenseQuery<
     RoutineListType[]
   >({
     queryKey: ["routine"],
@@ -25,7 +29,7 @@ export function useRoutine() {
 }
 
 export function useRoutineByCategory(category: string) {
-  const { data: routineByCategory } = useQuery<RoutineListType[]>({
+  const { data: routineByCategory } = useSuspenseQuery<RoutineListType[]>({
     queryKey: ["routineByCategory", category],
     queryFn: () => getRoutineByCategory(category),
   });
@@ -34,7 +38,7 @@ export function useRoutineByCategory(category: string) {
 }
 
 export function useRoutineDetail(id: string) {
-  const { data: routineDetail } = useQuery<RoutineListType>({
+  const { data: routineDetail } = useSuspenseQuery<RoutineListType>({
     queryKey: ["routineDetail", id],
     queryFn: () => getRoutineDetail(id),
   });
@@ -43,7 +47,7 @@ export function useRoutineDetail(id: string) {
 }
 
 export function useRoutineCount(count: number) {
-  const { data: routineCount } = useQuery<RoutineListType[]>({
+  const { data: routineCount } = useSuspenseQuery<RoutineListType[]>({
     queryKey: ["routineCount", count],
     queryFn: () => getRoutineCount(count),
   });

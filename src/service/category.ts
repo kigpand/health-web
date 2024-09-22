@@ -1,7 +1,7 @@
 import axiosInstance from "@/utils/axiosSetting";
 
 export async function getCategory() {
-  const result = await axiosInstance.get("/category");
+  const result = await axiosInstance.get("/categorysss");
   return result.data;
 }
 
