@@ -22,16 +22,27 @@ import Category from "@/pages/Category";
 import { Suspense } from "react";
 import LoadingSpinner from "./common/LoadingSpinner";
 
-const queryClient = new QueryClient({});
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      throwOnError: true,
+    },
+    mutations: {
+      retry: 0,
+      throwOnError: true,
+    },
+  },
+});
 
 function App() {
   return (
-    <QueryErrorResetBoundary>
-      {({ reset }) => (
-        <ErrorBoundary onReset={reset} fallbackRender={() => <Error />}>
-          <QueryClientProvider client={queryClient}>
-            <Suspense fallback={<LoadingSpinner />}>
-              <ThemeProvider theme={theme}>
+    <QueryClientProvider client={queryClient}>
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ThemeProvider theme={theme}>
+            <ErrorBoundary onReset={reset} FallbackComponent={Error}>
+              <Suspense fallback={<LoadingSpinner />}>
                 <BrowserRouter>
                   <Routes>
                     <Route path={PATH.home} element={<Home />} />
@@ -57,12 +68,12 @@ function App() {
                     <Route path="*" element={<Main />} />
                   </Routes>
                 </BrowserRouter>
-              </ThemeProvider>
-            </Suspense>
-          </QueryClientProvider>
-        </ErrorBoundary>
-      )}
-    </QueryErrorResetBoundary>
+              </Suspense>
+            </ErrorBoundary>
+          </ThemeProvider>
+        )}
+      </QueryErrorResetBoundary>
+    </QueryClientProvider>
   );
 }
 

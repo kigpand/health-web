@@ -1,13 +1,8 @@
 import { PATH } from "@/enum/path";
 import { PageWrapper } from "@/styles/PageStyle";
-import { useEffect } from "react";
 import styled from "styled-components";
 
 export default function Error() {
-  useEffect(() => {
-    console.log("error");
-  }, []);
-
   function returnToHome() {
     window.location.replace(PATH.home);
   }
@@ -24,7 +19,7 @@ const ErrorWrapper = styled(PageWrapper)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: ${({ theme }) => theme.colors.primary};
   gap: 40px;
 `;
 
