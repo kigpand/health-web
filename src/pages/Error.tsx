@@ -19,6 +19,7 @@ const ErrorWrapper = styled(PageWrapper)`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${({ theme }) => theme.colors.primary};
   gap: 40px;
 `;
 
