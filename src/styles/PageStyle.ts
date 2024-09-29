@@ -24,4 +24,6 @@ export const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
 `;

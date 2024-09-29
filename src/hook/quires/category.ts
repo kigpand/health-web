@@ -1,13 +1,9 @@
 import { addCategory, deleteCategory, getCategory } from "@/service/category";
 import { CategoryType } from "@/types/CategoryType";
-import {
-  useMutation,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useCategory() {
-  const { data: category } = useSuspenseQuery<CategoryType[]>({
+  const { data: category } = useQuery<CategoryType[]>({
     queryKey: ["category"],
     queryFn: getCategory,
   });

@@ -13,16 +13,22 @@ const rotation = keyframes`
 `;
 
 export default function LoadingSpinner() {
-  return <ModalPortal component={<SpinnerStyled />}></ModalPortal>;
+  return (
+    <ModalPortal
+      background="rgba(255,255,255,0.3)"
+      component={<SpinnerStyled />}
+    ></ModalPortal>
+  );
 }
 
 const SpinnerStyled = styled.div`
-  height: 30px;
-  width: 30px;
-  border: 1px solid white;
+  height: 60px;
+  width: 60px;
+  border: 4px solid lightgray;
   border-radius: 50%;
   border-top: none;
   border-right: none;
   margin: 16px auto;
   animation: ${rotation} 1s linear infinite;
+  z-index: 100;
 `;

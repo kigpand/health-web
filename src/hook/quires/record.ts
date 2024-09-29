@@ -1,8 +1,8 @@
 import { addRecordAPI, getRecord } from "@/service/record";
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export function useRecord(count: number) {
-  const { data: record, isSuccess: recordSuccess } = useSuspenseQuery({
+  const { data: record, isSuccess: recordSuccess } = useQuery({
     queryKey: ["record", count],
     queryFn: () => getRecord(count),
   });

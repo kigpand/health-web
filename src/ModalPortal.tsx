@@ -4,12 +4,17 @@ import styled from "styled-components";
 
 type Props = {
   component: React.ReactNode;
+  background?: string;
   handleCloseModal?: () => void;
 };
 
-export default function ModalPortal({ component, handleCloseModal }: Props) {
+export default function ModalPortal({
+  component,
+  background,
+  handleCloseModal,
+}: Props) {
   return createPortal(
-    <ModalWrapper>
+    <ModalWrapper $background={background}>
       {component}
       <div className="back" onClick={handleCloseModal}></div>
     </ModalWrapper>,
@@ -17,12 +22,12 @@ export default function ModalPortal({ component, handleCloseModal }: Props) {
   );
 }
 
-const ModalWrapper = styled.section`
+const ModalWrapper = styled.section<{ $background?: string }>`
   width: 100vw;
   height: 100%;
   min-height: 100vh;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${(props) => props.$background ?? "rgba(0,0,0,0.4)"};
   top: 0;
   display: flex;
   align-items: center;
