@@ -12,3 +12,9 @@ export enum PATH {
   category = "/category",
   error = "/error",
 }
+
+export enum ROUTE {
+  category = "/category",
+  record = "/record",
+  routine = "/routine",
+}
