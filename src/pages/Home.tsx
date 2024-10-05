@@ -8,6 +8,7 @@ export default function Home() {
 
   return (
     <HomeWrapper>
+      <LogoStyled>logo</LogoStyled>
       <HomeButton onClick={() => nav(PATH.routineMain)}>운동하기</HomeButton>
       <HomeButton onClick={() => nav(PATH.checkRoutine)}>
         최근 루틴 조회
@@ -18,10 +19,16 @@ export default function Home() {
   );
 }
 
+const LogoStyled = styled.div`
+  width: 100px;
+  height: 50px;
+  background-color: yellow;
+  margin: 100px 0px 80px;
+`;
+
 const HomeWrapper = styled(PageWrapper)`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
 `;
 
@@ -33,4 +40,5 @@ const HomeButton = styled.button`
   border: none;
   outline: none;
   border-radius: 16px;
+  background-color: white;
 `;
