@@ -25,7 +25,7 @@ export default function ModalPortal({
 const ModalWrapper = styled.section<{ $background?: string }>`
   width: 100vw;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: fixed;
   background-color: ${(props) => props.$background ?? "rgba(0,0,0,0.4)"};
   top: 0;
