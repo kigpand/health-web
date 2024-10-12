@@ -2,13 +2,14 @@ import { PATH } from "@/enum/path";
 import { PageWrapper } from "@/styles/PageStyle";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import LOGO from "@/assets/logo.png";
 
 export default function Home() {
   const nav = useNavigate();
 
   return (
     <HomeWrapper>
-      <LogoStyled>logo</LogoStyled>
+      <LogoStyled src={LOGO} alt="logo" />
       <HomeButton onClick={() => nav(PATH.routineMain)}>운동하기</HomeButton>
       <HomeButton onClick={() => nav(PATH.checkRoutine)}>
         최근 루틴 조회
@@ -19,11 +20,10 @@ export default function Home() {
   );
 }
 
-const LogoStyled = styled.div`
-  width: 100px;
-  height: 50px;
-  background-color: yellow;
-  margin: 100px 0px 80px;
+const LogoStyled = styled.img`
+  height: 150px;
+  object-fit: contain;
+  margin: 100px 0px 30px 0px;
 `;
 
 const HomeWrapper = styled(PageWrapper)`
