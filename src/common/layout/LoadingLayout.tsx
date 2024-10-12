@@ -13,12 +13,15 @@ import RoutineEdit from "@/pages/RoutineEdit";
 import RoutineFinish from "@/pages/RoutineFinish";
 import RoutinePlay from "@/pages/RoutinePlay";
 import LoadingSpinner from "../LoadingSpinner";
+import useLogin from "@/hook/useLogin";
 
 export default function LoadingLayout() {
   const isFetching = useIsFetching();
+  const { loginState } = useLogin();
 
   return (
     <BrowserRouter>
+      {loginState === true && <Login />}
       {isFetching > 0 && <LoadingSpinner />}
       <Routes>
         <Route path={PATH.home} element={<Home />} />
