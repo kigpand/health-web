@@ -43,7 +43,7 @@ export default function AddRoutineBody() {
     if (title === "") return setErrTitle("제목을 입력해주세요");
     if (categoryChange === "") return setErrCategory("카테고리를 선택해주세요");
     addRoutine({
-      id: routine[routine?.length - 1].id + 1,
+      id: routine.length === 0 ? 0 : routine[routine?.length - 1].id + 1,
       title,
       category: categoryChange,
       routine: exercise,
