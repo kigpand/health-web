@@ -18,6 +18,7 @@ export default function MainBody({ category }: Props) {
   return (
     <BodyWrapper>
       <Select
+        width="100%"
         placeholder={category[0].category}
         values={category.map((item) => item.category)}
         handleChangeSelect={(select) => setSelectCategory(select)}
