@@ -14,6 +14,7 @@ import RoutineFinish from "@/pages/RoutineFinish";
 import RoutinePlay from "@/pages/RoutinePlay";
 import LoadingSpinner from "../LoadingSpinner";
 import useLogin from "@/hook/useLogin";
+import Calendar from "@/pages/Calendar";
 
 export default function LoadingLayout() {
   const isFetching = useIsFetching();
@@ -34,6 +35,7 @@ export default function LoadingLayout() {
         <Route path={PATH.checkRoutine} element={<CheckRoutine />} />
         <Route path={PATH.routineEdit} element={<RoutineEdit />} />
         <Route path={PATH.category} element={<Category />} />
+        <Route path={PATH.calendar} element={<Calendar />} />
         <Route path={PATH.error} element={<Error />} />
         <Route path="*" element={<Main />} />
       </Routes>

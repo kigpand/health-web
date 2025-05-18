@@ -15,6 +15,9 @@ export default function Home() {
         최근 루틴 조회
       </HomeButton>
       <HomeButton onClick={() => nav(PATH.routineEdit)}>루틴 편집</HomeButton>
+      <HomeButton onClick={() => nav(PATH.calendar)}>
+        운동 캘린더 조회
+      </HomeButton>
       <HomeButton onClick={() => nav(PATH.category)}>카테고리 편집</HomeButton>
     </HomeWrapper>
   );

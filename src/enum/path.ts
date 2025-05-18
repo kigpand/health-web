@@ -10,6 +10,7 @@ export enum PATH {
   checkRoutine = "/checkRoutine",
   routineEdit = "/routineEdit",
   category = "/category",
+  calendar = "/calendar",
   error = "/error",
 }
 
