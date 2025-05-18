@@ -62,6 +62,7 @@ export default function AddRoutineBody() {
       />
       <SelectWrapper>
         <LabelSelect
+          width="100%"
           label="카테고리"
           placeholder="카테고리"
           values={category?.map((item) => item.category) ?? []}
