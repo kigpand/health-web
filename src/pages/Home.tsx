@@ -2,8 +2,19 @@ import { PATH } from "@/enum/path";
 import { useNavigate } from "react-router-dom";
 import LOGO from "@/assets/logo.png";
 
+const ROUTE_ACTIONS = {
+  운동하기: PATH.routineMain,
+  "최근 루틴 조회": PATH.checkRoutine,
+  "루틴 편집": PATH.routineEdit,
+  "카테고리 편집": PATH.category,
+} as const;
+
 export default function Home() {
   const nav = useNavigate();
+
+  const handleNavClick = (label: keyof typeof ROUTE_ACTIONS) => {
+    nav(ROUTE_ACTIONS[label]);
+  };
 
   return (
     <div className="page_layout items-center gap-3">
@@ -12,22 +23,15 @@ export default function Home() {
         alt="logo"
         className="h-[150px] object-contain mt-[100px] mb-[30px]"
       />
-      <HomeButton
-        text="운동하기"
-        handleButtonClick={() => nav(PATH.routineMain)}
-      />
-      <HomeButton
-        text="최근 루틴 조회"
-        handleButtonClick={() => nav(PATH.checkRoutine)}
-      />
-      <HomeButton
-        text="루틴 편집"
-        handleButtonClick={() => nav(PATH.routineEdit)}
-      />
-      <HomeButton
-        text="카테고리 편집"
-        handleButtonClick={() => nav(PATH.category)}
-      />
+      {Object.entries(ROUTE_ACTIONS).map(([text]) => (
+        <HomeButton
+          key={text}
+          text={text}
+          handleButtonClick={() =>
+            handleNavClick(text as keyof typeof ROUTE_ACTIONS)
+          }
+        />
+      ))}
     </div>
   );
 }
