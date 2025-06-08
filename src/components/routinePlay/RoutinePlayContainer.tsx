@@ -1,11 +1,12 @@
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
-import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { FooterWrapper, PageWrapper } from "@/styles/PageStyle";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoutinePlayList from "./RoutinePlayList";
 import { Button } from "ji-design-system";
+import { HeaderWrapper } from "@/common/layout/HeaderWrapper";
 
 type Props = {
   id: string;

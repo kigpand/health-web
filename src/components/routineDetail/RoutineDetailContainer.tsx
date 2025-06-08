@@ -1,11 +1,12 @@
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
-import { HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { PageWrapper } from "@/styles/PageStyle";
 import TimerSetModal from "@components/modal/TimerSetModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoutineDetailContainerUl from "./RoutineDetailContainerUl";
+import { HeaderWrapper } from "@/common/layout/HeaderWrapper";
 
 export default function RoutineDetailContainer({ id }: { id: string }) {
   const { routineDetail } = useRoutineDetail(id);

@@ -1,5 +1,6 @@
+import { HeaderWrapper } from "@/common/layout/HeaderWrapper";
 import { PATH } from "@/enum/path";
-import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
+import { FooterWrapper, PageWrapper } from "@/styles/PageStyle";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 

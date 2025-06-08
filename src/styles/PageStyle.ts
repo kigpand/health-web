@@ -8,17 +8,6 @@ export const PageWrapper = styled.section`
   flex-direction: column;
 `;
 
-export const HeaderWrapper = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: white;
-  color: ${({ theme }) => theme.colors.secondary};
-  padding: 24px 0px;
-`;
-
 export const FooterWrapper = styled.footer`
   width: 100%;
   display: flex;

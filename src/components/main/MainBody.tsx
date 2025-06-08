@@ -1,9 +1,8 @@
 import { useRoutineByCategory } from "@/hook/quires/routine";
-import styled from "styled-components";
 import MainBodyItem from "./MainBodyItem";
 import { useState } from "react";
 import { CategoryType } from "@/types/CategoryType";
-import { Select } from "ji-design-system";
+import { SelectBox } from "@components/components/common/Selectbox";
 
 type Props = {
   category: CategoryType[];
@@ -16,26 +15,18 @@ export default function MainBody({ category }: Props) {
   const { routineByCategory } = useRoutineByCategory(selectCategory);
 
   return (
-    <BodyWrapper>
-      <Select
-        width="100%"
-        placeholder={category[0].category}
-        values={category.map((item) => item.category)}
-        handleChangeSelect={(select) => setSelectCategory(select)}
+    <ul className="grow flex flex-col items-center gap-4 px-4 py-6 overflow-auto">
+      <SelectBox
+        className="bg-white"
+        value={selectCategory}
+        options={category.map((item) => {
+          return { label: item.category, value: item.category };
+        })}
+        onChange={(select) => setSelectCategory(select)}
       />
       {routineByCategory?.map((routine) => {
         return <MainBodyItem key={routine._id} item={routine} />;
       })}
-    </BodyWrapper>
+    </ul>
   );
 }
-
-const BodyWrapper = styled.ul`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 16px;
-  overflow: auto;
-`;
