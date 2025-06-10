@@ -7,7 +7,7 @@ type Props = {
   item: RoutineListType;
 };
 
-export default function MainBodyItem({ item }: Props) {
+export default function RoutineMainBodyItem({ item }: Props) {
   const nav = useNavigate();
 
   function handleMoveToDetail() {

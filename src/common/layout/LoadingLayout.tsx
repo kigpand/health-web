@@ -7,7 +7,7 @@ import CheckRoutine from "@/pages/CheckRoutine";
 import Error from "@/pages/Error";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
-import Main from "@/pages/Main";
+import RoutineMain from "@/pages/RoutineMain";
 import RoutineDetail from "@/pages/RoutineDetail";
 import RoutineEdit from "@/pages/RoutineEdit";
 import RoutineFinish from "@/pages/RoutineFinish";
@@ -27,7 +27,7 @@ export default function LoadingLayout() {
         <Route path={PATH.home} element={<Home />} />
         <Route path={PATH.login} element={<Login />} />
         <Route path={PATH.addRoutine} element={<AddRoutine />} />
-        <Route path={PATH.routineMain} element={<Main />} />
+        <Route path={PATH.routineMain} element={<RoutineMain />} />
         <Route path={PATH.routineDetail} element={<RoutineDetail />} />
         <Route path={PATH.routinePlay} element={<RoutinePlay />} />
         <Route path={PATH.routineFinish} element={<RoutineFinish />} />
@@ -35,7 +35,7 @@ export default function LoadingLayout() {
         <Route path={PATH.routineEdit} element={<RoutineEdit />} />
         <Route path={PATH.category} element={<Category />} />
         <Route path={PATH.error} element={<Error />} />
-        <Route path="*" element={<Main />} />
+        <Route path="*" element={<RoutineMain />} />
       </Routes>
     </BrowserRouter>
   );

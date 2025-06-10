@@ -1,11 +1,11 @@
-import MainBody from "@components/main/MainBody";
-import MainFooter from "@components/main/MainFooter";
+import RoutineMainBody from "@components/routinemain/RoutineMainBody";
+import RoutineMainFooter from "@components/routinemain/RoutineMainFooter";
 import HomeButtonHeader from "@/common/layout/HomeButtonHeader";
 import { useCategory } from "@/hook/quires/category";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "@/enum/path";
 
-const Main = () => {
+const RoutineMain = () => {
   const { category } = useCategory();
   const nav = useNavigate();
 
@@ -26,10 +26,10 @@ const Main = () => {
   return (
     <section className="page_layout">
       <HomeButtonHeader title="오늘의 운동은?" />
-      {category && <MainBody category={category} />}
-      <MainFooter />
+      {category && <RoutineMainBody category={category} />}
+      <RoutineMainFooter />
     </section>
   );
 };
 
-export default Main;
+export default RoutineMain;
