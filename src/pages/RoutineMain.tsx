@@ -1,5 +1,5 @@
-import RoutineMainBody from "@components/routinemain/RoutineMainBody";
-import RoutineMainFooter from "@components/routinemain/RoutineMainFooter";
+import RoutineMainBody from "@components/routineMain/RoutineMainBody";
+import RoutineMainFooter from "@components/routineMain/RoutineMainFooter";
 import HomeButtonHeader from "@/common/layout/HomeButtonHeader";
 import { useCategory } from "@/hook/quires/category";
 import { useNavigate } from "react-router-dom";

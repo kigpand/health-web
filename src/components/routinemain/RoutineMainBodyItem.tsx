@@ -1,7 +1,6 @@
 import { PATH } from "@/enum/path";
 import { RoutineListType } from "@/types/Routine";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 type Props = {
   item: RoutineListType;
@@ -14,15 +13,12 @@ export default function RoutineMainBodyItem({ item }: Props) {
     nav(`${PATH.routineDetail}?id=${item.id}`);
   }
 
-  return <ItemWrapper onClick={handleMoveToDetail}>{item.title}</ItemWrapper>;
+  return (
+    <li
+      className="w-full py-4 bg-white text-black rounded-2xl font-bold text-center"
+      onClick={handleMoveToDetail}
+    >
+      {item.title}
+    </li>
+  );
 }
-
-const ItemWrapper = styled.li`
-  width: 100%;
-  padding: 16px 0;
-  background-color: white;
-  border-radius: 16px;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-`;
