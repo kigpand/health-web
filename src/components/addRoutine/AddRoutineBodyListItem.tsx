@@ -1,7 +1,6 @@
 import { RoutineDataType } from "@/types/Routine";
-import BodyListItemDetail from "@components/modal/BodyListItemDetail";
+import BodyListItemDetailModal from "@components/modal/BodyListItemDetailModal";
 import { useState } from "react";
-import styled from "styled-components";
 
 export default function AddRoutineBodyListItem(props: RoutineDataType) {
   const [isDetail, setIsDetail] = useState<boolean>(false);
@@ -9,23 +8,17 @@ export default function AddRoutineBodyListItem(props: RoutineDataType) {
   return (
     <>
       {isDetail && (
-        <BodyListItemDetail
+        <BodyListItemDetailModal
           {...props}
           handleCloseModal={() => setIsDetail(false)}
         />
       )}
-      <BodyListItemWrapper onClick={() => setIsDetail(true)}>
+      <li
+        className="py-3 px-2 rounded text-center font-bold bg-white cursor-pointer"
+        onClick={() => setIsDetail(true)}
+      >
         {props.title}
-      </BodyListItemWrapper>
+      </li>
     </>
   );
 }
-
-const BodyListItemWrapper = styled.li`
-  padding: 12px 8px;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: bold;
-  background-color: white;
-  cursor: pointer;
-`;
