@@ -1,7 +1,6 @@
 import { useDeleteCategory } from "@/hook/quires/category";
 import { useRoutineDeleteByCategory } from "@/hook/quires/routine";
 import { CategoryType } from "@/types/CategoryType";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
@@ -25,11 +24,11 @@ export default function DeleteCategoryModal({
   return (
     <TwoButtonModal
       component={
-        <Title>
+        <header className="font-bold leading-6">
           {category.category}를 삭제하시겠습니까?
           <br />
           카테고리에 등록된 루틴들도 삭제됩니다.
-        </Title>
+        </header>
       }
       primaryText="예"
       primaryEvent={handleDeleteButton}
@@ -39,8 +38,3 @@ export default function DeleteCategoryModal({
     />
   );
 }
-
-const Title = styled.header`
-  font-weight: bold;
-  line-height: 24px;
-`;
