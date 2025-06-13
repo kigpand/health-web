@@ -1,6 +1,5 @@
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 import { LabelInput } from "ji-design-system";
 
@@ -28,8 +27,8 @@ export default function RoutineEditModalUpdate({
   return (
     <TwoButtonModal
       component={
-        <EditUpdateWrapper>
-          <Title>루틴을 수정하세요</Title>
+        <div className="flex flex-col gap-5">
+          <label className="text-xl font-bold mb-2">루틴을 수정하세요</label>
           <LabelInput
             type="text"
             label="루틴 명"
@@ -70,7 +69,7 @@ export default function RoutineEditModalUpdate({
             defaultValue={routine.link ?? ""}
             onChange={(e) => setRoutine({ ...routine, link: e.target.value })}
           />
-        </EditUpdateWrapper>
+        </div>
       }
       primaryText="등록"
       primaryEvent={handleUpdateRoutineItem}
@@ -80,15 +79,3 @@ export default function RoutineEditModalUpdate({
     />
   );
 }
-
-const EditUpdateWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const Title = styled.header`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;

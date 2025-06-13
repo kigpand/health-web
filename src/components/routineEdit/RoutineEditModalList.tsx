@@ -1,5 +1,4 @@
 import { RoutineDataType } from "@/types/Routine";
-import styled from "styled-components";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { MdAutoFixHigh } from "react-icons/md";
 
@@ -17,50 +16,22 @@ export default function RoutineEditModalList({
   deleteRoutineItem,
 }: Props) {
   return (
-    <ListWrapper>
-      <Title>
+    <ul className="mt-5 py-1 border-t border-gray-300 flex flex-col">
+      <header className="text-lg font-bold mt-2 mb-5 flex justify-between">
         <span>루틴 리스트</span>
         <div onClick={handleAddRoutine}>+</div>
-      </Title>
+      </header>
       {routine.map((item, i) => {
         return (
-          <ListStyled key={i}>
+          <li key={i} className="flex mb-4 justify-between">
             <span>{item.title}</span>
-            <ButtonWrapper>
+            <div className="flex gap-1">
               <RiDeleteBin5Fill onClick={() => deleteRoutineItem(item)} />
               <MdAutoFixHigh onClick={() => handleUpdateRoutine(item)} />
-            </ButtonWrapper>
-          </ListStyled>
+            </div>
+          </li>
         );
       })}
-    </ListWrapper>
+    </ul>
   );
 }
-
-const ListWrapper = styled.ul`
-  margin-top: 20px;
-  padding: 5px 0px;
-  border-top: 1px solid lightgray;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Title = styled.header`
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0px 20px 0;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ListStyled = styled.li`
-  font-size: 15px;
-  display: flex;
-  margin-bottom: 15px;
-  justify-content: space-between;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-`;
