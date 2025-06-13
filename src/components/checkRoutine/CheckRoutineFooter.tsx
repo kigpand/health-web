@@ -1,9 +1,8 @@
-import { FooterWrapper } from "@/styles/PageStyle";
+import FooterWrapper from "@/common/layout/FooterWrapper";
 import { RecordType } from "@/types/RecordType";
 import CheckRoutineModal from "@components/modal/CheckRoutineModal";
 import { Button } from "ji-design-system";
 import { useState } from "react";
-import styled from "styled-components";
 
 type Props = {
   count: number;
@@ -13,7 +12,7 @@ type Props = {
 export default function CheckRoutineFooter(props: Props) {
   const [isCheckRoutine, setIsCheckRoutine] = useState<boolean>(false);
   return (
-    <CheckFooter>
+    <FooterWrapper className="p-4">
       <Button
         style={{ padding: "10px 20px" }}
         label="분석하기"
@@ -27,10 +26,6 @@ export default function CheckRoutineFooter(props: Props) {
           handleCloseModal={() => setIsCheckRoutine(false)}
         />
       )}
-    </CheckFooter>
+    </FooterWrapper>
   );
 }
-
-const CheckFooter = styled(FooterWrapper)`
-  padding: 16px;
-`;

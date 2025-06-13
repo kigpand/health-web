@@ -1,7 +1,6 @@
 import { RecordType } from "@/types/RecordType";
 import CheckRoutineListModal from "@components/modal/CheckRoutineListModal";
 import { useState } from "react";
-import styled from "styled-components";
 
 type Props = {
   record: RecordType;
@@ -17,18 +16,12 @@ export default function CheckRoutineBodyList({ record }: Props) {
           handleCloseModal={() => setIsDetail(false)}
         />
       )}
-      <ListStyled onClick={() => setIsDetail(true)}>{record.title}</ListStyled>
+      <li
+        className="w-full py-4 font-bold rounded-xl flex items-center justify-center bg-white"
+        onClick={() => setIsDetail(true)}
+      >
+        {record.title}
+      </li>
     </>
   );
 }
-
-const ListStyled = styled.li`
-  width: 100%;
-  padding: 16px 0px;
-  font-weight: bold;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-`;
