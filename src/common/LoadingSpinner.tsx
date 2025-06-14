@@ -1,34 +1,12 @@
 import ModalPortal from "@/ModalPortal";
-import styled, { keyframes } from "styled-components";
-
-const rotation = keyframes`
-    from{
-        transform: rotate(0deg);
-    }
-
-    to{
-        transform: rotate(360deg);
-    }
-
-`;
 
 export default function LoadingSpinner() {
   return (
     <ModalPortal
       background="rgba(255,255,255,0.3)"
-      component={<SpinnerStyled />}
+      component={
+        <div className="h-[60px] w-[60px] border-4 border-lightgray border-t-0 border-r-0 rounded-full my-4 mx-auto z-[100] animate-spin" />
+      }
     ></ModalPortal>
   );
 }
-
-const SpinnerStyled = styled.div`
-  height: 60px;
-  width: 60px;
-  border: 4px solid lightgray;
-  border-radius: 50%;
-  border-top: none;
-  border-right: none;
-  margin: 16px auto;
-  animation: ${rotation} 1s linear infinite;
-  z-index: 100;
-`;

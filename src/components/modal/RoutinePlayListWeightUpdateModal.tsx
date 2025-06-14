@@ -1,7 +1,6 @@
 import { useRoutineUpdate } from "@/hook/quires/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useState } from "react";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 import { Input } from "ji-design-system";
 
@@ -30,15 +29,17 @@ export default function RoutinePlayListWeightUpdateModal({
   return (
     <TwoButtonModal
       component={
-        <RoutinePlayWeightWrapper>
-          <Title>변경할 무게를 입력하세요.</Title>
+        <div className="flex flex-col gap-4">
+          <header className="text-lg font-bold">
+            변경할 무게를 입력하세요.
+          </header>
           <Input
             type="number"
             $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />
-        </RoutinePlayWeightWrapper>
+        </div>
       }
       primaryText="등록"
       primaryEvent={handleUpdateWeightButton}
@@ -48,14 +49,3 @@ export default function RoutinePlayListWeightUpdateModal({
     />
   );
 }
-
-const RoutinePlayWeightWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-`;
-
-const Title = styled.header`
-  font-size: 18px;
-  font-weight: bold;
-`;
