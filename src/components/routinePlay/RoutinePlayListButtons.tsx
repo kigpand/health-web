@@ -5,7 +5,6 @@ import { RoutineListType } from "@/types/Routine";
 import PlayTimerModal from "@components/modal/PlayTimerModal";
 import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 type Props = {
   count: number;
@@ -48,7 +47,7 @@ export default function RoutinePlayListButton({
   }
 
   return (
-    <ButtonWrapper>
+    <div className="w-[150px] flex flex-col gap-2 mt-7">
       {routineDetail.routine[currentRoutine].set !== count && (
         <Button
           size="LG"
@@ -80,14 +79,6 @@ export default function RoutinePlayListButton({
       {onTimer && (
         <PlayTimerModal time={time} handleCloseModal={handleNextSet} />
       )}
-    </ButtonWrapper>
+    </div>
   );
 }
-
-const ButtonWrapper = styled.div`
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 30px;
-`;

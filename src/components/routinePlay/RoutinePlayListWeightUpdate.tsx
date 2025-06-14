@@ -1,7 +1,6 @@
 import { RoutineListType } from "@/types/Routine";
 import RoutinePlayListWeightUpdateModal from "@components/modal/RoutinePlayListWeightUpdateModal";
 import { useState } from "react";
-import styled from "styled-components";
 
 type Props = {
   currentRoutine: number;
@@ -14,9 +13,12 @@ export default function RoutinePlayListWeightUpdate({
 }: Props) {
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
-    <WeightUpdateWrapper>
-      <label>무게:</label>
-      <span onClick={() => setOpenModal(true)}>
+    <div className="flex gap-2 text-xl">
+      <label className="font-bold">무게:</label>
+      <span
+        className="text-xl font-bold text-[#0600ad]"
+        onClick={() => setOpenModal(true)}
+      >
         {routineDetail.routine[currentRoutine].kg}kg
       </span>
       {openModal && (
@@ -26,22 +28,6 @@ export default function RoutinePlayListWeightUpdate({
           handleCloseModal={() => setOpenModal(false)}
         />
       )}
-    </WeightUpdateWrapper>
+    </div>
   );
 }
-
-const WeightUpdateWrapper = styled.div`
-  display: flex;
-  gap: 8px;
-  font-size: 20px;
-
-  label {
-    font-weight: bold;
-  }
-
-  span {
-    font-size: 22px;
-    font-weight: bold;
-    color: #0600ad;
-  }
-`;

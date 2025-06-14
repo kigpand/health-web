@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import RoutinePlayListLinkNone from "./RoutinePlayListLinkNone";
 import { RoutineDataType } from "@/types/Routine";
 
@@ -8,31 +7,17 @@ type Props = {
 
 export default function RoutinePlayListLink({ currentRoutine }: Props) {
   return currentRoutine.link ? (
-    <LinkStyled>
-      <Label>참조 영상</Label>
-      <Link href={currentRoutine.link} target="_blank">
+    <div className="mt-5 mb-2 flex flex-col items-center gap-2">
+      <header className="font-bold">참조 영상</header>
+      <a
+        className="font-bold text-blue-400 underline"
+        href={currentRoutine.link}
+        target="_blank"
+      >
         {currentRoutine.link}
-      </Link>
-    </LinkStyled>
+      </a>
+    </div>
   ) : (
     <RoutinePlayListLinkNone />
   );
 }
-
-const LinkStyled = styled.div`
-  margin: 20px 0px 10px 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`;
-
-const Label = styled.header`
-  font-weight: bold;
-`;
-
-const Link = styled.a`
-  font-weight: bold;
-  color: blue;
-  text-decoration: underline;
-`;
