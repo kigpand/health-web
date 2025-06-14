@@ -1,7 +1,6 @@
 import { RoutineDataType, RoutineListType } from "@/types/Routine";
 import RoutineEditModalList from "@components/routineEdit/RoutineEditModalList";
 import { useState } from "react";
-import styled from "styled-components";
 import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
 import { useRoutineUpdate } from "@/hook/quires/routine";
@@ -75,7 +74,7 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     <TwoButtonModal
       component={
         <>
-          <Title>루틴 편집하기</Title>
+          <label className="font-bold mb-7 text-lg">루틴 편집하기</label>
           <LabelInput
             type="text"
             $width="250px"
@@ -105,9 +104,3 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
     />
   );
 }
-
-const Title = styled.header`
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-`;

@@ -2,7 +2,6 @@ import ModalPortal from "@/ModalPortal";
 import { RecordType } from "@/types/RecordType";
 import { Button } from "ji-design-system";
 import { useMemo } from "react";
-import styled from "styled-components";
 
 type Props = {
   count: number;
@@ -36,14 +35,16 @@ export default function CheckRoutineModal({
   return (
     <ModalPortal
       component={
-        <RoutineModal>
-          <Title>총 {count}일간 진행한 카테고리별 운동 횟수는</Title>
+        <article className="p-6 bg-white rounded-xl flex flex-col gap-2">
+          <label className="font-bold mb-5">
+            총 {count}일간 진행한 카테고리별 운동 횟수는
+          </label>
           {routine.map((item, i) => {
             return (
-              <ModalBody key={i}>
+              <div key={i} className="w-full flex justify-between">
                 <div>{item.category}: </div>
                 <div>{item.count}회</div>
-              </ModalBody>
+              </div>
             );
           })}
           <Button
@@ -53,29 +54,9 @@ export default function CheckRoutineModal({
             label="확인"
             onClick={handleCloseModal}
           />
-        </RoutineModal>
+        </article>
       }
       handleCloseModal={handleCloseModal}
     />
   );
 }
-
-const RoutineModal = styled.article`
-  padding: 24px;
-  background-color: white;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const Title = styled.div`
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-const ModalBody = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;

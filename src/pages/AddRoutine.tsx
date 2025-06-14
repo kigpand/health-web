@@ -1,12 +1,11 @@
-import { PageWrapper } from "@/styles/PageStyle";
+import { HeaderWrapper } from "@/common/layout/HeaderWrapper";
 import AddRoutineBody from "@components/addRoutine/AddRoutineBody";
-import AddRoutineHeader from "@components/addRoutine/AddRoutineHeader";
 
 export default function AddRoutine() {
   return (
-    <PageWrapper>
-      <AddRoutineHeader />
+    <section className="page_layout bg-secondary">
+      <HeaderWrapper>루틴 추가</HeaderWrapper>
       <AddRoutineBody />
-    </PageWrapper>
+    </section>
   );
 }

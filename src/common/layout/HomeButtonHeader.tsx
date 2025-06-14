@@ -1,8 +1,7 @@
 import { PATH } from "@/enum/path";
-import { HeaderWrapper } from "@/styles/PageStyle";
 import { FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { HeaderWrapper } from "./HeaderWrapper";
 
 export default function HomeButtonHeader({ title }: { title: string }) {
   const nav = useNavigate();
@@ -10,13 +9,10 @@ export default function HomeButtonHeader({ title }: { title: string }) {
   return (
     <HeaderWrapper>
       <span>{title}</span>
-      <HomeButton onClick={() => nav(PATH.home)} />
+      <FaHome
+        className="absolute right-[10px] text-xl"
+        onClick={() => nav(PATH.home)}
+      />
     </HeaderWrapper>
   );
 }
-
-const HomeButton = styled(FaHome)`
-  position: absolute;
-  right: 10px;
-  font-size: 20px;
-`;

@@ -1,7 +1,6 @@
 import { useCategory } from "@/hook/quires/category";
 import { RoutineDataType } from "@/types/Routine";
 import { ChangeEvent, useState } from "react";
-import styled from "styled-components";
 import { useAddRoutine, useRoutine } from "@/hook/quires/routine";
 import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
 import AddRoutineBodyFooter from "./AddRoutineBodyFooter";
@@ -51,7 +50,7 @@ export default function AddRoutineBody() {
   }
 
   return (
-    <BodyWrapper>
+    <article className="w-full p-6 flex flex-col gap-6">
       <LabelInput
         type="text"
         label="루틴 제목"
@@ -60,38 +59,24 @@ export default function AddRoutineBody() {
         errortext={errTitle}
         onChange={handleChangeTitle}
       />
-      <SelectWrapper>
+      <div className="relative">
         <LabelSelect
+          width="100%"
           label="카테고리"
           placeholder="카테고리"
           values={category?.map((item) => item.category) ?? []}
           handleChangeSelect={handleChangeCategory}
         />
-        {errCategory && <ErrText>{errCategory}</ErrText>}
-      </SelectWrapper>
+        {errCategory && (
+          <p className="mt-1 absolute text-[10px] text-red-700">
+            {errCategory}
+          </p>
+        )}
+      </div>
       {exercise.length > 0 && <AddRoutineBodyList exercise={exercise} />}
       <AddRoutineBodyAddButton handleAddExercise={handleAddExercise} />
       <AddRoutineBodyFooter handleAddRoutine={handleAddRoutine} />
       {addRoutineSuccess && <AddRoutineSuccessModal />}
-    </BodyWrapper>
+    </article>
   );
 }
-
-const BodyWrapper = styled.main`
-  width: 100%;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const SelectWrapper = styled.div`
-  position: relative;
-`;
-
-const ErrText = styled.div`
-  margin-top: 4px;
-  position: absolute;
-  font-size: 10px;
-  color: red;
-`;

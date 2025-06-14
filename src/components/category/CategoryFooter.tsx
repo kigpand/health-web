@@ -1,33 +1,20 @@
-import { FooterWrapper } from "@/styles/PageStyle";
+import FooterWrapper from "@/common/layout/FooterWrapper";
 import AddCategoryModal from "@components/modal/AddCategoryModal";
 import { useState } from "react";
-import styled from "styled-components";
 
 export default function CategoryFooter() {
   const [isAddCategory, setIsAddCategory] = useState<boolean>(false);
   return (
-    <Footer>
-      <ButtonWrapper onClick={() => setIsAddCategory(true)}>
+    <FooterWrapper className="py-3">
+      <button
+        className="outline-none border-none bg-white py-2 w-4/5 rounded-xl cursor-pointer font-bold"
+        onClick={() => setIsAddCategory(true)}
+      >
         카테고리 추가
-      </ButtonWrapper>
+      </button>
       {isAddCategory && (
         <AddCategoryModal handleCloseModal={() => setIsAddCategory(false)} />
       )}
-    </Footer>
+    </FooterWrapper>
   );
 }
-
-const Footer = styled(FooterWrapper)`
-  padding: 12px 0px;
-`;
-
-const ButtonWrapper = styled.button`
-  outline: none;
-  border: none;
-  background-color: white;
-  padding: 10px 0px;
-  width: 80%;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-`;

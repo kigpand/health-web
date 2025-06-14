@@ -1,44 +1,53 @@
 import { PATH } from "@/enum/path";
-import { PageWrapper } from "@/styles/PageStyle";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import LOGO from "@/assets/logo.png";
+
+const ROUTE_ACTIONS = {
+  운동하기: PATH.routineMain,
+  "최근 루틴 조회": PATH.checkRoutine,
+  "루틴 편집": PATH.routineEdit,
+  "카테고리 편집": PATH.category,
+} as const;
 
 export default function Home() {
   const nav = useNavigate();
 
+  const handleNavClick = (label: keyof typeof ROUTE_ACTIONS) => {
+    nav(ROUTE_ACTIONS[label]);
+  };
+
   return (
-    <HomeWrapper>
-      <LogoStyled src={LOGO} alt="logo" />
-      <HomeButton onClick={() => nav(PATH.routineMain)}>운동하기</HomeButton>
-      <HomeButton onClick={() => nav(PATH.checkRoutine)}>
-        최근 루틴 조회
-      </HomeButton>
-      <HomeButton onClick={() => nav(PATH.routineEdit)}>루틴 편집</HomeButton>
-      <HomeButton onClick={() => nav(PATH.category)}>카테고리 편집</HomeButton>
-    </HomeWrapper>
+    <div className="page_layout items-center gap-3">
+      <img
+        src={LOGO}
+        alt="logo"
+        className="h-[150px] object-contain mt-[100px] mb-[30px]"
+      />
+      {Object.entries(ROUTE_ACTIONS).map(([text]) => (
+        <HomeButton
+          key={text}
+          text={text}
+          handleButtonClick={() =>
+            handleNavClick(text as keyof typeof ROUTE_ACTIONS)
+          }
+        />
+      ))}
+    </div>
   );
 }
 
-const LogoStyled = styled.img`
-  height: 150px;
-  object-fit: contain;
-  margin: 100px 0px 30px 0px;
-`;
+type ButtonProps = {
+  text: string;
+  handleButtonClick: () => void;
+};
 
-const HomeWrapper = styled(PageWrapper)`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-`;
-
-const HomeButton = styled.button`
-  width: 90%;
-  padding: 16px 0px;
-  font-weight: bold;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  border-radius: 16px;
-  background-color: white;
-`;
+function HomeButton({ text, handleButtonClick }: ButtonProps) {
+  return (
+    <button
+      className="w-[90%] py-4 font-bold text-lg border-none outline-none rounded-2xl bg-white"
+      onClick={handleButtonClick}
+    >
+      {text}
+    </button>
+  );
+}

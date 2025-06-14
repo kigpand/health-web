@@ -1,7 +1,6 @@
 import { PATH } from "@/enum/path";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
@@ -21,14 +20,15 @@ export default function TimerSetModal({ id, handleCloseModal }: Props) {
   return (
     <TwoButtonModal
       component={
-        <TimerWrapper>
-          <label>타이머를 설정해주세요</label>
-          <InputWrapper
+        <div className="flex flex-col gap-2 w-full">
+          <label className="font-bold">타이머를 설정해주세요</label>
+          <input
+            className="h-[30px] border border-gray-400 outline-none"
             type="number"
             maxLength={1000}
             onChange={(e) => setTimer(Number(e.target.value))}
           />
-        </TimerWrapper>
+        </div>
       }
       primaryText="시작"
       primaryEvent={handleStart}
@@ -38,20 +38,3 @@ export default function TimerSetModal({ id, handleCloseModal }: Props) {
     />
   );
 }
-
-const TimerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-
-  label {
-    font-weight: bold;
-  }
-`;
-
-const InputWrapper = styled.input`
-  height: 30px;
-  border: 1px solid lightgray;
-  outline: none;
-`;

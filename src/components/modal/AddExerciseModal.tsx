@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 import { LabelInput } from "ji-design-system";
 
@@ -49,8 +48,8 @@ export default function AddExerciseModal({
   return (
     <TwoButtonModal
       component={
-        <ExerciseModalWrapper>
-          <header>운동 추가</header>
+        <div className="flex flex-col gap-4">
+          <header className="text-lg font-bold">운동 추가</header>
           <LabelInput
             type="text"
             label="제목"
@@ -81,7 +80,7 @@ export default function AddExerciseModal({
             placeholder="링크"
             onChange={(e) => setLink(e.target.value)}
           />
-        </ExerciseModalWrapper>
+        </div>
       }
       primaryText="등록"
       primaryEvent={() => handleAddButton(title, kg, set, link)}
@@ -91,14 +90,3 @@ export default function AddExerciseModal({
     />
   );
 }
-
-const ExerciseModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-
-  header {
-    font-size: 18px;
-    font-weight: bold;
-  }
-`;
