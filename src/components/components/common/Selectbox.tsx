@@ -22,6 +22,7 @@ type Props = {
   labelClassName?: string;
   contentClassName?: string;
   itemClassName?: string;
+  triggerClassName?: string;
 };
 
 export function SelectBox({
@@ -34,16 +35,17 @@ export function SelectBox({
   labelClassName,
   contentClassName,
   itemClassName,
+  triggerClassName,
 }: Props) {
   return (
     <div className={cn("flex flex-col gap-1 w-full rounded-md", className)}>
       {label && (
-        <label className={cn("text-sm font-medium", labelClassName)}>
+        <label className={cn("text-xs font-bold", labelClassName)}>
           {label}
         </label>
       )}
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="w-full">
+        <SelectTrigger className={cn("w-full", triggerClassName)}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent className={contentClassName}>
