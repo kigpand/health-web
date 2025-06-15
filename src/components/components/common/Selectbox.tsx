@@ -23,6 +23,7 @@ type Props = {
   contentClassName?: string;
   itemClassName?: string;
   triggerClassName?: string;
+  error?: string;
 };
 
 export function SelectBox({
@@ -36,6 +37,7 @@ export function SelectBox({
   contentClassName,
   itemClassName,
   triggerClassName,
+  error,
 }: Props) {
   return (
     <div className={cn("flex flex-col gap-1 w-full rounded-md", className)}>
@@ -60,6 +62,9 @@ export function SelectBox({
           ))}
         </SelectContent>
       </Select>
+      <p className="error_text mt-1 min-h-[20px]">
+        {error ? error : "\u00A0" /* 공백으로 자리유지 */}
+      </p>
     </div>
   );
 }

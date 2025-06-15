@@ -67,9 +67,9 @@ export default function AddRoutineBody() {
               return { label: item.category, value: item.category };
             })}
             onChange={(select) => setSelectCategory(select)}
+            error={errCategory}
           />
         )}
-        {errCategory !== "" && <div>카테고리를 등록해주세요</div>}
       </div>
       {exercise.length > 0 && <AddRoutineBodyList exercise={exercise} />}
       <AddRoutineBodyAddButton handleAddExercise={handleAddExercise} />
