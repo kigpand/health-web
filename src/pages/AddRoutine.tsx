@@ -3,7 +3,7 @@ import AddRoutineBody from "@components/addRoutine/AddRoutineBody";
 
 export default function AddRoutine() {
   return (
-    <section className="page_layout bg-secondary">
+    <section className="page_layout">
       <HeaderWrapper>루틴 추가</HeaderWrapper>
       <AddRoutineBody />
     </section>

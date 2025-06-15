@@ -16,7 +16,7 @@ export default function AddRoutineBodyAddButton({ handleAddExercise }: Props) {
   return (
     <>
       <button
-        className="border border-black outline-none bg-white h-[35px]"
+        className="border-none outline-none bg-white h-[35px] rounded-md"
         onClick={() => setAddExer(true)}
       >
         <span>운동 추가 +</span>

@@ -6,8 +6,8 @@ import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
 import AddRoutineBodyFooter from "./AddRoutineBodyFooter";
 import AddRoutineBodyAddButton from "./AddRoutineBodyAddButton";
 import AddRoutineBodyList from "./AddRoutineBodyList";
-import { LabelInput } from "ji-design-system";
 import { SelectBox } from "@components/components/common/Selectbox";
+import { InputField } from "@components/components/common/InputField";
 
 export default function AddRoutineBody() {
   const { routine } = useRoutine();
@@ -48,19 +48,29 @@ export default function AddRoutineBody() {
   }
 
   return (
-    <article className="w-full p-6 flex flex-col gap-6">
-      <LabelInput
+    <article className="w-full p-6 flex flex-col gap-4">
+      {/* <LabelInput
         type="text"
         label="루틴 제목"
         $width="100%"
         placeholder="...제목"
         errortext={errTitle}
         onChange={handleChangeTitle}
+      /> */}
+      <InputField
+        type="text"
+        label="루틴 제목"
+        labelClassName="text-white"
+        placeholder="...제목"
+        className="bg-white"
+        error={errTitle}
+        onChange={handleChangeTitle}
       />
       <div className="relative">
         {category && (
           <SelectBox
             label="카테고리"
+            labelClassName="text-white"
             value={selectCategory}
             triggerClassName="bg-white"
             options={category?.map((item) => {

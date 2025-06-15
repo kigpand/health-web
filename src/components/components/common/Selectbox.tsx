@@ -42,9 +42,7 @@ export function SelectBox({
   return (
     <div className={cn("flex flex-col gap-1 w-full rounded-md", className)}>
       {label && (
-        <label className={cn("text-xs font-bold", labelClassName)}>
-          {label}
-        </label>
+        <label className={cn("label_text", labelClassName)}>{label}</label>
       )}
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger className={cn("w-full", triggerClassName)}>

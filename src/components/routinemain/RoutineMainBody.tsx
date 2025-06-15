@@ -17,8 +17,8 @@ export default function RoutineMainBody({ category }: Props) {
   return (
     <ul className="grow flex flex-col items-center gap-4 px-4 py-6 overflow-auto">
       <SelectBox
-        className="bg-white"
         value={selectCategory}
+        triggerClassName="bg-white"
         options={category.map((item) => {
           return { label: item.category, value: item.category };
         })}
