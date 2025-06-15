@@ -6,26 +6,24 @@ import AddRoutineSuccessModal from "@components/modal/AddRoutineSuccessModal";
 import AddRoutineBodyFooter from "./AddRoutineBodyFooter";
 import AddRoutineBodyAddButton from "./AddRoutineBodyAddButton";
 import AddRoutineBodyList from "./AddRoutineBodyList";
-import { LabelInput, LabelSelect } from "ji-design-system";
+import { LabelInput } from "ji-design-system";
+import { SelectBox } from "@components/components/common/Selectbox";
 
 export default function AddRoutineBody() {
   const { routine } = useRoutine();
   const { category } = useCategory();
   const [title, setTitle] = useState<string>("");
-  const [categoryChange, setCategoryChange] = useState<string>("");
   const [errTitle, setErrTitle] = useState<string>("");
   const [errCategory, setErrCategory] = useState<string>("");
   const [exercise, setExercise] = useState<RoutineDataType[]>([]);
   const { addRoutine, addRoutineSuccess } = useAddRoutine();
+  const [selectCategory, setSelectCategory] = useState<string>(
+    category ? category[0].category : ""
+  );
 
   function handleChangeTitle(e: ChangeEvent<HTMLInputElement>) {
     if (errTitle !== "") setErrTitle("");
     setTitle(e.target.value);
-  }
-
-  function handleChangeCategory(text: string) {
-    if (errCategory !== "") setErrCategory("");
-    setCategoryChange(text);
   }
 
   function handleAddExercise(
@@ -40,11 +38,11 @@ export default function AddRoutineBody() {
   function handleAddRoutine() {
     if (!routine) return;
     if (title === "") return setErrTitle("제목을 입력해주세요");
-    if (categoryChange === "") return setErrCategory("카테고리를 선택해주세요");
+    if (selectCategory === "") return setErrCategory("카테고리를 선택해주세요");
     addRoutine({
       id: routine.length === 0 ? 0 : routine[routine?.length - 1].id + 1,
       title,
-      category: categoryChange,
+      category: selectCategory,
       routine: exercise,
     });
   }
@@ -60,18 +58,18 @@ export default function AddRoutineBody() {
         onChange={handleChangeTitle}
       />
       <div className="relative">
-        <LabelSelect
-          width="100%"
-          label="카테고리"
-          placeholder="카테고리"
-          values={category?.map((item) => item.category) ?? []}
-          handleChangeSelect={handleChangeCategory}
-        />
-        {errCategory && (
-          <p className="mt-1 absolute text-[10px] text-red-700">
-            {errCategory}
-          </p>
+        {category && (
+          <SelectBox
+            label="카테고리"
+            value={selectCategory}
+            triggerClassName="bg-white"
+            options={category?.map((item) => {
+              return { label: item.category, value: item.category };
+            })}
+            onChange={(select) => setSelectCategory(select)}
+          />
         )}
+        {errCategory !== "" && <div>카테고리를 등록해주세요</div>}
       </div>
       {exercise.length > 0 && <AddRoutineBodyList exercise={exercise} />}
       <AddRoutineBodyAddButton handleAddExercise={handleAddExercise} />
