@@ -20,7 +20,7 @@ export default function RoutinePlayList({
   const [count, setCount] = useState<number>(0);
 
   return (
-    <article className="grow flex flex-col items-center justify-center gap-2">
+    <article className="grow flex flex-col items-center justify-center gap-2 text-white">
       <p className="text-center text-2xl font-bold mb-5 leading-8">
         이번 운동은
         <br /> {routineDetail.routine[currentRoutine].title}입니다.
