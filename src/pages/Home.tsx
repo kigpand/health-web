@@ -1,6 +1,6 @@
 import { PATH } from "@/enum/path";
 import { useNavigate } from "react-router-dom";
-import LOGO from "@/assets/logo.png";
+import LOGO from "../assets/logo.png";
 
 const ROUTE_ACTIONS = {
   운동하기: PATH.routineMain,
