@@ -9,7 +9,7 @@ export default function CheckRoutine() {
   const { record } = useRecord(count);
 
   return (
-    <section className="page_layout bg-secondary">
+    <section className="page_layout">
       <HomeButtonHeader title="최근 루틴 조회" />
       {record && (
         <CheckRoutineBody
