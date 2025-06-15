@@ -118,6 +118,10 @@
   .error_text {
     @apply text-red-500 font-semibold text-xs;
   }
+
+  .label_text {
+    @apply text-xs font-bold;
+  }
 }
 
 @layer base {
