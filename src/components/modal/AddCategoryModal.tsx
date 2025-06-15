@@ -1,7 +1,8 @@
 import ModalPortal from "@/ModalPortal";
 import { useAddCategory } from "@/hook/quires/category";
 import { getDuplCategory } from "@/service/category";
-import { Button, Input } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
+import { Button } from "ji-design-system";
 import { useState } from "react";
 
 type Props = {
@@ -28,9 +29,8 @@ export default function AddCategoryModal({ handleCloseModal }: Props) {
       component={
         <article className="w-[300px] p-6 bg-white rounded-xl flex flex-col gap-5">
           <div className="font-bold">추가할 카테고리를 입력해주세요</div>
-          <Input
+          <InputField
             type="text"
-            $width="100%"
             placeholder="카테고리..."
             onChange={(e) => setCategory(e.target.value)}
           />

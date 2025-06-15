@@ -49,14 +49,6 @@ export default function AddRoutineBody() {
 
   return (
     <article className="w-full p-6 flex flex-col gap-4">
-      {/* <LabelInput
-        type="text"
-        label="루틴 제목"
-        $width="100%"
-        placeholder="...제목"
-        errortext={errTitle}
-        onChange={handleChangeTitle}
-      /> */}
       <InputField
         type="text"
         label="루틴 제목"

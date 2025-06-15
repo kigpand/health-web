@@ -5,7 +5,7 @@ import RoutineEditModalAdd from "./RoutineEditModalAdd";
 import RoutineEditModalUpdate from "./RoutineEditModalUpdate";
 import { useRoutineUpdate } from "@/hook/quires/routine";
 import TwoButtonModal from "./TwoButtonModal";
-import { LabelInput } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
 
 type Props = {
   routine: RoutineListType;
@@ -75,13 +75,12 @@ export default function RoutineEditModal({ routine, handleCloseModal }: Props) {
       component={
         <>
           <label className="font-bold mb-7 text-lg">루틴 편집하기</label>
-          <LabelInput
+          <InputField
             type="text"
-            $width="250px"
             placeholder="운동 명"
             defaultValue={routine.title}
             label="운동 명"
-            errortext={editRoutine.title === "" ? "운동 명을 적어주세요" : ""}
+            error={editRoutine.title === "" ? "운동 명을 적어주세요" : ""}
             onChange={(e) =>
               setEditRoutine({ ...editRoutine, title: e.target.value })
             }
