@@ -114,6 +114,14 @@
   .page_layout {
     @apply w-screen h-screen flex flex-col bg-primary;
   }
+
+  .error_text {
+    @apply text-red-500 font-semibold text-xs;
+  }
+
+  .label_text {
+    @apply text-xs font-bold;
+  }
 }
 
 @layer base {

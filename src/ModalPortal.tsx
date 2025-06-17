@@ -14,7 +14,7 @@ export default function ModalPortal({
 }: Props) {
   return createPortal(
     <section
-      className={`w-screen h-full min-h-dvh fixed bg-black/40 top-0 flex items-center justify-center ${background}`}
+      className={`w-screen h-full min-h-dvh fixed bg-transparent top-0 flex items-center justify-center ${background}`}
     >
       {component}
       <div

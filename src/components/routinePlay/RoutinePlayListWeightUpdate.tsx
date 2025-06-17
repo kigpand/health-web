@@ -16,7 +16,7 @@ export default function RoutinePlayListWeightUpdate({
     <div className="flex gap-2 text-xl">
       <label className="font-bold">무게:</label>
       <span
-        className="text-xl font-bold text-[#0600ad]"
+        className="text-xl font-bold text-[#655fff]"
         onClick={() => setOpenModal(true)}
       >
         {routineDetail.routine[currentRoutine].kg}kg

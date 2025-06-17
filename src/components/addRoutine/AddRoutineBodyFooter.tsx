@@ -10,7 +10,7 @@ export default function AddRoutineBodyFooter({ handleAddRoutine }: Props) {
   const nav = useNavigate();
 
   return (
-    <footer className="flex justify-center gap-3">
+    <footer className="flex justify-center gap-3 mt-4">
       <Button
         label="등록"
         func="primary"

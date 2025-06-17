@@ -2,6 +2,7 @@ import { PATH } from "@/enum/path";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TwoButtonModal from "./TwoButtonModal";
+import { InputField } from "@components/components/common/InputField";
 
 type Props = {
   id: string;
@@ -22,8 +23,7 @@ export default function TimerSetModal({ id, handleCloseModal }: Props) {
       component={
         <div className="flex flex-col gap-2 w-full">
           <label className="font-bold">타이머를 설정해주세요</label>
-          <input
-            className="h-[30px] border border-gray-400 outline-none"
+          <InputField
             type="number"
             maxLength={1000}
             onChange={(e) => setTimer(Number(e.target.value))}

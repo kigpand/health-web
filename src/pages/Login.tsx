@@ -1,6 +1,7 @@
 import { PATH } from "@/enum/path";
 import useLogin from "@/hook/useLogin";
-import { Button, LabelInput } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
+import { Button } from "ji-design-system";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,14 +27,9 @@ const Login = () => {
   return (
     <section className="page_layout gap-2 p-6 items-center">
       <label className="text-3xl font-bold mt-[100px] mb-[30px]">Login</label>
-      <LabelInput
-        label="id"
-        $width="100%"
-        onChange={(e) => setId(e.target.value)}
-      />
-      <LabelInput
+      <InputField label="id" onChange={(e) => setId(e.target.value)} />
+      <InputField
         label="pw"
-        $width="100%"
         type="password"
         onChange={(e) => setPw(e.target.value)}
       />

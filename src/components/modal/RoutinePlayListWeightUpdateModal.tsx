@@ -2,7 +2,7 @@ import { useRoutineUpdate } from "@/hook/quires/routine";
 import { RoutineListType } from "@/types/Routine";
 import { useState } from "react";
 import TwoButtonModal from "./TwoButtonModal";
-import { Input } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
 
 type Props = {
   currentRoutine: number;
@@ -33,9 +33,8 @@ export default function RoutinePlayListWeightUpdateModal({
           <header className="text-lg font-bold">
             변경할 무게를 입력하세요.
           </header>
-          <Input
+          <InputField
             type="number"
-            $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />

@@ -1,6 +1,6 @@
 import { RecordType } from "@/types/RecordType";
-import { Select } from "ji-design-system";
 import CheckRoutineBodyList from "./CheckRoutineBodyList";
+import { SelectBox } from "@components/components/common/Selectbox";
 
 type Props = {
   count: number;
@@ -15,16 +15,20 @@ export default function CheckRoutineBody({
 }: Props) {
   return (
     <article className="grow p-4">
-      <div className="flex flex-col gap-2">
-        <label className="font-bold">조회할 루틴 일정을 설정해주세요.</label>
-        <Select
-          width="100%"
-          placeholder={String(count)}
-          values={["3", "5", "7", "10"]}
-          handleChangeSelect={(value) => handleChangeSelect(Number(value))}
-        />
-      </div>
-      <header className="text-center font-bold text-lg mt-[50px] mb-5">
+      <SelectBox
+        label="조회할 루틴 일정을 설정해주세요."
+        labelClassName="text-white"
+        value={String(count)}
+        triggerClassName="bg-white"
+        options={[
+          { label: "3", value: "3" },
+          { label: "5", value: "5" },
+          { label: "7", value: "7" },
+          { label: "10", value: "10" },
+        ]}
+        onChange={(select) => handleChangeSelect(Number(select))}
+      />
+      <header className="text-center font-bold text-lg text-white mt-[50px] mb-5">
         최근 {count}일간 루틴
       </header>
       <ul className="w-full gap-2 flex flex-col items-center justify-center">
