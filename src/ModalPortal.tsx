@@ -1,6 +1,5 @@
 import { createPortal } from "react-dom";
 import React from "react";
-import styled from "styled-components";
 
 type Props = {
   component: React.ReactNode;
@@ -14,35 +13,15 @@ export default function ModalPortal({
   handleCloseModal,
 }: Props) {
   return createPortal(
-    <ModalWrapper $background={background}>
+    <section
+      className={`w-screen h-full min-h-dvh fixed bg-transparent top-0 flex items-center justify-center ${background}`}
+    >
       {component}
-      <div className="back" onClick={handleCloseModal}></div>
-    </ModalWrapper>,
+      <div
+        className="absolute top-0 left-0 -z-10 w-full h-full hover:cursor-pointer"
+        onClick={handleCloseModal}
+      ></div>
+    </section>,
     document.getElementById("overlay-root")!
   );
 }
-
-const ModalWrapper = styled.section<{ $background?: string }>`
-  width: 100vw;
-  height: 100%;
-  min-height: 100dvh;
-  position: fixed;
-  background-color: ${(props) => props.$background ?? "rgba(0,0,0,0.4)"};
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-`;

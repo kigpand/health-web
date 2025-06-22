@@ -1,17 +1,15 @@
 import HomeButtonHeader from "@/common/layout/HomeButtonHeader";
 import { useRecord } from "@/hook/quires/record";
-import { PageWrapper } from "@/styles/PageStyle";
 import CheckRoutineBody from "@components/checkRoutine/CheckRoutineBody";
 import CheckRoutineFooter from "@components/checkRoutine/CheckRoutineFooter";
 import { useState } from "react";
-import styled from "styled-components";
 
 export default function CheckRoutine() {
   const [count, setCount] = useState<number>(3);
   const { record } = useRecord(count);
 
   return (
-    <CheckRoutineWrapper>
+    <section className="page_layout">
       <HomeButtonHeader title="최근 루틴 조회" />
       {record && (
         <CheckRoutineBody
@@ -21,11 +19,6 @@ export default function CheckRoutine() {
         />
       )}
       {record && <CheckRoutineFooter count={count} record={record} />}
-    </CheckRoutineWrapper>
+    </section>
   );
 }
-
-const CheckRoutineWrapper = styled(PageWrapper)`
-  display: flex;
-  flex-direction: column;
-`;

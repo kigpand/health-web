@@ -1,11 +1,10 @@
 import { PATH } from "@/enum/path";
 import { useRoutineDetail } from "@/hook/quires/routine";
-import { FooterWrapper, HeaderWrapper, PageWrapper } from "@/styles/PageStyle";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import RoutinePlayList from "./RoutinePlayList";
 import { Button } from "ji-design-system";
+import { HeaderWrapper } from "@/common/layout/HeaderWrapper";
 
 type Props = {
   id: string;
@@ -28,7 +27,7 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
   }
 
   return (
-    <PageWrapper>
+    <section className="page_layout">
       <HeaderWrapper>{isStart ? routineDetail?.title : "Play!"}</HeaderWrapper>
       {isStart && routineDetail ? (
         <RoutinePlayList
@@ -38,12 +37,12 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
           handleNextRoutine={handleNextRoutine}
         />
       ) : (
-        <ContainerWrapper>
-          <Title>
+        <article className="grow flex flex-col items-center justify-center gap-[60px]">
+          <p className="text-2xl font-bold text-white">
             선택한 루틴은
-            <span style={{ color: "red" }}> {routineDetail?.title}</span>입니다.
-          </Title>
-          <ButtonWrapper>
+            <span className="text-red-500"> {routineDetail?.title}</span>입니다.
+          </p>
+          <div className="flex flex-col gap-2 w-[150px]">
             <Button
               style={{ width: "100%" }}
               func="primary"
@@ -58,40 +57,15 @@ export default function RoutinePlayContainer({ id, timer }: Props) {
               size="MD"
               onClick={() => nav(PATH.routineMain)}
             />
-          </ButtonWrapper>
-        </ContainerWrapper>
+          </div>
+        </article>
       )}
-      <Footer onClick={handleCloseExercise}>운동 종료</Footer>
-    </PageWrapper>
+      <footer
+        className="bg-secondary font-bold text-lg py-4 flex items-center justify-center"
+        onClick={handleCloseExercise}
+      >
+        운동 종료
+      </footer>
+    </section>
   );
 }
-
-const ContainerWrapper = styled.article`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-`;
-
-const Title = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 150px;
-`;
-
-const Footer = styled(FooterWrapper)`
-  background-color: white;
-  padding: 20px 0px;
-  color: ${({ theme }) => theme.colors.secondary};
-  font-weight: bold;
-  font-size: 18px;
-`;

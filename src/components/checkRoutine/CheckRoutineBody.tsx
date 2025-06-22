@@ -1,7 +1,6 @@
-import styled from "styled-components";
 import { RecordType } from "@/types/RecordType";
-import { Select } from "ji-design-system";
 import CheckRoutineBodyList from "./CheckRoutineBodyList";
+import { SelectBox } from "@components/components/common/Selectbox";
 
 type Props = {
   count: number;
@@ -15,53 +14,28 @@ export default function CheckRoutineBody({
   handleChangeSelect,
 }: Props) {
   return (
-    <CheckBodyStyled>
-      <SelectWrapper>
-        <label>조회할 루틴 일정을 설정해주세요.</label>
-        <Select
-          width="100%"
-          placeholder={String(count)}
-          values={["3", "5", "7", "10"]}
-          handleChangeSelect={(value) => handleChangeSelect(Number(value))}
-        />
-      </SelectWrapper>
-      <BodyHeader>최근 {count}일간 루틴</BodyHeader>
-      <ListWrapper>
+    <article className="grow p-4">
+      <SelectBox
+        label="조회할 루틴 일정을 설정해주세요."
+        labelClassName="text-white"
+        value={String(count)}
+        triggerClassName="bg-white"
+        options={[
+          { label: "3", value: "3" },
+          { label: "5", value: "5" },
+          { label: "7", value: "7" },
+          { label: "10", value: "10" },
+        ]}
+        onChange={(select) => handleChangeSelect(Number(select))}
+      />
+      <header className="text-center font-bold text-lg text-white mt-[50px] mb-5">
+        최근 {count}일간 루틴
+      </header>
+      <ul className="w-full gap-2 flex flex-col items-center justify-center">
         {record?.map((item) => {
           return <CheckRoutineBodyList key={item._id} record={item} />;
         })}
-      </ListWrapper>
-    </CheckBodyStyled>
+      </ul>
+    </article>
   );
 }
-
-const CheckBodyStyled = styled.article`
-  flex-grow: 1;
-  padding: 16px;
-`;
-
-const SelectWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  label {
-    font-weight: bold;
-  }
-`;
-
-const BodyHeader = styled.header`
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 50px 0px 20px 0px;
-`;
-
-const ListWrapper = styled.ul`
-  width: 100%;
-  gap: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;

@@ -1,8 +1,7 @@
 import { RoutineDataType } from "@/types/Routine";
 import { useState } from "react";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
-import { LabelInput } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
 
 type Props = {
   routineData: RoutineDataType;
@@ -28,49 +27,43 @@ export default function RoutineEditModalUpdate({
   return (
     <TwoButtonModal
       component={
-        <EditUpdateWrapper>
-          <Title>루틴을 수정하세요</Title>
-          <LabelInput
+        <div className="flex flex-col gap-5">
+          <label className="text-xl font-bold mb-2">루틴을 수정하세요</label>
+          <InputField
             type="text"
             label="루틴 명"
-            $width="100%"
             placeholder="루틴 명"
             defaultValue={routine.title}
-            errortext={routine.title === "" ? "루틴 명을 입력해주세요." : ""}
+            error={routine.title === "" ? "루틴 명을 입력해주세요." : ""}
             onChange={(e) => setRoutine({ ...routine, title: e.target.value })}
           />
-          <LabelInput
+          <InputField
             type="number"
             label="세트"
-            $width="100%"
             placeholder="세트"
             defaultValue={routine.set}
-            errortext={
-              routine.set === 0 ? "세트 수는 0회 이상이어야 합니다." : ""
-            }
+            error={routine.set === 0 ? "세트 수는 0회 이상이어야 합니다." : ""}
             onChange={(e) =>
               setRoutine({ ...routine, set: Number(e.target.value) })
             }
           />
-          <LabelInput
+          <InputField
             type="number"
             label="무게"
-            $width="100%"
             placeholder="무게"
             defaultValue={routine.kg}
             onChange={(e) =>
               setRoutine({ ...routine, kg: Number(e.target.value) })
             }
           />
-          <LabelInput
+          <InputField
             type="text"
             label="링크"
-            $width="100%"
             placeholder="링크"
             defaultValue={routine.link ?? ""}
             onChange={(e) => setRoutine({ ...routine, link: e.target.value })}
           />
-        </EditUpdateWrapper>
+        </div>
       }
       primaryText="등록"
       primaryEvent={handleUpdateRoutineItem}
@@ -80,15 +73,3 @@ export default function RoutineEditModalUpdate({
     />
   );
 }
-
-const EditUpdateWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const Title = styled.header`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;

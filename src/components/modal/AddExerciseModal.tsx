@@ -1,7 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
-import { LabelInput } from "ji-design-system";
+import { InputField } from "@components/components/common/InputField";
 
 type Props = {
   handleAddExercise: (
@@ -49,39 +48,35 @@ export default function AddExerciseModal({
   return (
     <TwoButtonModal
       component={
-        <ExerciseModalWrapper>
-          <header>운동 추가</header>
-          <LabelInput
+        <div className="flex flex-col gap-2">
+          <header className="text-lg font-bold">운동 추가</header>
+          <InputField
             type="text"
             label="제목"
-            $width="100%"
             placeholder="제목"
-            errortext={errTitle}
+            error={errTitle}
             onChange={handleChangeTitle}
           />
-          <LabelInput
+          <InputField
             type="number"
             label="무게"
-            $width="100%"
             placeholder="무게"
             onChange={(e) => setKg(Number(e.target.value))}
           />
-          <LabelInput
+          <InputField
             type="number"
             label="세트"
-            $width="100%"
             placeholder="세트"
-            errortext={errSet}
+            error={errSet}
             onChange={handleChangeSet}
           />
-          <LabelInput
+          <InputField
             type="text"
             label="링크"
-            $width="100%"
             placeholder="링크"
             onChange={(e) => setLink(e.target.value)}
           />
-        </ExerciseModalWrapper>
+        </div>
       }
       primaryText="등록"
       primaryEvent={() => handleAddButton(title, kg, set, link)}
@@ -91,14 +86,3 @@ export default function AddExerciseModal({
     />
   );
 }
-
-const ExerciseModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-
-  header {
-    font-size: 18px;
-    font-weight: bold;
-  }
-`;

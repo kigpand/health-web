@@ -1,6 +1,5 @@
 import ModalPortal from "@/ModalPortal";
 import { Button } from "ji-design-system";
-import styled from "styled-components";
 
 type Props = {
   time: number;
@@ -11,11 +10,11 @@ export default function PlayTimerModal({ time, handleCloseModal }: Props) {
   return (
     <ModalPortal
       component={
-        <TimeModalWrapper>
-          <TimeStyled>
-            <header>휴식 시간</header>
-            <span>{time}초 남았습니다!</span>
-          </TimeStyled>
+        <article className="w-[250px] h-[150px] rounded-xl flex flex-col items-center justify-center bg-white gap-[30px]">
+          <div className="flex flex-col items-center gap-3">
+            <header className="font-bold">휴식 시간</header>
+            <span className="text-sm">{time}초 남았습니다!</span>
+          </div>
           {time === 0 && (
             <Button
               style={{ fontSize: "14px" }}
@@ -25,35 +24,8 @@ export default function PlayTimerModal({ time, handleCloseModal }: Props) {
               onClick={handleCloseModal}
             />
           )}
-        </TimeModalWrapper>
+        </article>
       }
     />
   );
 }
-
-const TimeModalWrapper = styled.article`
-  width: 250px;
-  height: 150px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  gap: 30px;
-`;
-
-const TimeStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-
-  header {
-    font-weight: bold;
-  }
-
-  span {
-    font-size: 14px;
-  }
-`;

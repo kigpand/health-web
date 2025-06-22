@@ -1,6 +1,5 @@
 import AddExerciseModal from "@components/modal/AddExerciseModal";
 import { useState } from "react";
-import styled from "styled-components";
 
 type Props = {
   handleAddExercise: (
@@ -16,9 +15,12 @@ export default function AddRoutineBodyAddButton({ handleAddExercise }: Props) {
 
   return (
     <>
-      <AddExerciseButton onClick={() => setAddExer(true)}>
+      <button
+        className="border-none outline-none bg-white h-[35px] rounded-md"
+        onClick={() => setAddExer(true)}
+      >
         <span>운동 추가 +</span>
-      </AddExerciseButton>
+      </button>
       {addExer && (
         <AddExerciseModal
           handleAddExercise={handleAddExercise}
@@ -28,10 +30,3 @@ export default function AddRoutineBodyAddButton({ handleAddExercise }: Props) {
     </>
   );
 }
-
-const AddExerciseButton = styled.button`
-  border: 1px solid black;
-  outline: none;
-  background-color: white;
-  height: 35px;
-`;

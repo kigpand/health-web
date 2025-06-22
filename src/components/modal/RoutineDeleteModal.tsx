@@ -1,6 +1,5 @@
 import { useRoutineDelete } from "@/hook/quires/routine";
 import { RoutineListType } from "@/types/Routine";
-import styled from "styled-components";
 import TwoButtonModal from "./TwoButtonModal";
 
 type Props = {
@@ -21,7 +20,11 @@ export default function RoutineDeleteModal({
 
   return (
     <TwoButtonModal
-      component={<Title>{routine.title} 루틴을 삭제하시겠습니까?</Title>}
+      component={
+        <label className="font-bold mb-7 text-lg">
+          {routine.title} 루틴을 삭제하시겠습니까?
+        </label>
+      }
       primaryText="예"
       primaryEvent={() => handleDeleteButton(routine.id)}
       secondaryText="아니요"
@@ -30,9 +33,3 @@ export default function RoutineDeleteModal({
     />
   );
 }
-
-const Title = styled.header`
-  font-weight: bold;
-  margin-bottom: 30px;
-  font-size: 18px;
-`;

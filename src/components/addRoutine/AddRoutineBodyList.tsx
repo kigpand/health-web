@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import AddRoutineBodyListItem from "./AddRoutineBodyListItem";
 import { RoutineDataType } from "@/types/Routine";
 
@@ -8,31 +7,13 @@ type Props = {
 
 export default function AddRoutineBodyList({ exercise }: Props) {
   return (
-    <AddExerciseList>
-      <label>등록한 운동</label>
-      <ul>
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-bold text-white">등록한 운동</label>
+      <ul className="mt-[10px] flex flex-col gap-2">
         {exercise.map((item) => {
           return <AddRoutineBodyListItem key={item.title} {...item} />;
         })}
       </ul>
-    </AddExerciseList>
+    </div>
   );
 }
-
-const AddExerciseList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  label {
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  ul {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-`;

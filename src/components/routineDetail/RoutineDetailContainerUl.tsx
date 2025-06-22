@@ -1,5 +1,4 @@
 import { RoutineListType } from "@/types/Routine";
-import styled from "styled-components";
 
 type Props = {
   routineDetail: RoutineListType | undefined;
@@ -7,46 +6,22 @@ type Props = {
 
 export default function RoutineDetailContainerUl({ routineDetail }: Props) {
   return (
-    <RoutineDetailWrapper>
-      <label>루틴 리스트</label>
-      <ListWrapper>
+    <article className="grow w-full flex flex-col">
+      <label className="text-center text-2xl font-bold mt-[50px] mb-5 text-white">
+        루틴 리스트
+      </label>
+      <ul className="flex flex-col items-center justify-center gap-4 w-full grow overflow-y-auto">
         {routineDetail?.routine.map((routine) => {
-          return <ListStyled key={routine.title}>{routine.title}</ListStyled>;
+          return (
+            <li
+              key={routine.title}
+              className="w-[90%] bg-white py-4 px-1 text-center rounded-xl"
+            >
+              {routine.title}
+            </li>
+          );
         })}
-      </ListWrapper>
-    </RoutineDetailWrapper>
+      </ul>
+    </article>
   );
 }
-
-const RoutineDetailWrapper = styled.article`
-  flex-grow: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  label {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 50px 0 20px 0;
-  }
-`;
-
-const ListWrapper = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  flex-grow: 1;
-  overflow-y: auto;
-`;
-
-const ListStyled = styled.li`
-  width: 90%;
-  background-color: white;
-  padding: 18px 5px;
-  text-align: center;
-  border-radius: 8px;
-`;

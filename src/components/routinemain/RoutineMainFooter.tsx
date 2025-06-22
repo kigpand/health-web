@@ -1,9 +1,9 @@
+import FooterWrapper from "@/common/layout/FooterWrapper";
 import { PATH } from "@/enum/path";
-import { FooterWrapper } from "@/styles/PageStyle";
 import { Button } from "ji-design-system";
 import { useNavigate } from "react-router-dom";
 
-export default function MainFooter() {
+export default function RoutineMainFooter() {
   const nav = useNavigate();
 
   return (
